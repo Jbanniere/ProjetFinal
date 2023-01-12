@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import {StoreContext} from "./tools/context.js"
 import './App.css';
 
 function App() {
+  const [state, dispatch] = React.useContext(StoreContext)
+  
+  const increment = () => {
+      dispatch({
+        type : 'INCR' ,
+      })
+  }
+  
+   const decrement = () => {
+      dispatch({
+        type : 'DECR' ,
+      })
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p> Counter = {state.count} </p>
+        <button onClick={increment}>+1</button>
+        <button onClick={decrement}>-1</button>
     </div>
   );
 }
