@@ -1,6 +1,9 @@
 import React from 'react';
 import {StoreContext} from "./tools/context.js"
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar.jsx"
+import ErrorPage from "./components/ErrorPage.jsx"
 
 function App() {
   const [state, dispatch] = React.useContext(StoreContext)
@@ -18,12 +21,16 @@ function App() {
   }
   
   return (
-    <div className="App">
-        <p> Counter = {state.count} </p>
-        <button onClick={increment}>+1</button>
-        <button onClick={decrement}>-1</button>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="logs" element={<Log />} />
+        <Route path="*" element = {<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
