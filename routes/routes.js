@@ -5,6 +5,9 @@ import contactPostController from "../controller/contactPost.js"
 
 const router = express.Router()
 
+
+// Routes pour rediriger chaque page vers les Controllers correspondants
+
 router.get('/', homeGetController)
 
 router.get('/contact', contactGetController)
