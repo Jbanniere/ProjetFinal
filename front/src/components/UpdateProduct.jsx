@@ -9,7 +9,7 @@ const UpdateProduct = () => {
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getProductById`,{id})
-            .then(res => setUpdateProduct(res))
+            .then(res => setUpdateProduct(res.data.result.result[0]))
             .catch(err => console.log(err))
     }, [id])
     
