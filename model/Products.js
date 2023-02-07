@@ -46,7 +46,6 @@ class Products {
         try{
             const result = await this.asyncQuery(sql,[id])
             return {result}
-            console.log(result)
         } catch(err){
             console.log(err)
             return err
@@ -59,6 +58,20 @@ class Products {
         
         try{
             const result = await this.asyncQuery(sql,paramsSql)
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    
+////////// DELETE ///////////
+
+    async deleteProduct({id}){
+        const sql = "DELETE FROM products WHERE id=?"
+         try{
+            const result = await this.asyncQuery(sql,[id])
             return {result}
         } catch(err){
             console.log(err)

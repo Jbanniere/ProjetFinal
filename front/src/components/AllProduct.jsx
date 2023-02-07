@@ -13,6 +13,10 @@ const AllProduct = () => {
     },[])
     
     console.log(allProduct)
+    
+    const deleteProduct = (id) => {
+        axios.post(`${BASE_URL}/deleteProduct`, {id})
+    }
 
     return(
         <div>
@@ -24,7 +28,7 @@ const AllProduct = () => {
                     <p>Prix du Mensuel seul : {product.price_solo}</p>
                     <p>Prix du Pack avec Hors Séries : {product.price_hs}</p>
                     <button><NavLink to={`/updateProduct/${product.id}`}>Modifier ce produit</NavLink></button>
-                    <button>Supprimer ce produit</button>
+                    <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>
                 </div>
                 )
             })}

@@ -9,7 +9,7 @@ export default async (req,res) => {
         const myBDD = new BDD()
         const product = await new Products(myBDD)
         const data = await product.addProduct({name, description, price_solo, price_hs})
-       if(!data){
+        if(!data){
             return res.status(500).json({error:`Merci de remplir tous les champs`})
         }
     try {

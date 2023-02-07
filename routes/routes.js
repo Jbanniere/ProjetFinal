@@ -6,6 +6,7 @@ import addProductController from "../controller/addProduct.js"
 import updateProductController from "../controller/updateProduct.js"
 import getAllProductController from "../controller/getAllProduct.js"
 import getProductByIdController from "../controller/getProductById.js"
+import deleteProductController from '../controller/deleteProduct.js'
 
 const router = express.Router()
 
@@ -22,7 +23,8 @@ const routesPOST = [
     {route:"/login", controller: logInController},
     {route:"/addProduct", controller: addProductController},
     {route:"/updateProduct", controller: updateProductController},
-    {route:"/getProductById", controller: getProductByIdController}
+    {route:"/getProductById", controller: getProductByIdController},
+    {route:"/deleteProduct", controller: deleteProductController}
     
 ]
 routesGET.map((item) =>{
