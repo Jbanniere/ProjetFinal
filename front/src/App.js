@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar.jsx"
-import ErrorPage from "./components/ErrorPage.jsx"
+import AddProduct from "./components/AddProduct.jsx"
 
 /* pour faire fonctionner fontawesome, rajouter:
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<h1>hello</h1>} />
-        <Route path="*" element = {<ErrorPage />} />
+        <Route path="/addProduct" element={<AddProduct />} />
       </Routes>
     </BrowserRouter>
   );

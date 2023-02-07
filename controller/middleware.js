@@ -6,7 +6,7 @@ const USER = 'user'
 const PUBLIC = 'public'
 
 const protectedPath = (pathname) => {
-    const adminPath = ['addUser','deleteUser'];
+    const adminPath = [''];
     const userPath = ['userPath'];
     
     const protectedAdmin = adminPath.includes(pathname)
