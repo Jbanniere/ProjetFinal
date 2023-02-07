@@ -11,12 +11,13 @@ class Products {
         if(!name || !description || !price_solo || !price_hs){
             return null
         }
-        const sql = 'INSERT INTO products (name, content, price_solo, price_hs VALUES (?,?,?,?)'
+        const sql = 'INSERT INTO products (name, description, price_solo, price_hs) VALUES (?,?,?,?)'
         const paramsSql = [name, description, price_solo, price_hs]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)
             return {result}
+            console.log({result})
         } catch (err) {
             console.log(err)
             return err

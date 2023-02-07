@@ -18,6 +18,7 @@ const handleChange = (e) => {
 }
 
 const submit = (e) => {
+    e.preventDefault()
     axios.post(`${BASE_URL}/addProduct`, {
         name: product.name,
         description: product.description,
@@ -28,11 +29,13 @@ const submit = (e) => {
     
     return(
         <div>
+        <form onSubmit={submit}>
             <input type='text' placeholder='name' name='name' onChange={handleChange} value={product.name} />
             <input type='text' placeholder='description' name='description' onChange={handleChange} value={product.description} />
             <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={product.price_solo} />
-            <input type='number' placeholder='prix avec hors série' name='price_hs' onChange={handleChange} value={product.price_hs} />
+            <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={product.price_hs} />
             <button onClick= {submit}> Create product </button>
+        </form>
         </div>
     )
 }
