@@ -17,7 +17,9 @@ const NavBar = (props) => {
                 <li>
                     <NavLink to="/addProduct"> Ajouter un produit </NavLink>
                 </li>
-               
+                <li>
+                    <NavLink to="/getAllProduct">Afficher tous les produits </NavLink>
+                </li>
             </ul>
         </nav>
         )

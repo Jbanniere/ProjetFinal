@@ -7,7 +7,6 @@ class Products {
 ////////// CREATE ////////////
 
     async addProduct({name, description, price_solo, price_hs}) {
-        
         if(!name || !description || !price_solo || !price_hs){
             return null
         }
@@ -23,9 +22,22 @@ class Products {
             return err
         }
     }
-    
-    
 
+//////////// READ ////////////
+
+    async getAllProduct(){
+        const sql = "SELECT * FROM products"
+        try {
+            const result = await this.asyncQuery(sql)
+            return {result}
+            console.log(result)
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    
 /////////// UPDATE //////////
 
     // Sélectionner un produit par son ID
@@ -34,6 +46,7 @@ class Products {
         try{
             const result = await this.asyncQuery(sql,[id])
             return {result}
+            console.log(result)
         } catch(err){
             console.log(err)
             return err
@@ -52,6 +65,8 @@ class Products {
             return err
         }
     }
+    
+    
     
 }
 

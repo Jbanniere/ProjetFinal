@@ -6,14 +6,14 @@ export default async (req,res) => {
     
     try {
         const myBDD = new BDD()
-        const product = await new Products(myBDD)
-        const result = await product.updateProduct({id})
-
-        res.json({result})
-        console.log(result)
+        const product = new Products(myBDD)
+        const allProduct = await product.getAllProduct({name, description, price_solo, price_hs, id})
+        res.json({allProduct})
         
-    } catch(err) {
-        console.log(err);
+        
+    } catch(err){
+        console.log(err)
         res.sendStatus(500)
     }
+
 }

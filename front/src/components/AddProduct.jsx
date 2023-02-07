@@ -29,7 +29,7 @@ const submit = (e) => {
     
     return(
         <div>
-        <form onSubmit={submit}>
+        <form>
             <input type='text' placeholder='name' name='name' onChange={handleChange} value={product.name} />
             <input type='text' placeholder='description' name='description' onChange={handleChange} value={product.description} />
             <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={product.price_solo} />
