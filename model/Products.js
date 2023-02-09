@@ -37,10 +37,7 @@ class Products {
         }
     }
     
-    
-/////////// UPDATE //////////
-
-    // Sélectionner un produit par son ID
+     // Sélectionner un produit par son ID
     async getProductById ({id}) {
         const sql = 'SELECT * FROM products WHERE id = ?'
         try{
@@ -51,6 +48,9 @@ class Products {
             return err
         }
     }
+    
+    
+/////////// UPDATE //////////
 
      async updateProduct({name, description, price_solo, price_hs, id}){
         const sql = "UPDATE products SET name = ?, description = ?, price_solo = ?, price_hs = ? WHERE id = ?"

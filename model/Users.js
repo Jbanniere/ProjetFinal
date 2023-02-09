@@ -30,12 +30,15 @@ class Users {
         if(password.length <= 8){
             return {response:'Le mot de passe doit faire plus de 8 caractères'}
         }
+        if(!nom || !prenom || !adresse || !email|| !password){
+            return null
+        }
         
         try {
              // On vérifie si l'email est déjà présent dans la BDD
             const emailExist = await this.emailInBdd(email)
         
-            // error a la vérification de l'email
+            // erreur a la vérification de l'email
             if(emailExist === undefined){
                 return
             }
@@ -61,5 +64,65 @@ class Users {
             return
         }
     }
+    
+/////////// READ //////////////
+
+ async getAllUsers () {
+         const sql = "SELECT * FROM users"
+        try {
+            const result = await this.asyncQuery(sql)
+            return {result}
+            console.log(result)
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    // Sélectionner un user par son ID
+    async getUserById ({id}) {
+        const sql = 'SELECT * FROM users WHERE id = ?'
+        try{
+            const result = await this.asyncQuery(sql,[id])
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+/////////// UPDATE //////////
+
+     async updateUser({id, nom, prenom, adresse, email, role_id}){
+        const sql = "UPDATE users SET nom = ?, prenom = ?, adresse = ?, email = ?, role_id = ? WHERE id = ?"
+        const paramsSql = [nom, prenom, adresse, email, role_id, id]
+        
+        try{
+            const result = await this.asyncQuery(sql,paramsSql)
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    
+////////// DELETE ///////////
+
+    async deleteUser({id}){
+        const sql = "DELETE FROM users WHERE id=?"
+         try{
+            const result = await this.asyncQuery(sql,[id])
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+
 
 }
+
+
+
+export default Users

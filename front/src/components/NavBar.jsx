@@ -20,6 +20,12 @@ const NavBar = (props) => {
                 <li>
                     <NavLink to="/getAllProduct">Afficher tous les produits </NavLink>
                 </li>
+                <li>
+                    <NavLink to="/register">S'inscrire</NavLink>
+                </li>
+                 <li>
+                    <NavLink to="/getAllUsers">Afficher les utilisateurs</NavLink>
+                </li>
             </ul>
         </nav>
         )
