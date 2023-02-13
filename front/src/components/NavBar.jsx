@@ -26,6 +26,12 @@ const NavBar = (props) => {
                  <li>
                     <NavLink to="/getAllUsers">Afficher les utilisateurs</NavLink>
                 </li>
+                 <li>
+                    <NavLink to="/login">Se connecter</NavLink>
+                </li>
+                 <li>
+                    <NavLink to="/logout">Se déconnecter</NavLink>
+                </li>
             </ul>
         </nav>
         )

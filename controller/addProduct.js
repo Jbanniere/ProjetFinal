@@ -1,24 +1,20 @@
 import BDD from '../model/BDD.js'
 import Products from '../model/Products.js'
+import {asyncQuery} from "../config/database.js"
 
-export default async (req,res) => {
+export default async (req, res) => {
+    console.log("uploadFiles.js")
+    const {files, name, description, price_solo, price_hs} = req.body
     
-    const {name, description, price_solo, price_hs} = req.body
-    
-        // creer une nouvelle instance de la class BDD
-        const myBDD = new BDD()
-        const product = await new Products(myBDD)
-        const data = await product.addProduct({name, description, price_solo, price_hs})
-        if(!data){
-            return res.status(500).json({error:`Merci de remplir tous les champs`})
-        }
-    try {
-        
-        res.json({data})
-        console.log({data})
-        
-    } catch(err) {
-        console.log(err);
-        res.sendStatus(500)
+    const myBDD = new BDD()
+    const product = await new Products(myBDD)
+    const data = await product.addProduct({name, description, price_solo, price_hs})
+    if(!data.result.insertId){
+        return res.status(500).json({error:'le produit n\'a pas etait creer '})
     }
+    
+    const sqlPicture = 'INSERT INTO pictures (url, product_id, caption) VALUES (?,?,?)'
+    const paramsSQL = [files, data.result.insertId ,name]
+    const result = await asyncQuery(sqlPicture,paramsSQL)
+    res.json({result})
 }

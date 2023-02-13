@@ -26,7 +26,7 @@ const AllUsers = () => {
                     <h2>id :{user.id}</h2>
                     <p>Prénom : {user.prenom}Nom :{user.nom}</p>
                     <p>Adresse : {user.adresse}</p>
-                    <p>Email : {user.mail}</p>
+                    <p>Email : {user.email}</p>
                     <button><NavLink to={`/updateUser/${user.id}`}>Modifier les infos</NavLink></button>
                     <button onClick={()=> deleteUser(user.id)}>Supprimer cet utilisateur</button>
                 </div>

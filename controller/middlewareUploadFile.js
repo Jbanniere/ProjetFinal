@@ -20,10 +20,12 @@ const checkAcceptedExtensions = (file) => {
     return allowedExtensions.includes(type);
 };
 
-const uploadFile = async (req, res) => {
+export default async (req, res, next) => {
 
     form.parse(req, async (err, fields, files) => {
         if (err) {
+            
+        // Cas : le fichier est trop lourd
         if (err.code === 'LIMIT_FIELD_SIZE') {
             return res.status(400).json({ error: `Le fichier dépasse la taille maximum autorisée de ${MAX_FIELD_SIZE / 1024 / 1024} Mo.` });
         }
@@ -31,10 +33,13 @@ const uploadFile = async (req, res) => {
     }
 
         const file = files.files;
+        
+        // Cas : aucun fichier
         if (!file || file.size === 0) {
             return res.status(400).json({ error: 'Aucun fichier n\'a été téléchargé.' });
         }
-
+        
+        // Cas : extension non conforme
         if (!checkAcceptedExtensions(file)) {
             return res.status(400).json({ error: 'Type de fichier non valide.' });
         }
@@ -42,18 +47,19 @@ const uploadFile = async (req, res) => {
         const newFilename = `${file.newFilename}`; // renomme le fichier aléatoirement
         const newPath = path.join(imageDirectory, newFilename); // pour afficher le nom du dossier + le nom du fichier
         
+        // on vérifie si le dossier existe
         if (!fs.existsSync(imageDirectory)) {
             return res.status(500).json({ error: `Le dossier ${imageDirectory} n'existe pas.` }); // vérifie que le dossier existe
         }
 
         try {
             await fs.promises.copyFile(file.filepath, newPath);
-            return res.json({ success: true });
+            req.body = fields;
+            req.body.files = files.files.newFilename;
+            next();
         } catch (e) {
             return res.status(500).json({ error: 'Le fichier ne peut pas être enregistré.' });
         }
         
     });
 };
-
-export default uploadFile;

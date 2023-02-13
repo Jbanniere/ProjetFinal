@@ -15,12 +15,29 @@ class Users {
          try {
             const sql = "SELECT * FROM users WHERE email = ?"
             const result  = await this.asyncQuery(sql,[email])
-                if(result.length > 0) return true
+                if(result.length > 0) return result
                 return false
         } catch(err){
             return
         }
     }
+    
+// Méthode pour se connecter
+    async login({email, password}) {
+        const dataBDD = await this.emailInBdd(email)
+        if(!dataBDD[0]){
+            return {response: "email ou mot de passe invalide"}
+        }
+            
+        const passwordIsValide = await bcrypt.compare(password,dataBDD[0].password)
+            
+        if(!passwordIsValide){
+            return{response: "email ou mot de passe invalide"}
+        }
+            
+        return dataBDD
+    }
+    
 
 
 // Méthode pour valider l'inscription
@@ -65,6 +82,7 @@ class Users {
         }
     }
     
+    
 /////////// READ //////////////
 
  async getAllUsers () {
@@ -90,6 +108,7 @@ class Users {
             return err
         }
     }
+    
     
 /////////// UPDATE //////////
 
@@ -119,7 +138,8 @@ class Users {
             return err
         }
     }
-
+    
+    
 
 }
 

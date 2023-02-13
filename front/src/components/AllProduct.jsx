@@ -5,17 +5,21 @@ import {NavLink} from "react-router-dom"
 
 const AllProduct = () => {
     const [allProduct, setAllProduct] = useState([])
+    const [picture, setPicture] = useState([])
     
     useEffect(() => {
         axios.get(`${BASE_URL}/getAllProduct`)
             .then(res => setAllProduct(res.data.allProduct.result))
             .catch(err => console.log(err))
+        axios.get(`${BASE_URL}/getAllPicture`)
+            .then(res => setPicture(res.data.allPicture.result))
+            .catch(err => console.log(err))
     },[])
     
-    console.log(allProduct)
     
     const deleteProduct = (id) => {
         axios.post(`${BASE_URL}/deleteProduct`, {id})
+        .then(res => setAllProduct(allProduct.filter((e)=> e.id !== id)))
     }
 
     return(

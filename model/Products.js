@@ -39,7 +39,7 @@ class Products {
     
      // Sélectionner un produit par son ID
     async getProductById ({id}) {
-        const sql = 'SELECT * FROM products WHERE id = ?'
+        const sql = 'SELECT products.*, pictures.url, pictures.caption FROM products JOIN pictures ON products.id = pictures.product_id  WHERE id = ?'
         try{
             const result = await this.asyncQuery(sql,[id])
             return {result}

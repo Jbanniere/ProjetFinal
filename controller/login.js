@@ -1,12 +1,16 @@
-import {asyncQuery} from "../config/database.js"
+import BDD from '../model/BDD.js'
 import bcrypt from "bcrypt"
 import {generateToken} from "../config/token.js"
+import Users from '../model/Users.js'
 
 
 const generateResponse = async (userDataSQL) => {
+    
     // ID du role Admin en BDD
-    const ADMIN_ROLE_ID = 1
-    // verrifie si le user est admin return true OR false
+    const ADMIN_ROLE_ID = 3
+    
+    // on vérifie si le user est admin ou non (return true /false)
+    console.log(userDataSQL)
     const admin = userDataSQL.role_id === ADMIN_ROLE_ID
     
     const userData = { 
@@ -29,11 +33,15 @@ const generateResponse = async (userDataSQL) => {
 
 export default async (req, res) => {
     const {password, email} = req.body
-    const sql = "SELECT * FROM users WHERE email = ?"
-    const paramsSql = [email]
-
+    // console.log(req.body)
+    const myBDD = new BDD()
+    const user = await new Users(myBDD)
+    const result = await user.login({password, email})
+    console.log(result)
+    if(!result[0]){
+        return res.status(401).json({response:"identifiant ou mot de passe incorect"})       
+    }
     try {
-        const result = await asyncQuery(sql, paramsSql)
         const response = await generateResponse(result[0])
         const resultCompare = await bcrypt.compare(password, result[0].password)
         res.json(resultCompare ? {response} : {response:null})

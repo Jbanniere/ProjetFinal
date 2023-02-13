@@ -36,7 +36,8 @@ const Register = () => {
             <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
             <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={userData.adresse} />
             <input type='text' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
-            <input type='text' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
+            <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
+            <p>Le mot de passe doit contenir au moins 8 caractères</p>
             <button onClick={submit}>S'inscrire</button>
         </form>    
         )
