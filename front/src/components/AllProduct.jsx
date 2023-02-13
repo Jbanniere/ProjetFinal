@@ -5,14 +5,10 @@ import {NavLink} from "react-router-dom"
 
 const AllProduct = () => {
     const [allProduct, setAllProduct] = useState([])
-    const [picture, setPicture] = useState([])
-    
+
     useEffect(() => {
         axios.get(`${BASE_URL}/getAllProduct`)
             .then(res => setAllProduct(res.data.allProduct.result))
-            .catch(err => console.log(err))
-        axios.get(`${BASE_URL}/getAllPicture`)
-            .then(res => setPicture(res.data.allPicture.result))
             .catch(err => console.log(err))
     },[])
     
@@ -25,13 +21,17 @@ const AllProduct = () => {
     return(
         <div>
            {allProduct.map((product,i) => {
+           console.log(product)
                 return(
                 <div key={i}>
                     <h2>{product.name}</h2>
                     <p>Description : {product.description}</p>
                     <p>Prix du Mensuel seul : {product.price_solo}</p>
                     <p>Prix du Pack avec Hors Séries : {product.price_hs}</p>
-                    <button><NavLink to={`/updateProduct/${product.id}`}>Modifier ce produit</NavLink></button>
+                    <p>Images : {product.caption}</p>
+                    <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
+                    <button><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
+                    <button><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier les images</NavLink></button>
                     <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>
                 </div>
                 )

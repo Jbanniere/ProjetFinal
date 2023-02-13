@@ -9,6 +9,7 @@ import AllUsers from "./components/AllUsers.jsx"
 import UpdateUser from "./components/UpdateUser.jsx"
 import Login from "./components/Login.jsx"
 import Logout from "./components/Logout.jsx"
+import UpdatePicture from "./components/UpdatePicture.jsx"
 
 /* pour faire fonctionner fontawesome, rajouter:
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/getAllUsers" element={<AllUsers />} />
         <Route path="/updateUser/:id" element={<UpdateUser />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/updatePicture/:product_id" element={<UpdatePicture />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>

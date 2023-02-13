@@ -26,7 +26,9 @@ class Products {
 //////////// READ ////////////
 
     async getAllProduct(){
-        const sql = "SELECT * FROM products"
+        const sql = `SELECT products.*, pictures.id AS pictures_id , pictures.url, pictures.caption FROM products 
+        JOIN pictures 
+        ON products.id = pictures.product_id`
         try {
             const result = await this.asyncQuery(sql)
             return {result}
@@ -39,7 +41,12 @@ class Products {
     
      // Sélectionner un produit par son ID
     async getProductById ({id}) {
-        const sql = 'SELECT products.*, pictures.url, pictures.caption FROM products JOIN pictures ON products.id = pictures.product_id  WHERE id = ?'
+        const sql = `
+        SELECT products.*, pictures.url, pictures.caption 
+        FROM products 
+        JOIN pictures 
+        ON products.id = pictures.product_id  
+        WHERE products.id = ?`
         try{
             const result = await this.asyncQuery(sql,[id])
             return {result}

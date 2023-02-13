@@ -19,6 +19,9 @@ const Register = () => {
     
     const submit = (e) => {
         e.preventDefault()
+        if(userData.password<= 8) {
+            return alert("Votre mot de passe doit contenir plus de 8 caractères")
+        }
         axios.post(`${BASE_URL}/register`,{
            nom : userData.nom,
            prenom: userData.prenom,

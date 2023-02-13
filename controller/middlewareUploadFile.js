@@ -24,13 +24,13 @@ export default async (req, res, next) => {
 
     form.parse(req, async (err, fields, files) => {
         if (err) {
-            
-        // Cas : le fichier est trop lourd
-        if (err.code === 'LIMIT_FIELD_SIZE') {
-            return res.status(400).json({ error: `Le fichier dépasse la taille maximum autorisée de ${MAX_FIELD_SIZE / 1024 / 1024} Mo.` });
+                
+            // Cas : le fichier est trop lourd
+            if (err.code === 'LIMIT_FIELD_SIZE') {
+                return res.status(400).json({ error: `Le fichier dépasse la taille maximum autorisée de ${MAX_FIELD_SIZE / 1024 / 1024} Mo.` });
+            }
+            return res.status(500).json({ error: 'Le fichier ne peut pas être traité.' });
         }
-        return res.status(500).json({ error: 'Le fichier ne peut pas être traité.' });
-    }
 
         const file = files.files;
         
@@ -54,6 +54,7 @@ export default async (req, res, next) => {
 
         try {
             await fs.promises.copyFile(file.filepath, newPath);
+            console.log(fields)
             req.body = fields;
             req.body.files = files.files.newFilename;
             next();

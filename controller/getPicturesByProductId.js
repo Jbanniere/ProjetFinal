@@ -1,15 +1,14 @@
 import BDD from '../model/BDD.js'
-import Pictures from '../model/Products.js'
+import Pictures from '../model/Pictures.js'
 
 export default async (req,res) => {
-    const {url, product_id, caption, id} = req.body
+    const {product_id} = req.body
     
     try {
         const myBDD = new BDD()
         const picture = new Pictures(myBDD)
-        const allPictures = await picture.getAllPicture({url, product_id, caption, id})
-        res.json({allPictures})
-        
+        const result = await picture.getPicturesByProductId({product_id})
+        res.json({result})
         
     } catch(err){
         console.log(err)

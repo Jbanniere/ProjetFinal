@@ -10,7 +10,7 @@ export default async (req, res) => {
     const product = await new Products(myBDD)
     const data = await product.addProduct({name, description, price_solo, price_hs})
     if(!data.result.insertId){
-        return res.status(500).json({error:'le produit n\'a pas etait creer '})
+        return res.status(500).json({error:'le produit n\'a pas été crée '})
     }
     
     const sqlPicture = 'INSERT INTO pictures (url, product_id, caption) VALUES (?,?,?)'

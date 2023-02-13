@@ -14,6 +14,9 @@ import updateUserController from "../controller/updateUser.js"
 import getUserById from "../controller/getUserById.js"
 import middlewareUploadFile from '../controller/middlewareUploadFile.js'
 import getPicturesById from "../controller/getPicturesById.js"
+import getAllPicturesController from "../controller/getAllPictures.js"
+import updatePictureController from "../controller/updatePicture.js"
+import getPicturesByProductId from "../controller/getPicturesByProductId.js"
 
 const router = express.Router()
 
@@ -22,7 +25,8 @@ const router = express.Router()
 const routesGET = [
     {route:"/", controller: homeGetController},
     {route:"/getAllProduct", controller: getAllProductController},
-    {route:"/getAllUsers", controller: getAllUsersController}
+    {route:"/getAllUsers", controller: getAllUsersController},
+    {route:"/getAllPictures", controller: getAllPicturesController}
     
 ]
 const routesPOST = [
@@ -35,12 +39,15 @@ const routesPOST = [
     {route:"/deleteUser", controller: deleteUserController},
     {route:"/updateUser", controller: updateUserController},
     {route:"/getUserById", controller: getUserById},
-    {route:"/getPicturesById", controller: getPicturesById}
+    {route:"/getPicturesById", controller: getPicturesById},
+    {route:"/getPicturesByProductId", controller: getPicturesByProductId}
 
     
 ]
 
-router.post("/addProduct", middlewareUploadFile, addProductController)
+router.post("/addProduct", middlewareUploadFile, addProductController),
+router.post("/updatePicture", middlewareUploadFile, updatePictureController)
+
 
 routesGET.map((item) =>{
         router.get(item.route, middleware, item.controller);

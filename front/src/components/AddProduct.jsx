@@ -19,20 +19,12 @@ const handleChange = (e) => {
 
 const submitData = (e) => {
     e.preventDefault()
-    // axios.post(`${BASE_URL}/addProduct`, {
-    //     name: product.name,
-    //     description: product.description,
-    //     price_solo: product.price_solo,
-    //     price_hs: product.price_hs
-    // })
-    // .then(res => console.log(res))
-    
     const dataFile = new FormData()
     const files = {...e.target.picture.files}
     
     console.log(files)
     
-    // ajout d'autre input au formulaire
+    // ajout d'autres inputs au formulaire
     dataFile.append('name', product.name)
     dataFile.append('description', product.description)
     dataFile.append('price_solo', product.price_solo)
