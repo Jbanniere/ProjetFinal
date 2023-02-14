@@ -28,7 +28,7 @@ const AllContactMessage = () => {
     console.log(allContact)
     
     // Supprime un message
-    const handleDeleteContact = (id) => {
+    const deleteContact = (id) => {
         axios.post(`${BASE_URL}/deleteContactMessage`)
         .then(res => setAllContact(allContact.filter((e)=> e.id !== id)))
     }
@@ -60,7 +60,7 @@ const AllContactMessage = () => {
     		    </select>
     		    {/* On envoie l'index du contact modifier */}
     		    <button onClick={() => submit(i)}>Valider</button>
-                <FontAwesomeIcon icon={faTrash} color={ 'red' }  onClick={() => handleDeleteContact(demande)} />
+                <FontAwesomeIcon icon={faTrash} color={ 'red' }  onClick={() => deleteContact(demande.id)} />
             </div>
            )
            })}
