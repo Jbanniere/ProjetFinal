@@ -17,6 +17,7 @@ import getPicturesById from "../controller/getPicturesById.js"
 import getAllPicturesController from "../controller/getAllPictures.js"
 import updatePictureController from "../controller/updatePicture.js"
 import getPicturesByProductId from "../controller/getPicturesByProductId.js"
+import contactUsController from "../controller/contactUs.js"
 
 const router = express.Router()
 
@@ -40,7 +41,8 @@ const routesPOST = [
     {route:"/updateUser", controller: updateUserController},
     {route:"/getUserById", controller: getUserById},
     {route:"/getPicturesById", controller: getPicturesById},
-    {route:"/getPicturesByProductId", controller: getPicturesByProductId}
+    {route:"/getPicturesByProductId", controller: getPicturesByProductId},
+    {route:"/contactUs", controller: contactUsController}
 
     
 ]

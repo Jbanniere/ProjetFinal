@@ -30,9 +30,6 @@ const UpdatePicture = () => {
         dataFile.append('files', files[0], files[0].name)
         dataFile.append("url", updatePicture.url)
         dataFile.append("product_id", updatePicture.product_id)
-        /*axios.post(`${BASE_URL}/updateProduct`,{...updatePicture})
-            .then(res => console.log(res))
-            .catch(err => console.log(err))*/
         
         axios.post(`${BASE_URL}/updatePicture`, dataFile)
             .then((res)=> {

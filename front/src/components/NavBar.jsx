@@ -32,6 +32,9 @@ const NavBar = (props) => {
                  <li>
                     <NavLink to="/logout">Se déconnecter</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/contactUs">Nous contacter</NavLink>
+                </li>
             </ul>
         </nav>
         )

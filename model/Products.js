@@ -16,7 +16,6 @@ class Products {
         try {
             const result = await this.asyncQuery(sql, paramsSql)
             return {result}
-            console.log({result})
         } catch (err) {
             console.log(err)
             return err

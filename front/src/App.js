@@ -10,10 +10,12 @@ import UpdateUser from "./components/UpdateUser.jsx"
 import Login from "./components/Login.jsx"
 import Logout from "./components/Logout.jsx"
 import UpdatePicture from "./components/UpdatePicture.jsx"
+import Footer from "./components/Footer.jsx"
+import ContactUs from "./components/ContactUs.jsx"
 
-/* pour faire fonctionner fontawesome, rajouter:
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons"; => exemple pour ajouter le picto "trash"*/
+//pour faire fonctionner fontawesome, rajouter:
+/*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons"*/
 
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/updatePicture/:product_id" element={<UpdatePicture />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/contactUs" element={<ContactUs />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
