@@ -10,8 +10,9 @@ import UpdateUser from "./components/UpdateUser.jsx"
 import Login from "./components/Login.jsx"
 import Logout from "./components/Logout.jsx"
 import UpdatePicture from "./components/UpdatePicture.jsx"
-import Footer from "./components/Footer.jsx"
-import ContactUs from "./components/ContactUs.jsx"
+/*import Footer from "./components/Footer.jsx"
+*/import ContactUs from "./components/ContactUs.jsx"
+import AllContactMessage from "./components/AllContactMessage.jsx"
 
 //pour faire fonctionner fontawesome, rajouter:
 /*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,8 +37,8 @@ function App() {
         <Route path="/updatePicture/:product_id" element={<UpdatePicture />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/getAllContactMessage" element={<AllContactMessage />} />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Footer = () => {
    
     
@@ -21,7 +19,6 @@ const Footer = () => {
                         <li>Mentions légales</li>
                     </ul>
                 </div>
-        
             </footer>
         )
 }

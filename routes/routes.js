@@ -18,6 +18,10 @@ import getAllPicturesController from "../controller/getAllPictures.js"
 import updatePictureController from "../controller/updatePicture.js"
 import getPicturesByProductId from "../controller/getPicturesByProductId.js"
 import contactUsController from "../controller/contactUs.js"
+import getAllContactMessageController from "../controller/getAllContactMessage.js"
+import deleteContactMessageController from "../controller/deleteContactMessage.js"
+import updateContactEtatController from "../controller/updateContactEtat.js"
+import getContactMessageByIdController from "../controller/getContactMessageById.js"
 
 const router = express.Router()
 
@@ -27,7 +31,8 @@ const routesGET = [
     {route:"/", controller: homeGetController},
     {route:"/getAllProduct", controller: getAllProductController},
     {route:"/getAllUsers", controller: getAllUsersController},
-    {route:"/getAllPictures", controller: getAllPicturesController}
+    {route:"/getAllPictures", controller: getAllPicturesController},
+    {route:"/getAllContactMessage", controller: getAllContactMessageController}
     
 ]
 const routesPOST = [
@@ -42,7 +47,10 @@ const routesPOST = [
     {route:"/getUserById", controller: getUserById},
     {route:"/getPicturesById", controller: getPicturesById},
     {route:"/getPicturesByProductId", controller: getPicturesByProductId},
-    {route:"/contactUs", controller: contactUsController}
+    {route:"/contactUs", controller: contactUsController},
+    {route:"/deleteContactMessage", controller: deleteContactMessageController},
+    {route:"/updateContactEtat", controller: updateContactEtatController},
+    {route:"/getContactMessageById", controller: getContactMessageByIdController}
 
     
 ]

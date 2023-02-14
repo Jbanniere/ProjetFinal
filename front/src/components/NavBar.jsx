@@ -35,6 +35,9 @@ const NavBar = (props) => {
                 <li>
                     <NavLink to="/contactUs">Nous contacter</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/getAllContactMessage">Demandes de contact</NavLink>
+                </li>
             </ul>
         </nav>
         )

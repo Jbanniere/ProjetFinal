@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
-import {NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 const AllProduct = () => {
     const [allProduct, setAllProduct] = useState([])
