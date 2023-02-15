@@ -5,14 +5,14 @@ class Contact {
     }
     
     
-////////// CREATE ////////////
+/////////////////////////// CREATE ////////////////////////////////////
 
-    async newContact({nom, prenom, email, objet, message}) {
+    async newContact({nom, prenom, email, objet, message, date}) {
         if(!nom || !prenom|| !email || !objet|| !message){
             return null
         }
-        const sql = 'INSERT INTO contact (nom, prenom, email,objet, message) VALUES (?,?,?,?,?)'
-        const paramsSql = [nom, prenom, email, objet, message]
+        const sql = 'INSERT INTO contact (nom, prenom, email, objet, message, date) VALUES (?,?,?,?,?,NOW())'
+        const paramsSql = [nom, prenom, email, objet, message, date]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)
@@ -23,8 +23,8 @@ class Contact {
         }
     }
     
-////////// READ ////////////
-    
+/////////////////////////// READ //////////////////////////////////////
+
     async getAllContactMessage() {
         const sql = 'SELECT * from contact'
          try {
@@ -50,7 +50,7 @@ class Contact {
     }
     
     
-////////// UPDATE ////////////
+///////////////////////// UPDATE ///////////////////////////////////////
 
     async updateContactEtat({etat, id}){
         const sql = "UPDATE contact SET etat = ? WHERE id = ?"
@@ -66,7 +66,7 @@ class Contact {
     }
 
 
-////////// DELETE ////////////
+/////////////////////////// DELETE /////////////////////////////////////
 
     async deleteContactMessage({id}){
         const sql = "DELETE FROM contact WHERE id=?"

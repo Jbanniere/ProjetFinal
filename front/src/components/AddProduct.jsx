@@ -29,7 +29,6 @@ const submitData = (e) => {
     dataFile.append('description', product.description)
     dataFile.append('price_solo', product.price_solo)
     dataFile.append('price_hs', product.price_hs)
-    ///////// ???
         
     // L'image
     dataFile.append('files', files[0], files[0].name)
@@ -47,10 +46,23 @@ const submitData = (e) => {
     return(
         <Fragment>
         <form onSubmit={submitData} encType="multipart/form-data">
-            <input type='text' placeholder='name' name='name' onChange={handleChange} value={product.name} />
-            <input type='text' placeholder='description' name='description' onChange={handleChange} value={product.description} />
-            <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={product.price_solo} />
-            <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={product.price_hs} />
+            <div>
+                <label>Nom du produit :</label>
+                <input type='text' placeholder='name' name='name' onChange={handleChange} value={product.name} />
+            </div>
+            <div>
+                <label>Description/résumé :</label>
+                <input type='text' placeholder='description' name='description' onChange={handleChange} value={product.description} />
+            </div>
+            <div>
+                <label>Prix de l'abonnement mensuel seul :</label>
+                <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={product.price_solo} />
+            </div>
+            <div>
+                <label>Prix de l'abonnement mensuel + Hors-séries :</label>
+                <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={product.price_hs} />
+            </div>
+            
             <p>Ajouter une image</p>
             <label name='picture'>
                 <input type='file' name='picture'/>

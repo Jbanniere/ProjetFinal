@@ -9,9 +9,9 @@ class Pictures {
     }
 
 
-////////// READ //////////
+///////////////////////////// READ /////////////////////////////
 
-    // Sélectionner toutes les images
+    // Sélectionne toutes les images
     async getAllPictures(){
         const sql = "SELECT * FROM pictures"
         try {
@@ -24,7 +24,7 @@ class Pictures {
         }
     }
 
-    // Sélectionner une image par son ID
+    // Sélectionne une image par son ID
     async getPicturesById ({id}) {
         const sql = 'SELECT * FROM pictures WHERE id = ?'
         try{
@@ -36,6 +36,7 @@ class Pictures {
         }
     }
     
+    // Sélectionne une image par son product id
     async getPicturesByProductId ({product_id}) {
         const sql = 'SELECT * FROM pictures WHERE product_id = ?'
         try{
@@ -48,6 +49,9 @@ class Pictures {
         }
     }
     
+
+///////////////////////////////// UPDATE ///////////////////////////////////
+
     async updatePictureByProductId({product_id, newUrl, oldURL}){
         console.log({product_id, newUrl, oldURL})
         try{
@@ -63,6 +67,22 @@ class Pictures {
             return {error:e}
         }
     }
+    
+////////////////////////////// DELETE /////////////////////////////////////////
+
+    async deleteFiles(imageNames) {
+        const rootPath = process.cwd();
+        for (const imageName of imageNames) {
+            const imagePath = path.join(rootPath, 'public', 'img', imageName);
+            try {
+                await fs.promises.unlink(imagePath);
+            } catch (e) {
+                console.error(`Failed to delete image '${imageName}'`, e);
+                throw e;
+            }
+        }
+    }
+
 
 }
 export default Pictures

@@ -24,7 +24,8 @@ const AllUsers = () => {
                 return(
                 <div key={i}>
                     <h2>id :{user.id}</h2>
-                    <p>Prénom : {user.prenom}Nom :{user.nom}</p>
+                    <p>Prénom : {user.prenom}</p>
+                    <p>Nom :{user.nom}</p>
                     <p>Adresse : {user.adresse}</p>
                     <p>Email : {user.email}</p>
                     <button><NavLink to={`/updateUser/${user.id}`}>Modifier les infos</NavLink></button>
@@ -37,3 +38,27 @@ const AllUsers = () => {
 }
 
 export default AllUsers
+
+                /* <table>
+                        <thead>
+                            <tr>
+                                <th colSpan="5">The table header</th>
+                            </tr>
+                            <tr>
+                                <th>id</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Adresse</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{user.id}</td>
+                                <td>{user.nom}</td>
+                                <td>{user.prenom}</td>
+                                <td>{user.adresse}</td>
+                                <td>{user.email}</td>
+                            </tr>
+                        </tbody>
+                    </table>*/

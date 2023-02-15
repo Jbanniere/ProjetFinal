@@ -8,7 +8,7 @@ class Users {
     }
     
     
-/////////// CREATE ////////////
+//////////////////////////////////////// CREATE /////////////////////////////////////
 
 // Méthode pour indiquer (true/false) si un email est présent dans la bdd
     async emailInBdd (email) {
@@ -69,7 +69,7 @@ class Users {
             const mpdHash = await bcrypt.hash(password,this.saltRounds)
             
             // Création de la liste des params pour créer notre user
-            const paramsSql = [nom, prenom, adresse, email, mpdHash, 1]
+            const paramsSql = [nom, prenom, adresse, email, mpdHash, 2]
             
             // On fait la requête
             const createUser = await this.asyncQuery(sql,paramsSql)
@@ -83,7 +83,7 @@ class Users {
     }
     
     
-/////////// READ //////////////
+//////////////////////////////////////// READ //////////////////////////////////////
 
  async getAllUsers () {
          const sql = "SELECT * FROM users"
@@ -110,7 +110,7 @@ class Users {
     }
     
     
-/////////// UPDATE //////////
+////////////////////////////////////// UPDATE //////////////////////////////////////////
 
      async updateUser({id, nom, prenom, adresse, email, role_id}){
         const sql = "UPDATE users SET nom = ?, prenom = ?, adresse = ?, email = ?, role_id = ? WHERE id = ?"
@@ -126,7 +126,7 @@ class Users {
     }
     
     
-////////// DELETE ///////////
+///////////////////////////////////// DELETE //////////////////////////////////////////
 
     async deleteUser({id}){
         const sql = "DELETE FROM users WHERE id=?"
@@ -139,8 +139,6 @@ class Users {
         }
     }
     
-    
-
 }
 
 

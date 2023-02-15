@@ -4,7 +4,7 @@ class Products {
         this.asyncQuery = bdd.asyncQuery
     }
     
-////////// CREATE ////////////
+////////////////////////////////////// CREATE ////////////////////////////////////////
 
     async addProduct({name, description, price_solo, price_hs}) {
         if(!name || !description || !price_solo || !price_hs){
@@ -22,7 +22,7 @@ class Products {
         }
     }
 
-//////////// READ ////////////
+/////////////////////////////////////// READ //////////////////////////////////////
 
     async getAllProduct(){
         const sql = `SELECT products.*, pictures.id AS pictures_id , pictures.url, pictures.caption FROM products 
@@ -56,7 +56,7 @@ class Products {
     }
     
     
-/////////// UPDATE //////////
+/////////////////////////////////////// UPDATE //////////////////////////////////
 
      async updateProduct({name, description, price_solo, price_hs, id}){
         const sql = "UPDATE products SET name = ?, description = ?, price_solo = ?, price_hs = ? WHERE id = ?"
@@ -72,7 +72,7 @@ class Products {
     }
     
     
-////////// DELETE ///////////
+/////////////////////////////////// DELETE /////////////////////////////////////
 
     async deleteProduct({id}){
         const sql = "DELETE FROM products WHERE id=?"

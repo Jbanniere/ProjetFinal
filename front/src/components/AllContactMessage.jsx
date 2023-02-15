@@ -3,6 +3,7 @@ import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
+import {formatDate} from "../tools/date.js"
 
 const AllContactMessage = () => {
     const [allContact, setAllContact] = useState([])
@@ -16,7 +17,7 @@ const AllContactMessage = () => {
     },[])
     
    
-    // Valide la demande de changement d'état de la demande
+    // Valide le changement d'état de la demande
     const submit = (index) => {
         // on fait du destructuring pour recuperer l'id et l'etat 
         const {id, etat} = allContact[index]
@@ -34,11 +35,11 @@ const AllContactMessage = () => {
     }
     
     const updateEtat = (index, etat) => {
-        // on fait un copie de tout les message de contact
+        // on fait une copie de tous les messages de contact
         const contact = [...allContact]
-        // on assigne le nouvelle etat au format number
+        // on assigne le nouvel état au format number
         contact[index].etat = parseInt(etat)
-        // on met a jour tout les contact dans le state
+        // on met a jour tous les contacts dans le state
         setAllContact([...contact])
     }
     
@@ -51,14 +52,15 @@ const AllContactMessage = () => {
                 <h2>{demande.objet}</h2>
                 <p>Coordonnées : {demande.nom} {demande.prenom}</p>
                 <p>Email :{demande.email}</p>
+                <p>Date : {formatDate(demande.date)}</p>
                 <p>Objet :{demande.objet}</p>
                 <p>Message : {demande.message}</p>
-                {/* on envoie l'index et la valeur du contact modifier */}
+                {/* on envoie l'index et la valeur du contact modifié */}
                 <select name="etat" onChange={(e) => updateEtat(i,e.target.value)} value={demande.etat}>
             		<option value={0}>Demande Non Traitée</option>
             		<option value={1}>Demande Traitée</option>
     		    </select>
-    		    {/* On envoie l'index du contact modifier */}
+    		    {/* On envoie l'index du contact modifié */}
     		    <button onClick={() => submit(i)}>Valider</button>
                 <FontAwesomeIcon icon={faTrash} color={ 'red' }  onClick={() => deleteContact(demande.id)} />
             </div>
