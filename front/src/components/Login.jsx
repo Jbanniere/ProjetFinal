@@ -15,7 +15,8 @@ const Login = () => {
         const {name, value} = e.target
         setInfo({...info,[name]:value})
     }
-        
+    
+    console.log(state)
     const submit = (e) => {
         e.preventDefault()
         

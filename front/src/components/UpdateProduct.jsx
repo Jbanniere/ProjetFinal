@@ -25,6 +25,7 @@ const UpdateProduct = () => {
         axios.post(`${BASE_URL}/updateProduct`,{...updateProduct})
             .then(res => console.log(res))
             .catch(err => console.log(err))
+        
     } 
     
    return(
@@ -37,7 +38,7 @@ const UpdateProduct = () => {
                 </div>
                 <div>
                     <label>Description : </label>
-                    <input type='text' placeholder='description' name='description' onChange={handleChange} value={updateProduct.description} />
+                    <textarea placeholder='description' name='description' onChange={handleChange} value={updateProduct.description} />
                 </div>
                 <div>
                     <label>Prix de l'abonnement mensuel seul : </label>

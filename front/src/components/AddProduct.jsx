@@ -12,17 +12,17 @@ const AddProduct = () => {
     
     console.log(product)
     
-const handleChange = (e) => {
-    const {name, value} = e.target
-    setProduct({...product,[name]:value})
-}
-
-const submitData = (e) => {
-    e.preventDefault()
-    const dataFile = new FormData()
-    const files = {...e.target.picture.files}
+    const handleChange = (e) => {
+        const {name, value} = e.target
+        setProduct({...product,[name]:value})
+    }
     
-    console.log(files)
+    const submitData = (e) => {
+        e.preventDefault()
+        const dataFile = new FormData()
+        const files = {...e.target.picture.files}
+        
+        console.log(files)
     
     // ajout d'autres inputs au formulaire
     dataFile.append('name', product.name)
@@ -41,7 +41,7 @@ const submitData = (e) => {
         .catch((err) => {
             console.log(err)
         })
-}
+    }
     
     return(
         <Fragment>
@@ -52,7 +52,7 @@ const submitData = (e) => {
             </div>
             <div>
                 <label>Description/résumé :</label>
-                <input type='text' placeholder='description' name='description' onChange={handleChange} value={product.description} />
+                <textarea placeholder='description' name='description' onChange={handleChange} value={product.description} />
             </div>
             <div>
                 <label>Prix de l'abonnement mensuel seul :</label>

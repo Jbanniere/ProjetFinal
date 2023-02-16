@@ -41,7 +41,7 @@ function App() {
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/getAllContactMessage" element={<AllContactMessage />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
-        <Route path="/addAvis/:id" element={<AddAvis />} />
+        <Route path="/addAvis/:product_id" element={<AddAvis />} />
         
       </Routes>
     </BrowserRouter>

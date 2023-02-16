@@ -56,7 +56,7 @@ const ContactUs = () => {
                     </div>
                     <div>
                         <label>Message: </label>
-                        <input type='textarea' placeholder='Message' name='message' onChange={handleChange} value={newContact.message} />
+                        <textarea placeholder='Message' name='message' onChange={handleChange} value={newContact.message} />
                     </div>
                     <div>
                         <input type='submit' value = 'Envoyer votre demande' />

@@ -21,7 +21,7 @@ import contactUsController from "../controller/contactUs.js"
 import getAllContactMessageController from "../controller/getAllContactMessage.js"
 import deleteContactMessageController from "../controller/deleteContactMessage.js"
 import updateContactEtatController from "../controller/updateContactEtat.js"
-import getContactMessageByIdController from "../controller/getContactMessageById.js"
+import addAvisController from "../controller/addAvis.js"
 
 const router = express.Router()
 
@@ -50,7 +50,7 @@ const routesPOST = [
     {route:"/contactUs", controller: contactUsController},
     {route:"/deleteContactMessage", controller: deleteContactMessageController},
     {route:"/updateContactEtat", controller: updateContactEtatController},
-    {route:"/getContactMessageById", controller: getContactMessageByIdController}
+    {route:"/addAvis", controller: addAvisController}
 
     
 ]

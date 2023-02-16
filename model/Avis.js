@@ -2,18 +2,17 @@ class Avis {
     constructor(bdd) {
         this.pool = bdd.pool
         this.asyncQuery = bdd.asyncQuery
-        this.saltRounds = 10
     }
 
 
 ///////////////////////////////////////// CREATE ////////////////////////////////////////////
 
-    async addAvis({user_id, product_id, content, note, date}) {
-        if(!content || !note|| !date){
+    async addAvis({user_id, product_id, content, note}) {
+        if(!content || !note){
             return null
         }
-        const sql = 'INSERT INTO avis (content, note, date) VALUES (?,?,?,?,NOW()'
-        const paramsSql = [user_id, product_id, content, note, date]
+        const sql = 'INSERT INTO avis (user_id, product_id, content, note, date) VALUES (?,?,?,?,NOW())'
+        const paramsSql = [user_id, product_id, content, note]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)
@@ -25,6 +24,9 @@ class Avis {
     }
 
 ////////////////////////////////////// READ ////////////////////////////////////////////////
+    
+    
+
 
 }
 

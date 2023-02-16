@@ -3,6 +3,7 @@ import Avis from '../model/Avis.js'
 
 export default async (req,res) => {
     const {user_id, product_id, content, note, date} = req.body
+    console.log(req.body)
     const myBDD = new BDD()
     const avis = await new Avis(myBDD)
     const result = await avis.addAvis({user_id, product_id, content, note, date})

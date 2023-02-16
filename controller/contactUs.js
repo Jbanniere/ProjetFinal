@@ -13,8 +13,7 @@ export default async (req,res) => {
                 return res.status(500).json({error:`Merci de remplir tous les champs`})
             }
         res.json({result})
-        console.log(result)
-      
+
     } catch(err) {
         console.log(err);
         res.sendStatus(500)
