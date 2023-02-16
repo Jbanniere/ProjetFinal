@@ -30,9 +30,11 @@ const AllProduct = () => {
                     <p>Prix du Pack avec Hors Séries : {product.price_hs}</p>
                     <p>Images : {product.caption}</p>
                     <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
-                    <button><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
-                    <button><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier les images</NavLink></button>
-                    <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>
+                    <div>
+                        <button><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
+                        <button><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier l'image</NavLink></button>
+                        <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>
+                    </div>
                 </div>
                 )
             })}

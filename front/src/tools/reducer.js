@@ -2,13 +2,17 @@ const reducer = (state,action) => {
     
     switch(action.type){
         
-        case 'INCR' :
+        case 'TEST': {
             return {
-                ...state, count:state.count+1
+                ...state,
+                test:"OK"
             }
-        case 'DECR' :
+        }
+        
+        case 'LOGIN' :
             return {
-                ...state, count:state.count-1
+                ...state,
+                user : action.payload
             }
             
         default :

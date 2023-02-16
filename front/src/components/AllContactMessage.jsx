@@ -45,16 +45,14 @@ const AllContactMessage = () => {
     
     return(
         <div>
-            <h1>Messages reçus via le formulaire de contact</h1>
+            <h1>Demandes de contact</h1>
             {allContact.map((demande,i)=> {
             return(
             <div key={i}>
-                <h2>{demande.objet}</h2>
+                <h2>{formatDate(demande.date)} Objet : {demande.objet}</h2>
+                <p>Message : {demande.message}</p>
                 <p>Coordonnées : {demande.nom} {demande.prenom}</p>
                 <p>Email :{demande.email}</p>
-                <p>Date : {formatDate(demande.date)}</p>
-                <p>Objet :{demande.objet}</p>
-                <p>Message : {demande.message}</p>
                 {/* on envoie l'index et la valeur du contact modifié */}
                 <select name="etat" onChange={(e) => updateEtat(i,e.target.value)} value={demande.etat}>
             		<option value={0}>Demande Non Traitée</option>
@@ -71,3 +69,30 @@ const AllContactMessage = () => {
 }
 
 export default AllContactMessage
+
+ /* <table>
+                        <thead>
+                            <tr>
+                                <th colSpan="7">Demandes de contact</th>
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Message</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Etat</th>
+                                <th>Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{user.date}</td>
+                                <td>{user.message}</td>
+                                <td>{user.nom}</td>
+                                <td>{user.prenom}</td>
+                                <td>{user.email}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>*/

@@ -13,6 +13,8 @@ import UpdatePicture from "./components/UpdatePicture.jsx"
 /*import Footer from "./components/Footer.jsx"
 */import ContactUs from "./components/ContactUs.jsx"
 import AllContactMessage from "./components/AllContactMessage.jsx"
+import ProductDetails from "./components/ProductDetails.jsx"
+import AddAvis from "./components/AddAvis.jsx"
 
 //pour faire fonctionner fontawesome, rajouter:
 /*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,6 +40,9 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/getAllContactMessage" element={<AllContactMessage />} />
+        <Route path="/productDetails/:id" element={<ProductDetails />} />
+        <Route path="/addAvis/:id" element={<AddAvis />} />
+        
       </Routes>
     </BrowserRouter>
   );

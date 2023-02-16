@@ -8,12 +8,12 @@ class Avis {
 
 ///////////////////////////////////////// CREATE ////////////////////////////////////////////
 
-    async addAvis({content, note, date}) {
+    async addAvis({user_id, product_id, content, note, date}) {
         if(!content || !note|| !date){
             return null
         }
-        const sql = 'INSERT INTO avis (content, note, date) VALUES (?,?,?)'
-        const paramsSql = [content, note, date]
+        const sql = 'INSERT INTO avis (content, note, date) VALUES (?,?,?,?,NOW()'
+        const paramsSql = [user_id, product_id, content, note, date]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)

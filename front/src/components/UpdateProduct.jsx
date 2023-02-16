@@ -31,10 +31,22 @@ const UpdateProduct = () => {
        <div>
        {updateProduct !== null && (
             <form>
-                <input type='text' placeholder='name' name='name' onChange={handleChange} value={updateProduct.name} />
-                <input type='text' placeholder='description' name='description' onChange={handleChange} value={updateProduct.description} />
-                <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={updateProduct.price_solo} />
-                <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={updateProduct.price_hs} />
+                <div>
+                    <label>Titre du mensuel : </label>
+                    <input type='text' placeholder='name' name='name' onChange={handleChange} value={updateProduct.name} />
+                </div>
+                <div>
+                    <label>Description : </label>
+                    <input type='text' placeholder='description' name='description' onChange={handleChange} value={updateProduct.description} />
+                </div>
+                <div>
+                    <label>Prix de l'abonnement mensuel seul : </label>
+                    <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={updateProduct.price_solo} />
+                </div>
+                <div>
+                    <label>Prix de l'abonnement + hors-séries</label>
+                    <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={updateProduct.price_hs} />
+                </div>
                 <button onClick= {submit}>Valider mes modifications</button>
             </form>
             )}

@@ -34,15 +34,39 @@ const Register = () => {
     
     
     return(
-         <form>
-            <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={userData.nom} />
-            <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
-            <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={userData.adresse} />
-            <input type='text' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
-            <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
-            <p>Le mot de passe doit contenir au moins 8 caractères</p>
-            <button onClick={submit}>S'inscrire</button>
-        </form>    
+        <div>
+        <h2> S'inscrire</h2>
+            <form onSubmit={submit}>
+                <fieldset>
+                    <legend>Mes coordonnées</legend>
+                        <div>
+                            <label>Nom : </label>
+                            <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={userData.nom} />
+                        </div>
+                        <div>
+                            <label>Prénom :</label>
+                            <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
+                        </div>
+                        <div>
+                            <label>Adresse : </label>
+                            <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={userData.adresse} />
+                        </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Mes identifiants</legend>
+                        <div>
+                            <label> Email :</label>
+                            <input type='text' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
+                        </div>
+                        <div>
+                            <label>Mot de passe (doit contenir plus de 8 caractères)</label>
+                            <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
+                        </div>
+                    </fieldset>
+                    <button onClick={submit}>Valider mon inscription</button>
+                
+            </form>
+        </div>
         )
 }
 

@@ -32,9 +32,13 @@ const UpdateUser = () => {
        <div>
        {updateUser !== null && (
            <form>
+                <label>Nom : </label>
                 <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
+                <label>Prénom : </label>
                 <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
+                <label>Adresse : </label>
                 <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={updateUser.adresse} />
+                <label>Email : </label>
                 <input type='text' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
                 <button onClick={submit}>Modifier les infos</button>
         </form>   

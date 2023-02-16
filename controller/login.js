@@ -7,7 +7,7 @@ import Users from '../model/Users.js'
 const generateResponse = async (userDataSQL) => {
     
     // ID du role Admin en BDD
-    const ADMIN_ROLE_ID = 3
+    const ADMIN_ROLE_ID = 1
     
     // on vérifie si le user est admin ou non (return true /false)
     console.log(userDataSQL)
@@ -18,13 +18,13 @@ const generateResponse = async (userDataSQL) => {
         nom:userDataSQL.nom,
         prenom:userDataSQL.prenom,
         email:userDataSQL.email,
-        
+        role_id:userDataSQL.role_id,
         user:true,
         admin
     }
     try {
         const token = await generateToken(userData)
-        return {response:true, admin, token}
+        return {response:true, token, user:userData }
     } catch(err){
         console.log(err)
         return

@@ -31,7 +31,6 @@ class Products {
         try {
             const result = await this.asyncQuery(sql)
             return {result}
-            console.log(result)
         } catch(err){
             console.log(err)
             return err
@@ -49,6 +48,7 @@ class Products {
         try{
             const result = await this.asyncQuery(sql,[id])
             return {result}
+            console.log(result)
         } catch(err){
             console.log(err)
             return err
