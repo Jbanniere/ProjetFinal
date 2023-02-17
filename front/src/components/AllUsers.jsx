@@ -2,6 +2,11 @@ import {useEffect, useState} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {NavLink} from "react-router-dom"
+import {faPen} from '@fortawesome/free-solid-svg-icons/faPen'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
+
+
 
 const AllUsers = () => {
     const [allUsers, setAllUsers] = useState([])
@@ -19,46 +24,38 @@ const AllUsers = () => {
     }
 
     return(
-        <div>
-           {allUsers.map((user,i) => {
-                return(
-                <div key={i}>
-                    <h2>id :{user.id}</h2>
-                    <p>Prénom : {user.prenom}</p>
-                    <p>Nom :{user.nom}</p>
-                    <p>Adresse : {user.adresse}</p>
-                    <p>Email : {user.email}</p>
-                    <button><NavLink to={`/updateUser/${user.id}`}>Modifier les infos</NavLink></button>
-                    <button onClick={()=> deleteUser(user.id)}>Supprimer cet utilisateur</button>
-                </div>
-                )
-            })}
-        </div>
-        )
+       <table>
+            <thead>
+                <tr>
+                    <th colSpan="7">All Users</th>
+                </tr>
+                <tr>
+                    <th>id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {allUsers.map((user,i) => {
+                    return(
+                    <tr key={i}>
+                        <td>{user.id}</td>
+                        <td>{user.nom}</td>
+                        <td>{user.prenom}</td>
+                        <td>{user.adresse}</td>
+                        <td>{user.email}</td>
+                        <td><button><NavLink to={`/updateUser/${user.id}`}><FontAwesomeIcon icon={faPen} /></NavLink></button></td>
+                        <td><button onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrash} color={ 'red' }/></button></td>
+                    </tr>
+                    )
+                })}
+             </tbody>
+        </table>
+    )
 }
 
 export default AllUsers
-
-                /* <table>
-                        <thead>
-                            <tr>
-                                <th colSpan="5">The table header</th>
-                            </tr>
-                            <tr>
-                                <th>id</th>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Adresse</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{user.id}</td>
-                                <td>{user.nom}</td>
-                                <td>{user.prenom}</td>
-                                <td>{user.adresse}</td>
-                                <td>{user.email}</td>
-                            </tr>
-                        </tbody>
-                    </table>*/

@@ -27,6 +27,7 @@ const ProductDetails = () => {
                 <h1>{details.name}</h1>
                 <img src={`${BASE_URL}/img/${details.url}`} alt={details.caption} />
                 <button><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
+                <button><NavLink to={`/getAllAvis/${details.id}`}>Afficher tous les avis</NavLink></button>
                 <p>{details.description}</p>
                 <p>Abonnement mensuel : {details.price_solo}</p>
                 <p>Abonnement mensuel + hors-séries : {details.price_hs}</p>

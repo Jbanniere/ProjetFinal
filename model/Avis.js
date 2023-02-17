@@ -25,7 +25,23 @@ class Avis {
 
 ////////////////////////////////////// READ ////////////////////////////////////////////////
     
-    
+     async getAllAvisByProductId({product_id}) {
+        const sql = `
+        SELECT avis.*, users.nom, users.prenom 
+        FROM users 
+        JOIN avis 
+        ON users.id = avis.user_id 
+        WHERE avis.product_id = ?`
+        const paramsSql = [product_id]
+         try {
+            const result = await this.asyncQuery(sql, paramsSql)
+            return {result}
+            console.log(result)
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
 
 
 }

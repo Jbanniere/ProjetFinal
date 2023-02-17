@@ -1,3 +1,7 @@
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faTwitterSquare, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons"
+
 const Footer = () => {
    
     
@@ -5,6 +9,10 @@ const Footer = () => {
             <footer>
                 <div>
                     <p>Suivez-nous sur : 
+                    <FontAwesomeIcon icon={faFacebook} /><FontAwesomeIcon icon={faTwitterSquare} />
+                    <FontAwesomeIcon icon={faInstagram} /><FontAwesomeIcon icon={faYoutube} />
+                    
+                    
                    
                         
                     </p>
@@ -12,11 +20,11 @@ const Footer = () => {
                 <div>
                 Plan du Site :
                     <ul>
-                        <li>Home</li>
-                        <li>Mensuel 1-3 ans</li>
-                        <li>Mensuel 3-5 ans</li>
-                        <li>Nous contacter</li>
-                        <li>Mentions légales</li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
                     </ul>
                 </div>
             </footer>

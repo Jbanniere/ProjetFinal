@@ -17,7 +17,7 @@ const AddAvis = () => {
     
     /*console.log(product_id)
     useEffect(() => {
-        axios.get(`${BASE_URL}/getProductById`, {id:product_id})
+        axios.get(`${BASE_URL}/getProductById`, {id})
             .then(res =>setProduct(res.data.result.result))
             .catch(err => console.log(err))
     },[product_id])*/
