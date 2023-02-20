@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+footer {
+  background-color : #AADCB8;
+}
+
+header {
+  background-color: #A7D5FF;
+}

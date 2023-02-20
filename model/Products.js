@@ -7,7 +7,7 @@ class Products {
 ////////////////////////////////////// CREATE ////////////////////////////////////////
 
     async addProduct({name, description, price_solo, price_hs}) {
-        if(!name || !description || !price_solo || !price_hs){
+        if(!name || !name || !description || !price_solo || !price_hs){
             return null
         }
         const sql = 'INSERT INTO products (name, description, price_solo, price_hs) VALUES (?,?,?,?)'
@@ -53,6 +53,10 @@ class Products {
             console.log(err)
             return err
         }
+    }
+    
+    getAllProductByDetailsId ({id}) {
+    
     }
     
     

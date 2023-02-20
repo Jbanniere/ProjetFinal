@@ -17,6 +17,7 @@ import AddAvis from "./components/AddAvis.jsx"
 import AllAvis from "./components/AllAvis.jsx"
 import Header from "./components/Header.jsx"
 import Profil from "./components/Profil.jsx"
+import Home from "./components/Home.jsx"
 
 //pour faire fonctionner fontawesome, rajouter:
 /*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,17 +40,18 @@ function App() {
         <Route path="/updateUser/:id" element={<UpdateUser />} />
         <Route path="/updatePicture/:product_id" element={<UpdatePicture />} />
         <Route path="/getAllContactMessage" element={<AllContactMessage />} />
-        <Route path="/productDetails/:id" element={<ProductDetails />} />
         
         {/*Routes FRONT-USERS*/}
-        <Route path="/" element={<h1>hello</h1>} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register/>} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/addAvis/:product_id" element={<AddAvis />} />
         <Route path="/getAllAvis/:product_id" element={<AllAvis />} />
-        <Route path="/getProfil" element={<Profil />} />
+        <Route path="/getProfil/:id" element={<Profil />} />
+        <Route path="/productDetails/:id" element={<ProductDetails />} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

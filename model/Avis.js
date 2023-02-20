@@ -25,6 +25,7 @@ class Avis {
 
 ////////////////////////////////////// READ ////////////////////////////////////////////////
     
+    //Sélectionne les avis en fonction du produit
      async getAllAvisByProductId({product_id}) {
         const sql = `
         SELECT avis.*, users.nom, users.prenom 
@@ -34,6 +35,20 @@ class Avis {
         WHERE avis.product_id = ?`
         const paramsSql = [product_id]
          try {
+            const result = await this.asyncQuery(sql, paramsSql)
+            return {result}
+            console.log(result)
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    // Sélectionne les notes par le product id
+    async getNoteByProductId({product_id}) {
+        const sql = "SELECT note FROM avis WHERE product_id=?"
+        const paramsSql = [product_id]
+        try {
             const result = await this.asyncQuery(sql, paramsSql)
             return {result}
             console.log(result)

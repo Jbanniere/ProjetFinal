@@ -34,7 +34,7 @@ const AllProduct = () => {
                     <p>Images : {product.caption}</p>
                     <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
                     <div>
-                        <button><NavLink to={`/productDetails/${product.id}`}>+ infos</NavLink></button>
+                        <button><NavLink to={`/getAllAvis/${product.id}`}>Afficher tous les avis</NavLink></button>
                         <button><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
                         <button><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier l'image</NavLink></button>
                         <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>

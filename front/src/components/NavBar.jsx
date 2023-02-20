@@ -15,16 +15,22 @@ const NavBar = (props) => {
         <nav>
             <ul>
                 <li>
-                    <NavLink to="/addProduct"> Ajouter un produit </NavLink>
+                    <NavLink to="/addProduct"> Ajouter un produit admin</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/getAllProduct">Afficher tous les produits </NavLink>
+                    <NavLink to="/getAllProduct">Afficher tous les produits admin</NavLink>
+                </li>  
+                <li>
+                    <NavLink to="/getAllUsers">Afficher les utilisateurs admin </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/getAllContactMessage">Demandes de contact admin</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/"> Home </NavLink>
                 </li>
                 <li>
                     <NavLink to="/register">S'inscrire</NavLink>
-                </li>
-                 <li>
-                    <NavLink to="/getAllUsers">Afficher les utilisateurs</NavLink>
                 </li>
                  <li>
                     <NavLink to="/login">Se connecter</NavLink>
@@ -35,9 +41,7 @@ const NavBar = (props) => {
                 <li>
                     <NavLink to="/contactUs">Nous contacter</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/getAllContactMessage">Demandes de contact</NavLink>
-                </li>
+                
             </ul>
         </nav>
         )

@@ -9,6 +9,11 @@ const reducer = (state,action) => {
                 isLogged:true
             }
             
+        case 'ADD_TO_CART' :
+            return {
+                ...state,
+                cart : action.payload
+            }
         default :
            return state
     }

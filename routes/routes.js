@@ -23,6 +23,8 @@ import deleteContactMessageController from "../controller/deleteContactMessage.j
 import updateContactEtatController from "../controller/updateContactEtat.js"
 import addAvisController from "../controller/addAvis.js"
 import getAllAvisByProductIdController from "../controller/getAllAvisByProductId.js"
+// import addToCartController from "../controller/addToCart.js"
+import getNoteByProductIdController from "../controller/getNoteByProductId.js"
 
 const router = express.Router()
 
@@ -52,13 +54,12 @@ const routesPOST = [
     {route:"/deleteContactMessage", controller: deleteContactMessageController},
     {route:"/updateContactEtat", controller: updateContactEtatController},
     {route:"/addAvis", controller: addAvisController},
-    {route:"/getAllAvisByProductId", controller: getAllAvisByProductIdController}
-
-    
+    {route:"/getAllAvisByProductId", controller: getAllAvisByProductIdController},
+    {route:"/getNoteByProductId", controller: getNoteByProductIdController}
 ]
 
-router.post("/addProduct", middlewareUploadFile, addProductController),
-router.post("/updatePicture", middlewareUploadFile, updatePictureController)
+router.post("/addProduct", middlewareUploadFile, middleware, addProductController),
+router.post("/updatePicture", middlewareUploadFile, middleware, updatePictureController)
 
 
 routesGET.map((item) =>{
