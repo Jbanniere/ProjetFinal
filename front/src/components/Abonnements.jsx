@@ -22,23 +22,27 @@ const Abonnements = () => {
                   	</td>
                   </tr>
                   <tr>
-                  	<td colSpan="2">1 mensuel / mois</td>
+                  	<td>1 mensuel / mois</td>
+                  	<td>1 mensuel / mois</td>
                   </tr>
                   <tr>
-                  	<td colSpan="2">Sans engagement de durée</td>
+                  	<td>Sans engagement de durée</td>
+                  	<td>Sans engagement de durée</td>
                   </tr>
                   <tr>
-                  	<td>/</td>
+                  	<td>-</td>
                     <td>4 Hors Séries par an</td>
                  </tr>
                  <tr>
                     <td>
+                        <p>5,95€ / Mois</p>
                         <button className="product-qte">-</button>
                         <strong id="quantite" >0</strong>
                         <button className="btn-product-qte">+</button>
                         <button>S'abonner</button>
                     </td>
                     <td>
+                        <p>6,95€ / Mois</p>
                         <button className="product-qte">-</button>
                         <strong id="quantite" >0</strong>
                         <button className="btn-product-qte">+</button>

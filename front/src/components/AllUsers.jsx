@@ -21,6 +21,8 @@ const AllUsers = () => {
     
     const deleteUser = (id) => {
         axios.post(`${BASE_URL}/deleteUser`, {id})
+        .then(res => setAllUsers(allUsers.filter((e)=> e.id !== id)))
+
     }
 
     return(

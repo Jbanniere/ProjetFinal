@@ -14,13 +14,15 @@ import AddAvis from "../components/AddAvis.jsx"
 import AllAvis from "../components/AllAvis.jsx"
 import Profil from "../components/Profil.jsx"
 import Home from "../components/Home.jsx"
+import Error404 from '../components/Error404.jsx'
+import MentionsLegales from '../components/MentionsLegales.jsx'
 
 const routes = [
     {path:"/getAllProduct", component:<AllProduct />, auth:"admin"},
     {path:"/addProduct", component:<AddProduct />, auth:"admin"},
     {path:"/updateProduct/:id", component:<UpdateProduct />, auth:"admin"},
     {path:"/getAllUsers", component:<AllUsers />, auth:"admin"},
-    {path:"/updateUser/:id", component:<UpdateUser />, auth:"admin"},
+    {path:"/updateUser/:id", component:<UpdateUser />, auth:"user"},
     {path:"/updatePicture/:product_id", component:<UpdatePicture />, auth:"admin"},
     {path:"/getAllContactMessage", component:<AllContactMessage />, auth:"admin"},
     {path:"/", component:<Home />},
@@ -32,6 +34,8 @@ const routes = [
     {path:"/getAllAvis/:product_id", component:<AllAvis />},
     {path:"/getProfil", component:<Profil />},
     {path:"/productDetails/:id", component:<ProductDetails />},
+    {path:"/mentionsLegales", component:<MentionsLegales />},
+    {path:"/*", component:<Error404 />}
     
 ]
 

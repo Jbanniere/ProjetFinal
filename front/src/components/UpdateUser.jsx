@@ -1,16 +1,29 @@
-import {useState, useEffect} from "react"
-import {useParams} from "react-router-dom"
+import {useState, useEffect, useContext} from "react"
+import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
+import {StoreContext} from "../tools/context.js"
+
 
 const UpdateUser = () => {
     const [updateUser, setUpdateUser] = useState(null)
+    const [state, dispatch] = useContext(StoreContext)
     const {id} = useParams()
+    const navigate = useNavigate();
+
+        console.log({id,user:state.user.id})
+    
+    // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
+    useEffect(()=> {
+       if(id != state.user.id) return navigate("/");
+    },[])
     
     useEffect(() => {
-        axios.post(`${BASE_URL}/getUserById`,{id})
-            .then(res => setUpdateUser(res.data.result.result[0]))
-            .catch(err => console.log(err))
+        if(id == state.user.id){
+            axios.post(`${BASE_URL}/getUserById`,{id})
+                .then(res => setUpdateUser(res.data.result.result[0]))
+                .catch(err => console.log(err))
+        }
     }, [id])
     
     console.log(updateUser)
@@ -30,7 +43,7 @@ const UpdateUser = () => {
     
    return(
        <div>
-       {updateUser !== null && (
+       {updateUser && (
            <form>
                 <label>Nom : </label>
                 <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />

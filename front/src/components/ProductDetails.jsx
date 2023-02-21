@@ -30,8 +30,8 @@ const ProductDetails = () => {
     
     // Je map note pour récupérer un tableau avec mes notes
     const listeNotes = note.map(item => item.note)
-    // je fais la moyenne des notes
-    const moyenneNote = moyenne(listeNotes)
+    // je fais la moyenne des notes, et je fixe le nombre de chiffres après la virgule à 1
+    const moyenneNote = moyenne(listeNotes).toFixed(1)
     console.log(listeNotes)
     return(
         <Fragment>

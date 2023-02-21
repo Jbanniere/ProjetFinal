@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext, Fragment} from "react"
+import {useEffect, useState, useContext, useNavigate, Fragment} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {NavLink} from "react-router-dom"
@@ -6,11 +6,12 @@ import {StoreContext} from "../tools/context.js"
 import Login from "./Login.jsx"
 
 
+
 const Profil = () => {
     const [userProfil, setUserProfil] = useState([])
     const [state, dispatch] = useContext(StoreContext)
     const id = state.user.id
-        
+
      useEffect(() => {
         axios.post(`${BASE_URL}/getUserById`,{id})
             .then(res => setUserProfil(res.data.result.result))
@@ -58,3 +59,11 @@ const Profil = () => {
 }
 
 export default Profil
+/*
+const res = window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ?");
+            if (res) {
+            axios.post(`${BASE_URL}/deleteUser`, {id})
+            isDeleted = true
+            } else {
+            navigate('/getProfil')
+            }*/

@@ -1,8 +1,11 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
+import { Navigate } from "react-router-dom";
+
 
 const Register = () => {
+    const [register, setRegister] = useState(false)
     const [userData, setUserData] = useState({
         nom:'', 
         prenom:'', 
@@ -33,7 +36,7 @@ const Register = () => {
            email: userData.email,
            password:userData.password
        })
-       .then(res => console.log(res))
+       .then(setRegister(true))
     }
     
     
@@ -52,8 +55,8 @@ const Register = () => {
                             <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
                         </div>
                         <div>
-                            <label>Numéro et Rue : </label>
-                            <input type='text' placeholder='street' name='street' onChange={handleChange} value={userData.street} />
+                            <label>N° et Rue : </label>
+                            <input type='text' placeholder='n° et rue' name='street' onChange={handleChange} value={userData.street} />
                         </div>
                         <div>
                             <label>Code Postal :</label>
@@ -61,7 +64,7 @@ const Register = () => {
                         </div>
                         <div>
                             <label>Ville :</label>
-                            <input type='text' placeholder='city' name='city' onChange={handleChange} value={userData.city} />
+                            <input type='text' placeholder='ville' name='city' onChange={handleChange} value={userData.city} />
                         </div>
                 </fieldset>
                 <fieldset>
@@ -78,6 +81,7 @@ const Register = () => {
                     <button onClick={submit}>Valider mon inscription</button>
                 
             </form>
+            { register && <Navigate to="/login" replace={true} /> }
         </div>
         )
 }
