@@ -25,6 +25,7 @@ import addAvisController from "../controller/addAvis.js"
 import getAllAvisByProductIdController from "../controller/getAllAvisByProductId.js"
 // import addToCartController from "../controller/addToCart.js"
 import getNoteByProductIdController from "../controller/getNoteByProductId.js"
+import checkToken from '../controller/checkToken.js'
 
 const router = express.Router()
 
@@ -69,6 +70,8 @@ routesGET.map((item) =>{
 routesPOST.map((item) =>{
         router.post(item.route, middleware, item.controller);
 })
+
+router.get("/relogged", checkToken)
 
 
 

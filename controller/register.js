@@ -2,10 +2,10 @@ import BDD from '../model/BDD.js'
 import Users from '../model/Users.js'
 
 export default async (req,res) => {
-    const {nom, prenom, adresse, email, password} = req.body
+    const {nom, prenom, street, zip, city, email, password} = req.body
     const myBDD = new BDD()
     const user = await new Users(myBDD)
-    const result = await user.register({nom, prenom, adresse, email, password})
+    const result = await user.register({nom, prenom, street, zip, city, email, password})
     if(!result){
             return res.status(500).json({error:`Merci de remplir tous les champs`})
     }

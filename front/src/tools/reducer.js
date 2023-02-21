@@ -5,13 +5,17 @@ const reducer = (state,action) => {
         case 'LOGIN' :
             return {
                 ...state,
-                user : action.payload,
+                user : {
+                    isLogged:true,
+                    isAdmin:action.payload.admin,
+                    ...action.payload
+                },
                 isLogged:true
             }
         case 'LOGOUT' :
             return {
                 ...state,
-                user:{},
+                user:{isLogged:false},
                 isLogged:false
             }
             

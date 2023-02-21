@@ -6,8 +6,7 @@ import {BASE_URL} from "../tools/constante.js"
 const UpdateProduct = () => {
     const [updateProduct, setUpdateProduct] = useState(null)
     const {id} = useParams()
-    // const navigate = useNavigate()
-    
+
     useEffect(() => {
         axios.post(`${BASE_URL}/getProductById`,{id})
             .then(res => setUpdateProduct(res.data.result.result[0]))

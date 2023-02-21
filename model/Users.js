@@ -41,13 +41,13 @@ class Users {
 
 
 // Méthode pour valider l'inscription
-    async register({nom, prenom, adresse, email, password}) {
-        const sql = "INSERT INTO users (nom, prenom, adresse, email, password, role_id) VALUES (?,?,?,?,?,?)"
+    async register({nom, prenom, street, zip, city, email, password}) {
+        const sql = "INSERT INTO users (nom, prenom, street, zip, city, email, password, role_id) VALUES (?,?,?,?,?,?,?,?)"
         
         if(password.length <= 8){
             return {response:'Le mot de passe doit faire plus de 8 caractères'}
         }
-        if(!nom || !prenom || !adresse || !email|| !password){
+        if(!nom || !prenom || !street || !zip || !city || !email || !password){
             return null
         }
         
@@ -69,7 +69,7 @@ class Users {
             const mpdHash = await bcrypt.hash(password,this.saltRounds)
             
             // Création de la liste des params pour créer notre user
-            const paramsSql = [nom, prenom, adresse, email, mpdHash, 2]
+            const paramsSql = [nom, prenom, street, zip, city, email, mpdHash, 2]
             
             // On fait la requête
             const createUser = await this.asyncQuery(sql,paramsSql)
@@ -112,9 +112,9 @@ class Users {
     
 ////////////////////////////////////// UPDATE //////////////////////////////////////////
 
-     async updateUser({id, nom, prenom, adresse, email, role_id}){
-        const sql = "UPDATE users SET nom = ?, prenom = ?, adresse = ?, email = ?, role_id = ? WHERE id = ?"
-        const paramsSql = [nom, prenom, adresse, email, role_id, id]
+     async updateUser({id, nom, prenom, street, zip, city, email, role_id}){
+        const sql = "UPDATE users SET nom = ?, prenom = ?, street = ?, zip = ?, city = ?, email = ?, role_id = ? WHERE id = ?"
+        const paramsSql = [nom, prenom, street, zip, city, email, role_id, id]
         
         try{
             const result = await this.asyncQuery(sql,paramsSql)

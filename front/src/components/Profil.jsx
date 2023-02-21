@@ -26,7 +26,7 @@ const Profil = () => {
     
     return(
         <Fragment>
-        {state.isLogged === true && (
+        {state.user.isLogged === true && (
             <div>
                 {userProfil.map((profil,i) => {
                     return(
@@ -35,7 +35,7 @@ const Profil = () => {
                         <h3>Mes Coordonnées</h3>
                         <p>Nom : {profil.nom}</p>
                         <p>Prénom : {profil.prenom}</p>
-                        <p>Adresse : {profil.adresse}</p>
+                        <p>Adresse : {profil.rue}{profil.zip}{profil.city}</p>
                         <p>Email : {profil.email}</p>
                         <button><NavLink to={`/updateUser/${profil.id}`}>Modifier mes infos</NavLink></button>
                         <button onClick={()=> deleteUser(profil.id)}>Supprimer mon compte</button>
@@ -45,7 +45,7 @@ const Profil = () => {
             </div>
             )}
             
-            {state.isLogged === false && (
+            {state.user.isLogged === false && (
             <div>
                 <p>Oups ! Page réservée aux membres</p>
                 <p>Se connecter ou s'inscrire : </p>

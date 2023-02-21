@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
-import {useEffect} from 'react'
 import axios from 'axios'
+import { useContext, useEffect, Fragment} from "react"
+import {StoreContext} from "../tools/context.js"
 
 const NavBar = (props) => {
+    const [state, dispatch] = useContext(StoreContext)
+
     useEffect(() => {
     if(!axios.defaults.headers.common['Authorization']){
       const token = localStorage.getItem("jwtToken")
@@ -12,8 +15,11 @@ const NavBar = (props) => {
     }
   },[])
     return(
+        <Fragment>
         <nav>
             <ul>
+            {state.user.role_id === 1 && (
+            <div>
                 <li>
                     <NavLink to="/addProduct"> Ajouter un produit admin</NavLink>
                 </li>
@@ -26,9 +32,8 @@ const NavBar = (props) => {
                 <li>
                     <NavLink to="/getAllContactMessage">Demandes de contact admin</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/getAllAvis">Afficher tous les avis admin</NavLink>
-                </li>
+            </div>
+                )}
                 
                 <li>
                     <NavLink to="/"> Home </NavLink>
@@ -48,6 +53,7 @@ const NavBar = (props) => {
                 
             </ul>
         </nav>
+        </Fragment>
         )
 }
 

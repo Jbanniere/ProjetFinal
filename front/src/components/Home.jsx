@@ -1,10 +1,12 @@
-import {useEffect, useState, Fragment} from "react"
+import {useEffect, useState, Fragment, useContext} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {NavLink} from "react-router-dom"
+import {StoreContext} from "../tools/context.js"
 
 
 const Home = () => {
+    const [state, dispatch] = useContext(StoreContext)
     const [allProduct, setAllProduct] = useState([])
     
      useEffect(() => {

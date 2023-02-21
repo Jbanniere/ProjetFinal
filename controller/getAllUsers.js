@@ -2,12 +2,12 @@ import BDD from '../model/BDD.js'
 import Users from '../model/Users.js'
 
 export default async (req,res) => {
-    const {id, nom, prenom, adresse, email, password, role_id} = req.body
+    const {id, nom, prenom, street, zip, city, email, password, role_id} = req.body
     
     try {
         const myBDD = new BDD()
         const user = new Users(myBDD)
-        const result = await user.getAllUsers({id, nom, prenom, adresse, email, password, role_id})
+        const result = await user.getAllUsers({id, nom, prenom, street, zip, city, email, password, role_id})
         res.json({result})
         
         

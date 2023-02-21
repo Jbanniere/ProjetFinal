@@ -36,8 +36,12 @@ const UpdateUser = () => {
                 <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
                 <label>Prénom : </label>
                 <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
-                <label>Adresse : </label>
-                <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={updateUser.adresse} />
+                <label>Numéro et Rue : </label>
+                <input type='text' placeholder='street' name='street' onChange={handleChange} value={updateUser.street} />
+                <label>Code Postal : </label>
+                <input type='number' placeholder='zip' name='zip' onChange={handleChange} value={updateUser.zip} />
+                <label>Ville : </label>
+                <input type='text' placeholder='city' name='city' onChange={handleChange} value={updateUser.city} />
                 <label>Email : </label>
                 <input type='text' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
                 <button onClick={submit}>Modifier les infos</button>

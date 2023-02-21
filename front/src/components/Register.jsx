@@ -6,7 +6,9 @@ const Register = () => {
     const [userData, setUserData] = useState({
         nom:'', 
         prenom:'', 
-        adresse:'', 
+        street:'',
+        zip:'',
+        city:'',
         email:'', 
         password:''
         
@@ -25,7 +27,9 @@ const Register = () => {
         axios.post(`${BASE_URL}/register`,{
            nom : userData.nom,
            prenom: userData.prenom,
-           adresse: userData.adresse,
+           street: userData.street,
+           zip: userData.zip,
+           city: userData.city,
            email: userData.email,
            password:userData.password
        })
@@ -48,8 +52,16 @@ const Register = () => {
                             <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
                         </div>
                         <div>
-                            <label>Adresse : </label>
-                            <input type='text' placeholder='adresse' name='adresse' onChange={handleChange} value={userData.adresse} />
+                            <label>Numéro et Rue : </label>
+                            <input type='text' placeholder='street' name='street' onChange={handleChange} value={userData.street} />
+                        </div>
+                        <div>
+                            <label>Code Postal :</label>
+                            <input type='number' placeholder='zip' name='zip' onChange={handleChange} value={userData.zip} />
+                        </div>
+                        <div>
+                            <label>Ville :</label>
+                            <input type='text' placeholder='city' name='city' onChange={handleChange} value={userData.city} />
                         </div>
                 </fieldset>
                 <fieldset>

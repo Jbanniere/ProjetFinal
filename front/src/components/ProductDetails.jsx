@@ -32,7 +32,7 @@ const ProductDetails = () => {
     const listeNotes = note.map(item => item.note)
     // je fais la moyenne des notes
     const moyenneNote = moyenne(listeNotes)
-    
+    console.log(listeNotes)
     return(
         <Fragment>
             <img width= "50%" src={`${BASE_URL}/image/baby_book.jpg`} alt="bébé avec un livre" />
