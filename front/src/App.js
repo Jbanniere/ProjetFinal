@@ -40,7 +40,7 @@ function App() {
         <Route path="/updateUser/:id" element={<UpdateUser />} />
         <Route path="/updatePicture/:product_id" element={<UpdatePicture />} />
         <Route path="/getAllContactMessage" element={<AllContactMessage />} />
-        
+
         {/*Routes FRONT-USERS*/}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -49,7 +49,7 @@ function App() {
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/addAvis/:product_id" element={<AddAvis />} />
         <Route path="/getAllAvis/:product_id" element={<AllAvis />} />
-        <Route path="/getProfil/:id" element={<Profil />} />
+        <Route path="/getProfil" element={<Profil />} />
         <Route path="/productDetails/:id" element={<ProductDetails />} />
 
       </Routes>

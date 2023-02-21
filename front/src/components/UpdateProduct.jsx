@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect } from "react"
 import {useParams} from "react-router-dom"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
@@ -6,6 +6,7 @@ import {BASE_URL} from "../tools/constante.js"
 const UpdateProduct = () => {
     const [updateProduct, setUpdateProduct] = useState(null)
     const {id} = useParams()
+    // const navigate = useNavigate()
     
     useEffect(() => {
         axios.post(`${BASE_URL}/getProductById`,{id})
@@ -25,7 +26,6 @@ const UpdateProduct = () => {
         axios.post(`${BASE_URL}/updateProduct`,{...updateProduct})
             .then(res => console.log(res))
             .catch(err => console.log(err))
-        
     } 
     
    return(

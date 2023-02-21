@@ -8,6 +8,12 @@ const reducer = (state,action) => {
                 user : action.payload,
                 isLogged:true
             }
+        case 'LOGOUT' :
+            return {
+                ...state,
+                user:{},
+                isLogged:false
+            }
             
         case 'ADD_TO_CART' :
             return {

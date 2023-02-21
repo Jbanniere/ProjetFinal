@@ -15,6 +15,7 @@ const AllAvis = () => {
     },[product_id])
     
     console.log(allAvis)
+
     
     return(
         <div>
@@ -22,7 +23,7 @@ const AllAvis = () => {
             {allAvis.map((avis,i) => {
                 return(
                 <div key={i}>
-                    <h3>{avis.prenom}</h3>
+                    <h3>L'avis de {avis.prenom}</h3>
                     <p>{avis.note}/5 : {avis.content}</p>
                 </div>
                 )

@@ -44,3 +44,8 @@ footer {
 header {
   background-color: #A7D5FF;
 }
+
+table, tr, td {
+  text-align:center;
+  border:1px solid black;
+}

@@ -27,6 +27,10 @@ const NavBar = (props) => {
                     <NavLink to="/getAllContactMessage">Demandes de contact admin</NavLink>
                 </li>
                 <li>
+                    <NavLink to="/getAllAvis">Afficher tous les avis admin</NavLink>
+                </li>
+                
+                <li>
                     <NavLink to="/"> Home </NavLink>
                 </li>
                 <li>

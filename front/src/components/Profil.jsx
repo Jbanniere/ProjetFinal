@@ -1,8 +1,9 @@
-import {useEffect, useState, useContext} from "react"
+import {useEffect, useState, useContext, Fragment} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import {NavLink} from "react-router-dom"
 import {StoreContext} from "../tools/context.js"
+import Login from "./Login.jsx"
 
 
 const Profil = () => {
@@ -24,24 +25,35 @@ const Profil = () => {
     }
     
     return(
-        <div>
-            {userProfil.map((profil,i) => {
-                return(
-                <div key={i}>
-                    <h2>Hello {profil.prenom}</h2>
-                    <h3>Mes Coordonnées</h3>
-                    <p>Nom : {profil.nom}</p>
-                    <p>Prénom : {profil.prenom}</p>
-                    <p>Adresse : {profil.adresse}</p>
-                    <p>Email : {profil.email}</p>
-                    <button><NavLink to={`/updateUser/${profil.id}`}>Modifier mes infos</NavLink></button>
-                    <button onClick={()=> deleteUser(profil.id)}>Supprimer mon compte</button>
-                </div>
-                )   
-            })}
+        <Fragment>
+        {state.isLogged === true && (
+            <div>
+                {userProfil.map((profil,i) => {
+                    return(
+                    <div key={i}>
+                        <h2>Hello {profil.prenom}</h2>
+                        <h3>Mes Coordonnées</h3>
+                        <p>Nom : {profil.nom}</p>
+                        <p>Prénom : {profil.prenom}</p>
+                        <p>Adresse : {profil.adresse}</p>
+                        <p>Email : {profil.email}</p>
+                        <button><NavLink to={`/updateUser/${profil.id}`}>Modifier mes infos</NavLink></button>
+                        <button onClick={()=> deleteUser(profil.id)}>Supprimer mon compte</button>
+                    </div>
+                    )   
+                })}
+            </div>
+            )}
             
-        </div>
-
+            {state.isLogged === false && (
+            <div>
+                <p>Oups ! Page réservée aux membres</p>
+                <p>Se connecter ou s'inscrire : </p>
+                <Login />
+            </div>
+            )}
+            
+        </Fragment>
         )
 }
 
