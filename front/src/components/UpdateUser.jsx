@@ -9,9 +9,10 @@ const UpdateUser = () => {
     const [updateUser, setUpdateUser] = useState(null)
     const [state, dispatch] = useContext(StoreContext)
     const {id} = useParams()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [isValidated, setIsValidated] = useState(false)
 
-        console.log({id,user:state.user.id})
+console.log({id,user:state.user.id})
     
     // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
     useEffect(()=> {
@@ -26,7 +27,7 @@ const UpdateUser = () => {
         }
     }, [id])
     
-    console.log(updateUser)
+console.log(updateUser)
     
      const handleChange = (e) => {
         const {name, value} = e.target
@@ -37,13 +38,19 @@ const UpdateUser = () => {
         e.preventDefault()
         console.log(updateUser)
         axios.post(`${BASE_URL}/updateUser`,{...updateUser})
-            .then(res => console.log(res))
+            .then(res => { 
+                setIsValidated(true)
+                console.log(res)
+            })
             .catch(err => console.log(err))
-    } 
-    
+    }
+
+console.log(isValidated)
+
    return(
-       <div>
-       {updateUser && (
+        <div>
+        
+        {updateUser && (
            <form>
                 <label>Nom : </label>
                 <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
@@ -60,7 +67,12 @@ const UpdateUser = () => {
                 <button onClick={submit}>Modifier les infos</button>
         </form>   
             )}
+            
+        {isValidated && (
+            <p>Votre modification a été prise en compte</p>
+        )}
         </div>
        )
 }
+
 export default UpdateUser

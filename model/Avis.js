@@ -57,7 +57,55 @@ class Avis {
             return err
         }
     }
+    
+    // Selectionne les avis en fonction du user_id
+    async getAvisByUserId({user_id}) {
+        const sql = `
+        SELECT avis.*, products.name 
+        FROM avis 
+        JOIN products
+        ON products.id = avis.product_id
+        WHERE user_id = ?`
+        const paramsSql = [user_id]
+        try {
+            const result = await this.asyncQuery(sql, paramsSql)
+            return {result}
+            console.log(result)
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+////////////////////////////////////// UPDATE ////////////////////////////////////////////////
 
+    async updateAvis({content, note, id}){
+        const sql = "UPDATE products SET content = ?, note = ? WHERE id = ?"
+        const paramsSql = [content, note, id]
+        
+        try{
+            const result = await this.asyncQuery(sql,paramsSql)
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+
+
+
+////////////////////////////////////// DELETE ////////////////////////////////////////////////
+
+    async deleteAvis({id}){
+        const sql = "DELETE FROM avis WHERE id = ?"
+         try{
+            const result = await this.asyncQuery(sql,[id])
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
 
 }
 

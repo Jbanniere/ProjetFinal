@@ -7,6 +7,7 @@ import {useParams} from "react-router-dom"
 const AddAvis = () => {
     const {product_id} = useParams()
     const [state, dispatch] = useContext(StoreContext)
+    const [isValidated, setIsValidated] = useState(false)
     const [newAvis, setNewAvis] = useState({
         user_id:state.user.id,
         product_id:product_id,
@@ -36,7 +37,12 @@ const AddAvis = () => {
             content:newAvis.content,
             note:newAvis.note
        })
-       .then(res => console.log(res))
+       .then(res => {
+           setIsValidated(true)
+           console.log(res)
+           
+       })
+       
     }
     
     return(
@@ -63,6 +69,9 @@ const AddAvis = () => {
     		        <button type='submit'>Envoyer</button>
                 </fieldset>
             </form>
+            {isValidated && (
+                    <p>Merci pour votre avis !</p>
+                )} 
         </div>)
 }
 

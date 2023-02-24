@@ -5,6 +5,7 @@ import {BASE_URL} from "../tools/constante.js"
 
 const UpdateProduct = () => {
     const [updateProduct, setUpdateProduct] = useState(null)
+    const [isValidated, setIsValidated] = useState(false)
     const {id} = useParams()
 
     useEffect(() => {
@@ -12,8 +13,6 @@ const UpdateProduct = () => {
             .then(res => setUpdateProduct(res.data.result.result[0]))
             .catch(err => console.log(err))
     }, [id])
-    
-    console.log(updateProduct)
     
      const handleChange = (e) => {
         const {name, value} = e.target
@@ -23,7 +22,10 @@ const UpdateProduct = () => {
     const submit = (e) =>{
         e.preventDefault()
         axios.post(`${BASE_URL}/updateProduct`,{...updateProduct})
-            .then(res => console.log(res))
+            .then(res => {
+                console.log(res)
+                setIsValidated(true)
+            })
             .catch(err => console.log(err))
     } 
     
@@ -50,6 +52,9 @@ const UpdateProduct = () => {
                 <button onClick= {submit}>Valider mes modifications</button>
             </form>
             )}
+        {isValidated && (
+            <p>Votre modification a été prise en compte</p>
+        )}
         </div>
        )
 }

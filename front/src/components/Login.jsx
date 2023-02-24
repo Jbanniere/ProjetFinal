@@ -1,8 +1,8 @@
-import {useState, useContext} from "react"
+import {useState, useContext, Fragment} from "react"
 import {StoreContext} from "../tools/context.js"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
-import { NavLink } from "react-router-dom"
+import { NavLink, Navigate } from "react-router-dom"
 
 
 const Login = () => {
@@ -10,13 +10,13 @@ const Login = () => {
     const initialState = {password:'',email:''}
     const [info , setInfo] = useState(initialState)
     const [state, dispatch] = useContext(StoreContext)
-        
+    const [login, setLogin] = useState(false)
+
     const handleChange = (e) => {
         const {name, value} = e.target
         setInfo({...info,[name]:value})
     }
     
-    console.log(state)
     const submit = (e) => {
         e.preventDefault()
         
@@ -24,8 +24,7 @@ const Login = () => {
 
         axios.post(`${BASE_URL}/login`,{ email: info.email, password: info.password})
        .then(res => {
-           console.log(res)
-           console.log(res.data.response)
+            console.log(res.data.response.user)
                 if(res.data.response.response) {
                     dispatch({
                         type: 'LOGIN',
@@ -34,11 +33,16 @@ const Login = () => {
                     localStorage.setItem('jwtToken', res.data.response.token)
                     axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
                     setInfo(initialState)
+                    setLogin(true)
+                    
+                } else {
+                    alert("Email ou mot de passe invalide")
                 }
             })
         }
 
     return(
+        <Fragment>
             <form onSubmit={submit}>
                 <fieldset>
                     <legend>Déjà inscrit ?</legend>
@@ -53,6 +57,8 @@ const Login = () => {
                     <button><NavLink to="/register">Créer un compte</NavLink></button>
                 </fieldset>
             </form> 
+         { login && <Navigate to="/getProfil" /> }
+        </Fragment>
     )
 }
 

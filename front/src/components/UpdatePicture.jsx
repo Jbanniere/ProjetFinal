@@ -5,6 +5,7 @@ import {BASE_URL} from "../tools/constante.js"
 
 const UpdatePicture = () => {
     const [updatePicture, setUpdatePicture] = useState(null)
+    const [isValidated, setIsValidated] = useState(false)
     const {product_id} = useParams()
     
     console.log(product_id)
@@ -34,7 +35,8 @@ const UpdatePicture = () => {
         axios.post(`${BASE_URL}/updatePicture`, dataFile)
             .then((res)=> {
                 console.log(res)
-                res.data.response && console.log('succesfully upload');
+                res.data.response && console.log('succesfully upload')
+                setIsValidated(true)
             })
             .catch((err) => {
                 console.log(err)
@@ -49,6 +51,9 @@ const UpdatePicture = () => {
                     <input type='file' name='picture'/>
                 </label>
                 <input type="submit" value="Modifier" />
+                {isValidated && (
+                    <p>Votre modification a été prise en compte</p>
+                )} 
             </form>
             { updatePicture && <img src={`${BASE_URL}/img/${updatePicture.url}`} alt={updatePicture.caption} />}
         </Fragment>

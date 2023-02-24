@@ -3,6 +3,7 @@ import {BASE_URL} from '../tools/constante.js'
 import {useState, Fragment} from "react"
 
 const AddProduct = () => {
+    const [isValidated, setIsValidated] = useState(false)
     const [product, setProduct] = useState({
         name:'',
         description:'',
@@ -36,7 +37,8 @@ const AddProduct = () => {
     axios.post(`${BASE_URL}/addProduct`, dataFile)
         .then((res)=> {
             console.log(res)
-            res.data.response && console.log('succesfully upload');
+            res.data.response && console.log('succesfully upload')
+            setIsValidated(true)
         })
         .catch((err) => {
             console.log(err)
@@ -71,6 +73,9 @@ const AddProduct = () => {
                 <input type="submit" value="Créer nouveau produit" />
             </div>
         </form>
+        {isValidated && (
+                    <p>Votre produit a été ajouté avec succès</p>
+                )} 
         </Fragment>
     )
 }

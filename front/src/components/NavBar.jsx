@@ -36,7 +36,7 @@ const NavBar = (props) => {
                 )}
                 
                 <li>
-                    <NavLink to="/"> Home </NavLink>
+                    <NavLink to="/">Nos Mensuels</NavLink>
                 </li>
                 <li>
                     <NavLink to="/register">S'inscrire</NavLink>

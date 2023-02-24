@@ -26,6 +26,8 @@ import getAllAvisByProductIdController from "../controller/getAllAvisByProductId
 // import addToCartController from "../controller/addToCart.js"
 import getNoteByProductIdController from "../controller/getNoteByProductId.js"
 import checkToken from '../controller/checkToken.js'
+import getAvisByUserIdController from "../controller/getAvisByUserId.js"
+import deleteAvisController from '../controller/deleteAvis.js'
 
 const router = express.Router()
 
@@ -56,7 +58,9 @@ const routesPOST = [
     {route:"/updateContactEtat", controller: updateContactEtatController},
     {route:"/addAvis", controller: addAvisController},
     {route:"/getAllAvisByProductId", controller: getAllAvisByProductIdController},
-    {route:"/getNoteByProductId", controller: getNoteByProductIdController}
+    {route:"/getNoteByProductId", controller: getNoteByProductIdController},
+    {route:"/getAvisByUserID", controller: getAvisByUserIdController},
+    {route:"/deleteAvis", controller: deleteAvisController}
 ]
 
 router.post("/addProduct", middlewareUploadFile, middleware, addProductController),

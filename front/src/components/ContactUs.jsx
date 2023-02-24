@@ -1,8 +1,9 @@
-import {useState} from "react"
+import {useState, Fragment} from "react"
 import {BASE_URL} from "../tools/constante.js"
 import axios from "axios"
 
 const ContactUs = () => {
+    const [isValidated, setIsValidated] = useState(false)
     const [newContact, setNewContact] = useState({
         nom:'',
         prenom:'',
@@ -27,10 +28,14 @@ const ContactUs = () => {
             objet:newContact.objet,
             message:newContact.message
         })
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            setIsValidated(true)
+        })
     }
     
     return(
+        <Fragment>
             <form onSubmit={submit}>
                 <fieldset>
                 <legend>Mes coordonnées</legend>
@@ -63,6 +68,11 @@ const ContactUs = () => {
                     </div>
                 </fieldset>
             </form>
+            
+            {isValidated && (
+            <p>Votre demande a bien été envoyé, nous mettons tout en oeuvre pour votre répondre rapidement. A bientôt !</p>
+            )}
+        </Fragment>
          )
 }
 

@@ -45,7 +45,7 @@ class Users {
         const sql = "INSERT INTO users (nom, prenom, street, zip, city, email, password, role_id) VALUES (?,?,?,?,?,?,?,?)"
         
         if(password.length <= 8){
-            return {response:'Le mot de passe doit faire plus de 8 caractères'}
+            return {error:'Le mot de passe doit faire plus de 8 caractères'}
         }
         if(!nom || !prenom || !street || !zip || !city || !email || !password){
             return null
@@ -61,8 +61,8 @@ class Users {
             }
             
             // Cas email déjà présent en BDD
-            if(emailExist === true) {
-                return {response:'Cet email existe déjà'}
+            if(emailExist) {
+                return {error:'Cet email existe déjà'}
             }
             
             // Cas email non présent : on hash le password
