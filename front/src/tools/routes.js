@@ -16,6 +16,7 @@ import Profil from "../components/Profil.jsx"
 import Home from "../components/Home.jsx"
 import Error404 from '../components/Error404.jsx'
 import MentionsLegales from '../components/MentionsLegales.jsx'
+import Cart from '../components/Cart.jsx'
 
 const routes = [
     {path:"/getAllProduct", component:<AllProduct />, auth:"admin"},
@@ -35,6 +36,7 @@ const routes = [
     {path:"/getProfil", component:<Profil />},
     {path:"/productDetails/:id", component:<ProductDetails />},
     {path:"/mentionsLegales", component:<MentionsLegales />},
+    {path:"/cart", component:<Cart />},
     {path:"/*", component:<Error404 />}
     
 ]

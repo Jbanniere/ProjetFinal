@@ -1,7 +1,44 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment } from "react"
+import { Fragment, useState, useContext, } from "react"
+import {StoreContext} from "../tools/context.js"
 
-const Abonnements = () => {
+const Abonnements = ({product}) => {
+    const [state, dispatch] = useContext(StoreContext)
+    const [qte, setQte] = useState({seul:0,pack:0})
+    const [prix, setPrix] = useState([])
+    console.log(qte)
+    
+    const handleClick = (element, type) => {
+        const {name} = element.target
+        let quantite = qte[type]
+        console.log(quantite)
+        
+        if(name === "add"){
+            quantite++
+        }
+        
+        if(name === "remove" && quantite > 0){
+            quantite--
+        }
+        
+        setQte({...qte, [type]:quantite})
+    }
+    
+    const addToCart = (element, prix) => {
+        let result = {
+            prix: prix,
+            quantite: qte.seul,
+            product: product.id
+        }
+        console.log(result)
+        dispatch({
+            type: "ADD_TO_CART",
+            payload : result
+        })
+    }
+    
+    console.log(state)
+    
     return(
         <Fragment>
             <h2>Rejoignez la tribu !</h2>
@@ -36,18 +73,18 @@ const Abonnements = () => {
                  <tr>
                     <td>
                         <p>5,95€ / Mois</p>
-                        <button className="product-qte">-</button>
-                        <strong id="quantite" >0</strong>
-                        <button className="btn-product-qte">+</button>
-                        <button>S'abonner</button>
+                        <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"seul")}>-</button>
+                        <strong id="quantite" >{qte.seul}</strong>
+                        <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"seul")}>+</button>
+                        <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
                     </td>
-                    <td>
+                    {/*<td>
                         <p>6,95€ / Mois</p>
-                        <button className="product-qte">-</button>
-                        <strong id="quantite" >0</strong>
-                        <button className="btn-product-qte">+</button>
-                        <button>S'abonner</button>
-                    </td>
+                        <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"pack")}>-</button>
+                        <strong id="quantite" >{qte.pack}</strong>
+                        <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"pack")}>+</button>
+                        <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
+                    </td>*/}
                  </tr>
                 </tbody>
             </table>

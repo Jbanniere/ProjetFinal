@@ -3,11 +3,12 @@ import Avis from '../model/Avis.js'
 
 export default async (req,res) => {
     const {id} = req.body
+    console.log(id)
     
     try {
         const myBDD = new BDD()
-        const user = await new Avis(myBDD)
-        const result = await user.deleteAvis({id})
+        const avis = new Avis(myBDD)
+        const result = await avis.deleteAvis({id})
         res.json({result})
 
     } catch(err) {

@@ -5,9 +5,9 @@ class Cart {
     }
     
 /////////////////////////// CREATE ////////////////////////////////////
-    async addToCart({user_id, date}) {
-        const sql = 'INSERT INTO order (user_id, date) VALUES (?,NOW())'
-        const paramsSql = [user_id, date]
+    async addToCart({user_id, product_id, quantity, date}) {
+        const sql = 'INSERT INTO cart (user_id, date) VALUES (?,?,?,NOW())'
+        const paramsSql = [user_id, product_id, quantity, date]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)
@@ -17,6 +17,10 @@ class Cart {
             return err
         }
     }
+    
+/////////////////////////// READ //////////////////////////////////// 
+ 
+ 
 }
 
 export default Cart

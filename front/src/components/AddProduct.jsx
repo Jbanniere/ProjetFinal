@@ -7,8 +7,7 @@ const AddProduct = () => {
     const [product, setProduct] = useState({
         name:'',
         description:'',
-        price_solo:0,
-        price_hs:0
+        price:0,
     })
     
     console.log(product)
@@ -28,8 +27,7 @@ const AddProduct = () => {
     // ajout d'autres inputs au formulaire
     dataFile.append('name', product.name)
     dataFile.append('description', product.description)
-    dataFile.append('price_solo', product.price_solo)
-    dataFile.append('price_hs', product.price_hs)
+    dataFile.append('price', product.price)
         
     // L'image
     dataFile.append('files', files[0], files[0].name)
@@ -58,11 +56,7 @@ const AddProduct = () => {
             </div>
             <div>
                 <label>Prix de l'abonnement mensuel seul :</label>
-                <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={product.price_solo} />
-            </div>
-            <div>
-                <label>Prix de l'abonnement mensuel + Hors-séries :</label>
-                <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={product.price_hs} />
+                <input type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={product.price} />
             </div>
             
             <p>Ajouter une image</p>

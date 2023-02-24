@@ -6,6 +6,9 @@ import {StoreContext} from "../tools/context.js"
 import Login from "./Login.jsx"
 import Modal from 'react-modal'
 
+
+Modal.setAppElement('#root');
+
 const Profil = () => {
     const [userProfil, setUserProfil] = useState([])
     const [userAvis, setUserAvis] = useState([])
@@ -40,10 +43,11 @@ const Profil = () => {
     const closeModal = () => setIsModalOpen(false)
     
     
-   /* const deleteAvis = (id) => {
-        axios.post(`${BASE_URL}/deleteAvis`, {id})
+    const deleteAvis = (idAvis) => {
+        console.log(idAvis)
+        axios.post(`${BASE_URL}/deleteAvis`, {id:idAvis})
         .then(res => setUserAvis(userAvis.filter((e)=> e.id !== id)))
-    }*/
+    }
     
     console.log(userAvis)
     return(
@@ -84,7 +88,7 @@ const Profil = () => {
                         <h3>Nom du magazine : {avis.name}</h3>
                         <p>Ma note : {avis.note}/5</p>
                         <p>Mon message : {avis.content}</p>
-                        {/*<button onClick={()=> deleteAvis = (avis.id)}>Supprimer cet avis</button>*/}
+                        <button onClick={()=> deleteAvis(avis.id)}>Supprimer cet avis</button>
                     </div>
                     )
                 })}

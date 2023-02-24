@@ -8,7 +8,7 @@ const initialState = {
         isLogged: false,
         id:null
     },
-    cart : [],
+    cart : []
 }
 
 export {StoreContext, initialState}

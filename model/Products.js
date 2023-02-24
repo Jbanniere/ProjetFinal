@@ -6,12 +6,12 @@ class Products {
     
 ////////////////////////////////////// CREATE ////////////////////////////////////////
 
-    async addProduct({name, description, price_solo, price_hs}) {
-        if(!name || !name || !description || !price_solo || !price_hs){
+    async addProduct({name, description, price}) {
+        if(!name || !name || !description || !price){
             return null
         }
-        const sql = 'INSERT INTO products (name, description, price_solo, price_hs) VALUES (?,?,?,?)'
-        const paramsSql = [name, description, price_solo, price_hs]
+        const sql = 'INSERT INTO products (name, description, price) VALUES (?,?,?,?)'
+        const paramsSql = [name, description, price]
         
         try {
             const result = await this.asyncQuery(sql, paramsSql)
@@ -62,9 +62,9 @@ class Products {
     
 /////////////////////////////////////// UPDATE //////////////////////////////////
 
-     async updateProduct({name, description, price_solo, price_hs, id}){
-        const sql = "UPDATE products SET name = ?, description = ?, price_solo = ?, price_hs = ? WHERE id = ?"
-        const paramsSql = [name, description, price_solo, price_hs, id]
+     async updateProduct({name, description, price, id}){
+        const sql = "UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?"
+        const paramsSql = [name, description, price, id]
         
         try{
             const result = await this.asyncQuery(sql,paramsSql)

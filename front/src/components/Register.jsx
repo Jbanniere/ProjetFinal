@@ -33,13 +33,13 @@ const Register = () => {
             return
         }
         
-        // Je vérifie si le mdp est confome >= 8, si non je maj le state errors
+        // Je vérifie si le mdp est confome >= 8, si non j'envoie l'erreur ds le state errors
         if (userData.password.length <= 8 ) {
             setErrors({ password: 'Votre mot de passe doit contenir plus de 8 caractères' });
             return 
         }
         
-        // Je vérifie si le zip contient 5 number si non j'envoie l'erreur dans le state errors
+        // Je vérifie si le zip contient 5 number si non j'envoie l'erreur ds le state errors
         if (userData.zip.length !== 5) {
             setErrors ({ zip: "Votre code postal doit contenir 5 chiffres"})
             return

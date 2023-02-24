@@ -29,8 +29,7 @@ const AllProduct = () => {
                 <div key={i}>
                     <h2>{product.name}</h2>
                     <p>Description : {product.description}</p>
-                    <p>Prix du Mensuel seul : {product.price_solo}</p>
-                    <p>Prix du Pack avec Hors Séries : {product.price_hs}</p>
+                    <p>Prix du Mensuel seul : {product.price}</p>
                     <p>Images : {product.caption}</p>
                     <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
                     <div>

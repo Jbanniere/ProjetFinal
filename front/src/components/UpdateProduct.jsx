@@ -43,11 +43,7 @@ const UpdateProduct = () => {
                 </div>
                 <div>
                     <label>Prix de l'abonnement mensuel seul : </label>
-                    <input type='number' placeholder='prix du mensuel seul' name='price_solo' onChange={handleChange} value={updateProduct.price_solo} />
-                </div>
-                <div>
-                    <label>Prix de l'abonnement + hors-séries</label>
-                    <input type='number' placeholder='prix du mensuel + hors série' name='price_hs' onChange={handleChange} value={updateProduct.price_hs} />
+                    <input type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={updateProduct.price} />
                 </div>
                 <button onClick= {submit}>Valider mes modifications</button>
             </form>

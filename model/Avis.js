@@ -97,6 +97,7 @@ class Avis {
 ////////////////////////////////////// DELETE ////////////////////////////////////////////////
 
     async deleteAvis({id}){
+        console.log(id)
         const sql = "DELETE FROM avis WHERE id = ?"
          try{
             const result = await this.asyncQuery(sql,[id])

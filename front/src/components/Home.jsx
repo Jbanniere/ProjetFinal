@@ -32,7 +32,7 @@ const Home = () => {
                 <div key={i}>
                     <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
                     <p>Abonnement à partir de</p>
-                    <div>{product.price_solo}€ / mois</div>
+                    <div>{product.price}€ / mois</div>
                     <button><NavLink to={`/productDetails/${product.id}`}>+ infos</NavLink></button>
                 </div>
                 )
