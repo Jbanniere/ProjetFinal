@@ -3,7 +3,7 @@ import Products from '../model/Products.js'
 
 export default async (req,res) => {
     const {name, description, price_solo, price_hs, id} = req.body
-    
+    console.log(req.body)
     try {
         const myBDD = new BDD()
         const product = new Products(myBDD)

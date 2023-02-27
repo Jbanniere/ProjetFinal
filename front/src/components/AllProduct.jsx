@@ -6,13 +6,14 @@ import { NavLink } from "react-router-dom"
 const AllProduct = () => {
     const [allProduct, setAllProduct] = useState([])
 
+    // Je récupère tous les produits
     useEffect(() => {
         axios.get(`${BASE_URL}/getAllProduct`)
             .then(res => setAllProduct(res.data.allProduct.result))
             .catch(err => console.log(err))
     },[])
     
-    
+    // Pour supprimer un produit
     const deleteProduct = (id) => {
         axios.post(`${BASE_URL}/deleteProduct`, {id})
         .then(res => setAllProduct(allProduct.filter((e)=> e.id !== id)))

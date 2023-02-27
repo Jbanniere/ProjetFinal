@@ -23,11 +23,15 @@ import deleteContactMessageController from "../controller/deleteContactMessage.j
 import updateContactEtatController from "../controller/updateContactEtat.js"
 import addAvisController from "../controller/addAvis.js"
 import getAllAvisByProductIdController from "../controller/getAllAvisByProductId.js"
-// import addToCartController from "../controller/addToCart.js"
 import getNoteByProductIdController from "../controller/getNoteByProductId.js"
 import checkToken from '../controller/checkToken.js'
 import getAvisByUserIdController from "../controller/getAvisByUserId.js"
 import deleteAvisController from '../controller/deleteAvis.js'
+import addToCartController from "../controller/addToCart.js"
+import getCartByUserIdController from "../controller/getCartByUserId.js"
+import getPictByProductInCartByUserIdController from "../controller/getPictByProductInCartByUserId.js"
+import deleteCartProductController from "../controller/deleteCartProduct.js"
+
 
 const router = express.Router()
 
@@ -60,7 +64,12 @@ const routesPOST = [
     {route:"/getAllAvisByProductId", controller: getAllAvisByProductIdController},
     {route:"/getNoteByProductId", controller: getNoteByProductIdController},
     {route:"/getAvisByUserID", controller: getAvisByUserIdController},
-    {route:"/deleteAvis", controller: deleteAvisController}
+    {route:"/deleteAvis", controller: deleteAvisController},
+    {route:"/addToCart", controller: addToCartController},
+    {route:"/getCartByUserId", controller: getCartByUserIdController},
+    {route:"/getPictByProductInCartByUserId", controller: getPictByProductInCartByUserIdController},
+    {route:"/deleteCartProduct", controller: deleteCartProductController}
+    
 ]
 
 router.post("/addProduct", middlewareUploadFile, middleware, addProductController),

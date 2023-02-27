@@ -55,10 +55,7 @@ class Products {
         }
     }
     
-    getAllProductByDetailsId ({id}) {
-    
-    }
-    
+
     
 /////////////////////////////////////// UPDATE //////////////////////////////////
 

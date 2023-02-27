@@ -1,18 +1,18 @@
 import { BASE_URL } from '../tools/constante.js'
 import { Fragment, useState, useContext, } from "react"
 import {StoreContext} from "../tools/context.js"
+import axios from "axios"
 
 const Abonnements = ({product}) => {
     const [state, dispatch] = useContext(StoreContext)
     const [qte, setQte] = useState({seul:0,pack:0})
-    const [prix, setPrix] = useState([])
-    console.log(qte)
-    
+    const [isValidated, setIsValidated] = useState(false)
+
+    // Gestion des boutons + - et de la qté
     const handleClick = (element, type) => {
         const {name} = element.target
         let quantite = qte[type]
-        console.log(quantite)
-        
+
         if(name === "add"){
             quantite++
         }
@@ -24,21 +24,32 @@ const Abonnements = ({product}) => {
         setQte({...qte, [type]:quantite})
     }
     
+    // J'ajoute mon panier 1) dans le reducer 2) dans la table CART
     const addToCart = (element, prix) => {
         let result = {
             prix: prix,
             quantite: qte.seul,
-            product: product.id
+            product: product.id,
+            name: product.name,
+            total: Number(qte.seul)*prix
         }
-        console.log(result)
         dispatch({
             type: "ADD_TO_CART",
             payload : result
         })
+        
+        axios.post(`${BASE_URL}/addToCart`,{
+            user_id:state.user.id,
+            product_id: product.id,
+            quantity: qte.seul
+       })
+       .then(res => {
+           setIsValidated(true)
+           console.log(res)
+           
+       })
     }
-    
-    console.log(state)
-    
+
     return(
         <Fragment>
             <h2>Rejoignez la tribu !</h2>
@@ -46,48 +57,42 @@ const Abonnements = ({product}) => {
                 <thead>
                     <tr>
                         <th>Mensuel seul</th>
-                        <th>Mensuel + Hors Séries</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                  	<td>
-                  	    <img width="30%" src={`${BASE_URL}/image/mensuelpiou.png`} alt="mensuel + hors série" />
-                  	</td>
-                    <td>
-                  	    <img width="30%" src={`${BASE_URL}/image/pioupiou_hs.png`} alt="mensuel + hors série" />
-                  	</td>
-                  </tr>
-                  <tr>
-                  	<td>1 mensuel / mois</td>
-                  	<td>1 mensuel / mois</td>
-                  </tr>
-                  <tr>
-                  	<td>Sans engagement de durée</td>
-                  	<td>Sans engagement de durée</td>
-                  </tr>
-                  <tr>
-                  	<td>-</td>
-                    <td>4 Hors Séries par an</td>
-                 </tr>
-                 <tr>
-                    <td>
-                        <p>5,95€ / Mois</p>
-                        <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"seul")}>-</button>
-                        <strong id="quantite" >{qte.seul}</strong>
-                        <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"seul")}>+</button>
-                        <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
-                    </td>
-                    {/*<td>
-                        <p>6,95€ / Mois</p>
-                        <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"pack")}>-</button>
-                        <strong id="quantite" >{qte.pack}</strong>
-                        <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"pack")}>+</button>
-                        <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
-                    </td>*/}
-                 </tr>
+                    <tr>
+                        <td>
+                            <img width="30%" src={`${BASE_URL}/image/mensuelpiou.png`} alt="mensuel + hors série" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1 mensuel / mois</td>
+                    </tr>
+                    <tr>
+                        <td>Sans engagement de durée</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>5,95€ / Mois</p>
+                            <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"seul")}>-</button>
+                            <strong id="quantite" >{qte.seul}</strong>
+                            <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"seul")}>+</button>
+                            <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
+                        </td>
+                        {/*<td>
+                            <p>6,95€ / Mois</p>
+                            <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"pack")}>-</button>
+                            <strong id="quantite" >{qte.pack}</strong>
+                            <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"pack")}>+</button>
+                            <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
+                        </td>*/}
+                     </tr>
                 </tbody>
             </table>
+            {isValidated && (
+                <p>Votre produit a bien été ajouté au panier</p>
+            )}
+           
         </Fragment>
         )
 }

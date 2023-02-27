@@ -20,8 +20,7 @@ const ProductDetails = () => {
             .catch(err => console.log(err))
     }, [id])
     
-    console.log(productDetails)
-    
+
     // Je récupère les notes de mes avis via le product_id
     useEffect(() => {
         axios.post(`${BASE_URL}/getNoteByProductID`,{product_id})
