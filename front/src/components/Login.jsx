@@ -24,22 +24,20 @@ const Login = () => {
 
         axios.post(`${BASE_URL}/login`,{ email: info.email, password: info.password})
        .then(res => {
-            console.log(res.data.response.user)
-                if(res.data.response.response) {
-                    dispatch({
-                        type: 'LOGIN',
-                        payload: res.data.response.user
-                    })
-                    localStorage.setItem('jwtToken', res.data.response.token)
-                    axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
-                    setInfo(initialState)
-                    setLogin(true)
-                    
-                } else {
-                    alert("Email ou mot de passe invalide")
-                }
-            })
-        }
+            if(res.data.response.response) {
+                dispatch({
+                    type: 'LOGIN',
+                    payload: res.data.response.user
+                })
+                localStorage.setItem('jwtToken', res.data.response.token)
+                axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
+                setInfo(initialState)
+                setLogin(true)
+            } else {
+                alert("Email ou mot de passe invalide")
+            }
+        })
+    }
 
     return(
         <Fragment>

@@ -13,16 +13,6 @@ const Cart = () => {
     
     console.log(state)
     
-    
-    /**
-     * 1) recuperer la liste des id produit present dans le panier de l'utilisateur et le stocker dans une variable "biz"
-     * 2) creer une constante "data" qui sera egale a state.products.filter(e => e.id)
-     * 3) mapper sur le tableau data
-     * 
-     **/ 
-    
-    
-    
     // Je récupère tous les produits que je stocke dans le reducer
     useEffect(()=>{
         if(state.products.length === 0){
@@ -37,7 +27,7 @@ const Cart = () => {
     },[])
     
     
-    // Je récupère les images des produits dans le panier du user
+    // Je récupère les images des produits en BDD qui sont dans le panier du user pour les mettre dans le reducer
     useEffect(() => {
         axios.post(`${BASE_URL}/getPictByProductInCartByUserId`,{user_id})
             .then(res => {
@@ -58,11 +48,13 @@ const Cart = () => {
     
     // Pour supprimer un produit dans la table cart
     const handleDelete = (id, productId) => {
-        axios.post(`${BASE_URL}/deleteCartProduct`,{id})
+        console.log({id,productId})
+        
+        axios.post(`${BASE_URL}/deleteCartProduct`, {id})
         .then(() => {
             let result = state.cart.filter((e) => {
                 console.log({e, productId})
-                return e.product !== productId
+                return e.product_id !== productId
             })
             console.log(result)
             dispatch ({

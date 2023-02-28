@@ -37,12 +37,23 @@
   }
 }
 
-footer {
-  background-color : #AADCB8;
+
+/************************************************************************************************ 
+**************************************GENERALITIES **********************************************
+*************************************************************************************************/
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  outline:none;
 }
 
-header {
-  background-color: #A7D5FF;
+body {
+  margin:0;
+}
+
+footer {
+  background-color : #AADCB8;
 }
 
 table, tr, td {
@@ -53,4 +64,42 @@ table, tr, td {
 h2 {
   color: #AADCB8;
   text-decoration:underline;
+}
+
+.navbar {
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding:1rem;
+  width:100%;
+  min-height:75px;
+  background-color: #A7D5FF ;
+  color: #AADCB8;
+}
+
+.navbar__links {
+  display: flex;
+}
+
+.navbar__link {
+  padding:0 0.3rem;
+}
+
+.navbar__burger {
+  width:40px;
+  height:40px;
+  background:transparent;
+  border:none;
+  color:inherit;
+}
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+a {
+  text-decoration:none;
 }

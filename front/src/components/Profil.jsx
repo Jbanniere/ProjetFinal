@@ -13,13 +13,22 @@ const Profil = () => {
     const [userProfil, setUserProfil] = useState([])
     const [userAvis, setUserAvis] = useState([])
     const [state, dispatch] = useContext(StoreContext)
+    const [userCart, setUserCart] = useState([])
     
-    // nouvel état pour suivre si la fenêtre modale doit être affichée
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
+    
     const id = state.user.id
     const user_id = state.user.id
+    
+    // FENETRE MODALE
+    
+    // Pour suivre si la fenêtre modale doit être affichée ou non
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    // gestionnaires d'événements pour ouvrir et fermer la fenêtre modale
+    const openModal = () => setIsModalOpen(true)
+    const closeModal = () => setIsModalOpen(false)
+    
 
+    // Je récupère les users par leur id
     useEffect(() => {
         axios.post(`${BASE_URL}/getUserById`,{id})
             .then(res => setUserProfil(res.data.result.result))
@@ -27,6 +36,14 @@ const Profil = () => {
             
     }, [id]) 
     
+    // Je récupère le cart du user
+    useEffect(() => {
+        axios.post(`${BASE_URL}/getPictByProductInCartByUserId`, {user_id})
+        .then(res => setUserCart(res.data.result.result))
+        .catch(err => console.log(err))
+    }, [user_id])
+    
+    // Je récupère les avis via le user_id
     useEffect(() => {
         axios.post(`${BASE_URL}/getAvisByUserId`,{user_id})
             .then(res => setUserAvis(res.data.result.result))
@@ -34,15 +51,13 @@ const Profil = () => {
             
     }, [user_id]) 
     
+    
+    // Pour supprimer un user
     const deleteUser = (id) => {
         axios.post(`${BASE_URL}/deleteUser`, {id})
     }
     
-    // gestionnaires d'événements pour ouvrir et fermer la fenêtre modale
-    const openModal = () => setIsModalOpen(true)
-    const closeModal = () => setIsModalOpen(false)
-    
-    
+    // Pour supprimer un avis
     const deleteAvis = (idAvis) => {
         console.log(idAvis)
         axios.post(`${BASE_URL}/deleteAvis`, {id:idAvis})
@@ -78,7 +93,7 @@ const Profil = () => {
                     )   
                 })}
                 
-        {/* J'affiche les avis que pour les users*/}       
+        {/* J'affiche les avis et les abonnements que pour les users*/}       
         {state.user.role_id === 2 && (
             <div>    
                 <h2>Mes Avis</h2>
@@ -94,6 +109,15 @@ const Profil = () => {
                 })}
                 
                 <h2>Mon Abonnement</h2>
+                {userCart.map((cart,i) => {
+                    return(
+                    <div key={i}>
+                        <h3>Nom du Magazine : {cart.name}</h3>
+                        <p>Quantité : {cart.quantity}</p>
+                        <p>Prix: {cart.price}</p>
+                    </div>
+                    )
+                })}
             </div>
         )}
             </div>

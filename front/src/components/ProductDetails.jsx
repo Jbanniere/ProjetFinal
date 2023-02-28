@@ -47,7 +47,6 @@ const ProductDetails = () => {
                         <img width= "3%" src={`${BASE_URL}/image/star.png`} alt="star" />
                         <p><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
                         <button><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
-                        <button>Ajouter au panier</button>
                     </div>
                 </div>
                 )
@@ -58,7 +57,7 @@ const ProductDetails = () => {
                 <p>Notre magazine pour les tout petits : un moment de partage en famille à ne pas manquer.</p>
             </div>
             <AvisPro />
-            <Abonnements product={productDetails[0]} />
+            <Abonnements id={id} product={productDetails[0]} />
         </Fragment>
         )
 }

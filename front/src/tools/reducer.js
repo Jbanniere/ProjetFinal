@@ -18,7 +18,8 @@ const reducer = (state,action) => {
                 user:{isLogged:false},
                 isLogged:false
             }
-            
+        
+        // permet de rajouter un element dans le panier 
         case 'ADD_TO_CART' :
             const data = state.cart.map(e => {
                 if(e.product === action.payload.product){
@@ -33,7 +34,7 @@ const reducer = (state,action) => {
                 // cart : [...state.cart, action.payload],
                 cart : data,
             }
-            
+        // permet d'craser toutes les donner du panier
         case 'INIT_CART' :
             return {
                 ...state,

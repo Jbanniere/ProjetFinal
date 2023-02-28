@@ -1,12 +1,14 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment, useState, useContext, } from "react"
+import { Fragment, useState, useContext, useParams} from "react"
 import {StoreContext} from "../tools/context.js"
 import axios from "axios"
 
-const Abonnements = ({product}) => {
+const Abonnements = ({product, id}) => {
     const [state, dispatch] = useContext(StoreContext)
     const [qte, setQte] = useState({seul:0,pack:0})
     const [isValidated, setIsValidated] = useState(false)
+    console.log(id)
+    console.log(state.products)
 
     // Gestion des boutons + - et de la qté
     const handleClick = (element, type) => {
@@ -49,7 +51,9 @@ const Abonnements = ({product}) => {
            
        })
     }
-
+    
+    
+    
     return(
         <Fragment>
             <h2>Rejoignez la tribu !</h2>
@@ -61,9 +65,15 @@ const Abonnements = ({product}) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <img width="30%" src={`${BASE_URL}/image/mensuelpiou.png`} alt="mensuel + hors série" />
-                        </td>
+                    {state.products.map((product,i)=>{
+                        if(product.id == id) {
+                            return(
+                            <td key={i}>
+                                <img width="60%" src={`${BASE_URL}/img/${product.url}`} alt="couverture magazine" />
+                            </td>
+                            )
+                        }
+                    })}
                     </tr>
                     <tr>
                         <td>1 mensuel / mois</td>

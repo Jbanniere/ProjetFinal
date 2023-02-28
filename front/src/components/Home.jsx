@@ -9,6 +9,19 @@ const Home = () => {
     const [state, dispatch] = useContext(StoreContext)
     const [allProduct, setAllProduct] = useState([])
     
+    // Je récupère tous les produits que je stocke dans le reducer
+    useEffect(()=>{
+        if(state.products.length === 0){
+           axios.get(`${BASE_URL}/getAllProduct`)
+           .then(res => {
+               dispatch({
+                   type:"ALL_PRODUCTS",
+                   payload:res.data.allProduct.result})
+           })
+           .catch(err => console.log(err))
+        }
+    },[])
+    
      useEffect(() => {
         axios.get(`${BASE_URL}/getAllProduct`)
             .then(res => setAllProduct(res.data.allProduct.result))

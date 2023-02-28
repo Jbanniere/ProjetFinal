@@ -33,19 +33,18 @@ const UpdateAvis = () => {
                 return(
                 <div key={i}>
                 <form onSubmit={submit}>
-                        <p>Modifier ma note de 0 à 5 :</p>
-                        <select name="note" onChange={handleChange} value={avis.note}>
+                    <p>Modifier ma note de 0 à 5 :</p>
+                    <select name="note" onChange={handleChange} value={avis.note}>
                     		<option value={0}>0</option>
                     		<option value={1}>1</option>
                     		<option value={2}>2</option>
                     		<option value={3}>3</option>
                     		<option value={4}>4</option>
                     		<option value={5}>5</option>
-        		        </select>
+                    </select>
                     <label>En quelques mots : </label>
                         <textarea type="text" placeholder='Message' name='content' onChange={handleChange} value={newAvis.content} />
     		        <button type='submit'>Envoyer</button>
-                </fieldset>
             </form>
                 </div>
                 )
