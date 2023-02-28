@@ -27,13 +27,13 @@ console.log({id,user:state.user.id})
         }
     }, [id])
     
-console.log(updateUser)
     
      const handleChange = (e) => {
         const {name, value} = e.target
         setUpdateUser({...updateUser, [name]: value})
     }
     
+    // Pour valider la modification du user
     const submit = (e) =>{
         e.preventDefault()
         console.log(updateUser)
@@ -44,8 +44,6 @@ console.log(updateUser)
             })
             .catch(err => console.log(err))
     }
-
-console.log(isValidated)
 
    return(
         <div>
@@ -69,7 +67,7 @@ console.log(isValidated)
             )}
             
         {isValidated && (
-            <p>Votre modification a été prise en compte</p>
+            <p>Votre modification a bien été prise en compte</p>
         )}
         </div>
        )

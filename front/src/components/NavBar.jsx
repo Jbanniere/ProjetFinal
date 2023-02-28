@@ -25,6 +25,7 @@ const NavBar = (props) => {
         <div className="nav_icon">
             <NavLink to="/"><img src={`${BASE_URL}/image/logo.png`} alt="logo"/></NavLink>
         </div>
+            {/* NAVBAR ADMIN */}
             {state.user.role_id === 1 && (
             <ul className="navbar__links">
                 <li className="navbar__item">
@@ -41,6 +42,8 @@ const NavBar = (props) => {
                 </li>
             </ul>
                 )}
+            
+            {/* NAVBAR ALL USERS*/}
             <ul className="navbar__links"> 
                 <li className="navbar__item">
                     <NavLink className="navbar__link" to="/">Nos Mensuels</NavLink>
@@ -48,8 +51,9 @@ const NavBar = (props) => {
                 <li className="navbar__item">
                     <NavLink className="navbar__link" to="/register">S'inscrire</NavLink>
                 </li>
+            
                  <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/login">Se connecter</NavLink>
+                    <NavLink className="navbar__link" to="/getProfil">Mon Profil</NavLink>
                 </li>
                 <li className="navbar__item">
                     <NavLink className="navbar__link" to="/contactUs">Nous contacter</NavLink>

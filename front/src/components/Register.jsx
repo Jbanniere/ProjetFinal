@@ -29,7 +29,7 @@ const Register = () => {
         // Je vérifie si les inputs sont vides, si oui j'envoie les erreurs dans le state errors
         const empty = checkIsEmpty(userData)
         if (Object.keys(empty).length > 0) {
-            setErrors(empty);
+            setErrors(empty)
             return
         }
         
@@ -49,7 +49,7 @@ const Register = () => {
         if (!/\S+@\S+\.\S+/.test(userData.email)) {
             setErrors ({email : "Veuillez entrer une adresse email valide."})
         }
-        
+        // Si tout est OK je valide l'inscription
         axios.post(`${BASE_URL}/register`,{
            nom : userData.nom,
            prenom: userData.prenom,

@@ -27,7 +27,7 @@ const Cart = () => {
     },[])
     
     
-    // Je récupère les images des produits en BDD qui sont dans le panier du user pour les mettre dans le reducer
+    // Je récupère toutes les infos des produits en BDD (tables pictures, products) qui sont dans le cart du user pour les mettre dans le reducer
     useEffect(() => {
         axios.post(`${BASE_URL}/getPictByProductInCartByUserId`,{user_id})
             .then(res => {
@@ -38,13 +38,6 @@ const Cart = () => {
             .catch(err => console.log(err))
     }, [user_id])
     
-    
-  
-    
-    // // Pour supprimer la ligne du panier dans le reducer
-    // const handleRemoveItem = (productId) => {
-        
-    // }
     
     // Pour supprimer un produit dans la table cart
     const handleDelete = (id, productId) => {

@@ -3,9 +3,11 @@ import {BASE_URL} from '../tools/constante.js'
 import {useState, useContext, useEffect} from "react"
 import {StoreContext} from "../tools/context.js"
 import {useParams} from "react-router-dom"
+import { checkIsEmpty } from "../tools/checkInputEmpty.js"
 
 const AddAvis = () => {
     const {product_id} = useParams()
+    const [errors, setErrors] = useState({})
     const [state, dispatch] = useContext(StoreContext)
     const [isValidated, setIsValidated] = useState(false)
     const [newAvis, setNewAvis] = useState({
@@ -14,23 +16,25 @@ const AddAvis = () => {
         content:"",
         note:0
     })
-    /*const [product,setProduct] = useState([])*/
     
-    /*console.log(product_id)
-    useEffect(() => {
-        axios.get(`${BASE_URL}/getProductById`, {id})
-            .then(res =>setProduct(res.data.result.result))
-            .catch(err => console.log(err))
-    },[product_id])*/
    console.log(newAvis)
     
     const handleChange = (e) => {
         const {name, value} = e.target
         setNewAvis({...newAvis,[name]:value})
     }
+    console.log(errors)
     
      const submit = (e) => {
         e.preventDefault()
+        
+        // Je vérifie si les inputs sont vides, si oui j'envoie les erreurs dans le state errors
+        //
+        // FONCTION ERREUR
+        //
+        //
+        
+        //Si tout est ok je valide l'ajout de l'avis
         axios.post(`${BASE_URL}/addAvis`,{
             user_id:state.user.id,
             product_id:product_id,
@@ -44,10 +48,18 @@ const AddAvis = () => {
        })
        
     }
+    console.log(newAvis)
     
     return(
         <div>
-            <h2>Ce que j'ai pensé de</h2>
+        {state.products.map((product,i) => {
+            if(product.id == product_id) {
+            return(
+                <h2 key={i}>Ce que j'ai pensé de {product.name}</h2>
+                )
+            }
+        })}
+            
             <form onSubmit={submit}>
                 <fieldset>
                 <legend>Mon Avis</legend>
@@ -61,10 +73,12 @@ const AddAvis = () => {
                     		<option value={4}>4</option>
                     		<option value={5}>5</option>
         		        </select>
+        		        {errors.note && <p>{errors.note}</p>}
     		        </div>
     		        <div>
     		            <label>En quelques mots : </label>
                         <textarea type="text" placeholder='Message' name='content' onChange={handleChange} value={newAvis.content} />
+    		            {errors.message && <p>{errors.message}</p>}
     		        </div>
     		        <button type='submit'>Envoyer</button>
                 </fieldset>
