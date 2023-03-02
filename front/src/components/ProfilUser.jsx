@@ -1,9 +1,8 @@
-import {useEffect, useState, useContext, Fragment} from "react"
+import { useEffect, useState, useContext, Fragment } from "react"
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {NavLink} from "react-router-dom"
-import {StoreContext} from "../tools/context.js"
-import Login from "./Login.jsx"
+import { BASE_URL } from '../tools/constante.js'
+import { NavLink } from "react-router-dom"
+import { StoreContext } from "../tools/context.js"
 import Modal from 'react-modal'
 
 Modal.setAppElement('#root')
@@ -42,13 +41,16 @@ const ProfilUser = () => {
                     return(
                     <div key={i}>
                         <h1>Hello {profil.prenom} !</h1>
+                        <button className="btn-logout"><NavLink to="/logout">Me Déconnecter</NavLink></button>
                         <h2>Mes Infos</h2>
-                        <p>Nom : {profil.nom}</p>
-                        <p>Prénom : {profil.prenom}</p>
-                        <p>Adresse : {profil.street} {profil.zip} {profil.city}</p>
-                        <p>Email : {profil.email}</p>
-                        <button><NavLink to={`/updateUser/${profil.id}`}>Modifier mes infos</NavLink></button>
-                        <button onClick={openModal}>Supprimer mon compte</button>    
+                        <div className= "profil">
+                            <p>Nom : {profil.nom}</p>
+                            <p>Prénom : {profil.prenom}</p>
+                            <p>Adresse : {profil.street} {profil.zip} {profil.city}</p>
+                            <p>Email : {profil.email}</p>
+                        </div>
+                        <button className="btn-update"><NavLink to={`/updateUser/${profil.id}`}>Modifier mon profil</NavLink></button>
+                        <button className="btn-delete" onClick={openModal}>Supprimer mon compte</button>    
                         <Modal
                         isOpen={isModalOpen} // affiche la fenêtre modale si isModalOpen est true
                         onRequestClose={closeModal} // gestionnaire d'événements pour fermer la fenêtre modale

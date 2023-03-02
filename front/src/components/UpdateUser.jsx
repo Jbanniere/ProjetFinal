@@ -15,17 +15,17 @@ const UpdateUser = () => {
 console.log({id,user:state.user.id})
     
     // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
-    useEffect(()=> {
-       if(id != state.user.id) return navigate("/");
-    },[])
-    
-    useEffect(() => {
-        if(id == state.user.id){
-            axios.post(`${BASE_URL}/getUserById`,{id})
-                .then(res => setUpdateUser(res.data.result.result[0]))
-                .catch(err => console.log(err))
-        }
-    }, [id])
+        useEffect(()=> {
+            if(id != state.user.id) return navigate("/");
+        },[])
+        
+        useEffect(() => {
+            if(id == state.user.id){
+                axios.post(`${BASE_URL}/getUserById`,{id})
+                    .then(res => setUpdateUser(res.data.result.result[0]))
+                    .catch(err => console.log(err))
+           }
+        }, [id])
     
     
      const handleChange = (e) => {
@@ -50,6 +50,7 @@ console.log({id,user:state.user.id})
         
         {updateUser && (
            <form>
+           <fieldset>
                 <label>Nom : </label>
                 <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
                 <label>Prénom : </label>
@@ -63,6 +64,7 @@ console.log({id,user:state.user.id})
                 <label>Email : </label>
                 <input type='text' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
                 <button onClick={submit}>Modifier les infos</button>
+            </fieldset>
         </form>   
             )}
             

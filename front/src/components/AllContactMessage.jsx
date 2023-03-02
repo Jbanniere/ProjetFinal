@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useEffect, useState, Fragment} from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -25,15 +25,14 @@ const AllContactMessage = () => {
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
-    
-    console.log(allContact)
-    
+
     // Supprime un message
     const deleteContact = (id) => {
         axios.post(`${BASE_URL}/deleteContactMessage`)
         .then(res => setAllContact(allContact.filter((e)=> e.id !== id)))
     }
     
+    // Modifier l'état de la demande : traité/non traité
     const updateEtat = (index, etat) => {
         // on fait une copie de tous les messages de contact
         const contact = [...allContact]
@@ -44,47 +43,50 @@ const AllContactMessage = () => {
     }
     
     return(
-        <table>
-            <thead>
-                 <tr>
-                    <th colSpan="8">Demandes de contact</th>
-                </tr>
-                <tr>
-                    <th>Date</th>
-                    <th>Objet</th>
-                    <th>Message</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Email</th>
-                    <th>Etat</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-           <tbody>
-                 {allContact.map((demande,i)=> {
-                    return(
-                    <tr key={i}>
-                        <td>{formatDate(demande.date)}</td>
-                        <td>{demande.objet}</td>
-                        <td>{demande.message}</td>
-                        <td>{demande.nom}</td>
-                        <td>{demande.prenom}</td>
-                        <td>{demande.email}</td>
-                        <td>
-                            <select name="etat" onChange={(e) => updateEtat(i,e.target.value)} value={demande.etat}>
-            		          <option value={0}>Demande Non Traitée</option>
-            		          <option value={1}>Demande Traitée</option>
-    		                </select>
-    		              <button onClick={() => submit(i)}>Valider</button>
-    		            </td>
-                        <td>
-                            <FontAwesomeIcon icon={faTrash} color={ 'red' }  onClick={() => deleteContact(demande.id)} />
-                        </td>
+        <Fragment>
+            <h1>Mes Messages</h1>
+            <table>
+                <thead>
+                     <tr>
+                        <th colSpan="8">Demandes de contact</th>
                     </tr>
-                  )
-               })} 
-               </tbody>
-        </table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Objet</th>
+                        <th>Message</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Etat</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+               <tbody>
+                     {allContact.map((demande,i)=> {
+                        return(
+                        <tr key={i} className={`etat-${demande.etat}`}>
+                            <td>{formatDate(demande.date)}</td>
+                            <td>{demande.objet}</td>
+                            <td>{demande.message}</td>
+                            <td>{demande.nom}</td>
+                            <td>{demande.prenom}</td>
+                            <td>{demande.email}</td>
+                            <td>
+                                <select name="etat" onChange={(e) => updateEtat(i,e.target.value)} value={demande.etat}>
+                		          <option value={0}>Demande Non Traitée</option>
+                		          <option value={1}>Demande Traitée</option>
+        		                </select>
+        		              <button onClick={() => submit(i)}>Valider</button>
+        		            </td>
+                            <td>
+                                <FontAwesomeIcon className="icon-fatrash" icon={faTrash} onClick={() => deleteContact(demande.id)} />
+                            </td>
+                        </tr>
+                      )
+                   })} 
+                   </tbody>
+            </table>
+        </Fragment>
         )
 }
 

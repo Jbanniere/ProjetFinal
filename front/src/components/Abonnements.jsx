@@ -1,57 +1,62 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment, useState, useContext, useParams} from "react"
+import { Fragment, useState, useContext } from "react"
 import {StoreContext} from "../tools/context.js"
 import axios from "axios"
+import { Navigate } from "react-router-dom"
 
 const Abonnements = ({product, id}) => {
     const [state, dispatch] = useContext(StoreContext)
-    const [qte, setQte] = useState({seul:0,pack:0})
+    // const [qte, setQte] = useState({seul:0,pack:0})
+    const [qte, setQte] = useState(0)
     const [isValidated, setIsValidated] = useState(false)
-    console.log(id)
-    console.log(state.products)
-
-    // Gestion des boutons + - et de la qté
-    const handleClick = (element, type) => {
-        const {name} = element.target
-        let quantite = qte[type]
-
-        if(name === "add"){
-            quantite++
-        }
-        
-        if(name === "remove" && quantite > 0){
-            quantite--
-        }
-        
-        setQte({...qte, [type]:quantite})
-    }
+    const [isRedirected, setIsRedirected] = useState(false)
     
-    // J'ajoute mon panier 1) dans le reducer 2) dans la table CART
-    const addToCart = (element, prix) => {
-        let result = {
-            prix: prix,
-            quantite: qte.seul,
-            product: product.id,
-            name: product.name,
-            total: Number(qte.seul)*prix
+        const updateStateCart = (cart) => {
+            dispatch({
+                type:'UPDATE_CART',
+                payload: cart
+            })
         }
-        dispatch({
-            type: "ADD_TO_CART",
-            payload : result
-        })
         
-        axios.post(`${BASE_URL}/addToCart`,{
-            user_id:state.user.id,
-            product_id: product.id,
-            quantity: qte.seul
-       })
-       .then(res => {
-           setIsValidated(true)
-           console.log(res)
-           
-       })
-    }
-    
+        const addToCart = (item) => {
+            if(state.user.isLogged) {
+                // On crée d'une copie du state cart
+                const cart = [...state.cart]
+                // On regarde si le produit est déjà dans le panier
+                const existingItem = itemIsInCart(item.id);
+                // S'il est déjà présent on modifie la quantité
+                if (existingItem) {
+                    addQuantity(existingItem.id, item.quantity)
+                // Sinon on rajoute le produit au panier 
+                } else {
+                    item.quantity = qte
+                    cart.push(item);
+                    // ajouter le produit en BDD
+                    updateStateCart(cart)
+                }
+            } else {
+                alert("Oups! Vous devez être connecté pour ajouter un produit au panier")
+                setIsRedirected(true)
+            }
+        }
+        // Fonction qui servent pour le addToCart
+        // on regarde si le produit est deja dans le panier
+        const itemIsInCart = (id) => {
+            return state.cart.find(item => item.id === id);
+        }
+        
+        const addQuantity = (item_id) => {
+            // on creer une copie du state cart
+            const cart = [...state.cart]
+            // on regarde si le produit est deja dans le panier
+            cart.map((item,i) => {
+                if (item.id === item_id) {
+                    return item.quantity += qte
+                }
+            })
+            // mettre a jour la qte en BDD
+            updateStateCart(cart)
+        }
     
     
     return(
@@ -84,24 +89,16 @@ const Abonnements = ({product, id}) => {
                     <tr>
                         <td>
                             <p>5,95€ / Mois</p>
-                            <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"seul")}>-</button>
-                            <strong id="quantite" >{qte.seul}</strong>
-                            <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"seul")}>+</button>
-                            <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
+                            <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
+                            <strong id="quantite" >{qte}</strong>
+                            <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
+                            <button onClick={() => addToCart(product)}>Ajouter au panier</button>
                         </td>
-                        {/*<td>
-                            <p>6,95€ / Mois</p>
-                            <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"pack")}>-</button>
-                            <strong id="quantite" >{qte.pack}</strong>
-                            <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"pack")}>+</button>
-                            <button onClick={(e) => addToCart(e, product.price)}>Ajouter au panier</button>
-                        </td>*/}
                      </tr>
                 </tbody>
             </table>
-            {isValidated && (
-                <p>Votre produit a bien été ajouté au panier</p>
-            )}
+            {isValidated && <p>Votre produit a bien été ajouté au panier</p>}
+            {isRedirected && <Navigate to="/login" />}
            
         </Fragment>
         )

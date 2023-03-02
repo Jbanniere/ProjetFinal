@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react"
+import { useState } from "react"
 import axios from "axios"
 import { BASE_URL } from "../tools/constante.js"
 import { checkIsEmpty } from "../tools/checkInputEmpty.js"
@@ -75,50 +75,50 @@ const Register = () => {
     
     return(
         <div>
-        <h2> S'inscrire</h2>
+        <h1> S'inscrire</h1>
             <form onSubmit={submit}>
                 <fieldset>
-                    <legend>Mes coordonnées</legend>
-                        <div>
+                    <legend>Mes Coordonnées</legend>
+                        <div className="fields">
                             <label>Nom : </label>
-                            <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={userData.nom} />
+                            <input className="input-register" type='text' placeholder='Votre Nom' name='nom' onChange={handleChange} value={userData.nom} />
                             {errors.nom && <p>{errors.nom}</p>}
                         </div>
-                        <div>
+                        <div className="fields">
                             <label>Prénom :</label>
-                            <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
+                            <input className="input-register" type='text' placeholder='Votre Prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
                             {errors.prenom && <p>{errors.prenom}</p>}
                         </div>
-                        <div>
+                        <div className="fields">
                             <label>N° et Rue : </label>
-                            <input type='text' placeholder='n° et rue' name='street' onChange={handleChange} value={userData.street} />
+                            <input className="input-register" type='text' placeholder='Adresse : N° et rue' name='street' onChange={handleChange} value={userData.street} />
                             {errors.street && <p>{errors.street}</p>}
                         </div>
-                        <div>
+                        <div className="fields">
                             <label>Code Postal :</label>
-                            <input type='number' placeholder='zip' name='zip' onChange={handleChange} value={userData.zip} />
+                            <input className="input-register" type='number' placeholder='Adresse : Code Postal' name='zip' onChange={handleChange} value={userData.zip} />
                             {errors.zip && <p>{errors.zip}</p>}
                         </div>
-                        <div>
+                        <div className="fields">
                             <label>Ville :</label>
-                            <input type='text' placeholder='ville' name='city' onChange={handleChange} value={userData.city} />
+                            <input className="input-register" type='text' placeholder='Adresse : Ville' name='city' onChange={handleChange} value={userData.city} />
                             {errors.city && <p>{errors.city}</p>}
                         </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Mes identifiants</legend>
-                        <div>
+                    <legend>Mes Identifiants</legend>
+                        <div className="fields">
                             <label> Email :</label>
-                            <input type='text' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
+                            <input className="input-register" type='text' placeholder='Votre Email' name='email' onChange={handleChange} value={userData.email} />
                             {errors.email && <p>{errors.email}</p>}
                         </div>
-                        <div>
-                            <label>Mot de passe (doit contenir plus de 8 caractères)</label>
-                            <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
+                        <div className="fields">
+                            <label>Mot de passe :</label>
+                            <input className="input-register" type='password' placeholder='Mot de passe : Plus de 8 caractères' name='password' onChange={handleChange} value={userData.password} />
                             {errors.password && <p>{errors.password}</p>}
                         </div>
                     </fieldset>
-                    <button onClick={submit}>Valider mon inscription</button>
+                    <button className="btn-valid" onClick={submit}>Valider mon inscription</button>
                 
             </form>
             { register && <Navigate to="/login" replace={true} /> }

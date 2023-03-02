@@ -1,8 +1,7 @@
-import {useEffect, useState, useContext, Fragment} from "react"
+import { useEffect, useState, useContext, Fragment } from "react"
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {NavLink} from "react-router-dom"
-import {StoreContext} from "../tools/context.js"
+import { BASE_URL } from '../tools/constante.js'
+import { StoreContext } from "../tools/context.js"
 import Modal from 'react-modal'
 
 Modal.setAppElement('#root')
@@ -32,29 +31,6 @@ const ProfilCart = () => {
          .then(res => setUserCart(userCart.filter((e)=> e.id !== id)))
     }
     
-    // Pour modifier la quantité de l'abonnement
-    const handleClick = (element, type) => {
-        const {name} = element.target
-        let quantite = qte[type]
-
-        if(name === "add"){
-            quantite++
-        }
-        
-        if(name === "remove" && quantite > 0){
-            quantite--
-        }
-        
-        setQte({...qte, [type]:quantite})
-    }
-    
-    // Pour Update un produit dans le cart
-    const submitUpdateCart = () => {
-        axios.post(`${BASE_URL}/updateCart`,{...updateCart})
-            .then(res => setUserCart(res.data.result.result))
-            .catch(err => console.log(err))
-    }
-    
     return(
         <Fragment>
         {state.user.role_id === 2 && (
@@ -63,17 +39,15 @@ const ProfilCart = () => {
                 {userCart.map((cart,i) => {
                     return(
                     <div key={i}>
-                        <h3>Nom du Magazine : {cart.name}</h3>
-                        <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />
-                        <div>
-                            <button className="product-qte" name="remove" onClick={(e) => handleClick(e,"seul")}>-</button>
-                                <strong id="quantite" >{cart.quantity}</strong>
-                                <button className="btn-product-qte" name="add" onClick={(e) => handleClick(e,"seul")}>+</button>
-                            <p>Prix : {cart.price}€ / Mois</p>
-                            <p>Montant : {Number(cart.quantity)*Number(cart.price)}€</p>
+                        <div className="profil">
+                            <h3>Nom du Magazine : {cart.name}</h3>
+                            <img className = "cart-img" src={`${BASE_URL}/img/${cart.url}`} alt={cart.caption} />
+                            <div>
+                                <p>Prix : {cart.price}€ / Mois</p>
+                                <p>Montant : {Number(cart.quantity)*Number(cart.price)}€</p>
+                            </div>
                         </div>
-                        <button>Valider ma modification</button>
-                        <button onClick={openModal}>Supprimer cet abonnement</button>
+                        <button className="btn-delete" onClick={openModal}>Supprimer cet abonnement</button>
                         <Modal
                         isOpen={isModalOpen} // affiche la fenêtre modale si isModalOpen est true
                         onRequestClose={closeModal} // gestionnaire d'événements pour fermer la fenêtre modale

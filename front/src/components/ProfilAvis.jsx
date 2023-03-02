@@ -28,14 +28,16 @@ const ProfilAvis = () => {
         <Fragment>
             {state.user.role_id === 2 && (
             <div>    
-                <h2>Mes Avis</h2>
                 {userAvis.map((avis,i) => {
                     return(
                     <div key={i}>
-                        <h3>Nom du magazine : {avis.name}</h3>
-                        <p>Ma note : {avis.note}/5</p>
-                        <p>Mon message : {avis.content}</p>
-                        <button onClick={()=> deleteAvis(avis.id)}>Supprimer cet avis</button>
+                    <h2>Mes Avis</h2>
+                        <div className="profil">
+                            <h3>Nom du magazine : {avis.name}</h3>
+                            <p>Ma note : {avis.note}/5</p>
+                            <p>Mon message : {avis.content}</p>
+                        </div>
+                        <button className="btn-delete" onClick={()=> deleteAvis(avis.id)}>Supprimer cet avis</button>
                     </div>
                     )
                 })}

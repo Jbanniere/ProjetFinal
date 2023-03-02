@@ -40,7 +40,7 @@ const ProductDetails = () => {
             {productDetails.map((details,i) => {
                 return(
                 <div key={i}>
-                    <h1>{details.description}</h1>
+                    <h2>{details.description}</h2>
                     <img width= "5%" src={`${BASE_URL}/image/bee.png`} alt="abeille qui vole" />
                     <img src={`${BASE_URL}/img/${details.url}`} alt={details.caption} />
                     <div>

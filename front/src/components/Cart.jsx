@@ -2,13 +2,9 @@ import { BASE_URL } from '../tools/constante.js'
 import { Fragment, useState, useContext, useEffect} from "react"
 import axios from "axios"
 import {StoreContext} from "../tools/context.js"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 const Cart = () => {
     const [state, dispatch] = useContext(StoreContext)
-    const [newCart, setNewCart] = useState([])
-    const [pictures, setPictures] = useState([])
     const user_id = state.user.id
     
     console.log(state)
@@ -29,13 +25,14 @@ const Cart = () => {
     
     // Je récupère toutes les infos des produits en BDD (tables pictures, products) qui sont dans le cart du user pour les mettre dans le reducer
     useEffect(() => {
+        if(!state.cart.length){
         axios.post(`${BASE_URL}/getPictByProductInCartByUserId`,{user_id})
             .then(res => {
                 console.log(res)
                 dispatch({type:"INIT_CART",payload:res.data.result.result})
-                //setPictures(res.data.result.result)
                 })
             .catch(err => console.log(err))
+        }
     }, [user_id])
     
     
@@ -61,6 +58,7 @@ const Cart = () => {
         <Fragment>
         <h1>Mon Panier</h1>
         {state.cart.length > 0 && state.cart.map((cart,i) => {
+        console.log("ici")
             return(
             <div key={i}>
                 <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />

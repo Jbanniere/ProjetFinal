@@ -12,6 +12,7 @@ const reducer = (state,action) => {
                 },
                 isLogged:true
             }
+            
         case 'LOGOUT' :
             return {
                 ...state,
@@ -19,7 +20,7 @@ const reducer = (state,action) => {
                 isLogged:false
             }
         
-        // permet de rajouter un element dans le panier 
+        // Pour rajouter un élément dans le panier 
         case 'ADD_TO_CART' :
             const data = state.cart.map(e => {
                 if(e.product === action.payload.product){
@@ -34,7 +35,8 @@ const reducer = (state,action) => {
                 // cart : [...state.cart, action.payload],
                 cart : data,
             }
-        // permet d'craser toutes les donner du panier
+            
+        // Pour écraser toutes les données du panier
         case 'INIT_CART' :
             return {
                 ...state,
@@ -46,11 +48,17 @@ const reducer = (state,action) => {
                 ...state,
                 cart : action.payload
             }
-        
+            
         case 'ALL_PRODUCTS' :
             return {
                 ...state,
                 products : action.payload
+            }
+            
+        case 'UPDATE_CART':
+            return {
+                ...state,
+                cart:[...action.payload]
             }
             
         default :

@@ -22,22 +22,20 @@ const AllProduct = () => {
     return(
         <div>
             <h1>Mes produits</h1>
-            
-            <button><NavLink to="/addProduct"> Ajouter un nouveau produit</NavLink></button>
-           {allProduct.map((product,i) => {
-           console.log(product)
+            <button className="btn-add-product"><NavLink to="/addProduct"> Ajouter un nouveau produit</NavLink></button>
+            {allProduct.map((product,i) => {
                 return(
-                <div key={i}>
+                <div className="profil" key={i}>
                     <h2>{product.name}</h2>
-                    <p>Description : {product.description}</p>
-                    <p>Prix du Mensuel seul : {product.price}</p>
+                    <p>Titre : {product.description}</p>
+                    <p>Prix de l'abonnement : {product.price}€ / Mois</p>
                     <p>Images : {product.caption}</p>
                     <img src={`${BASE_URL}/img/${product.url}`} alt={product.caption} />
                     <div>
-                        <button><NavLink to={`/getAllAvis/${product.id}`}>Afficher tous les avis</NavLink></button>
-                        <button><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
-                        <button><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier l'image</NavLink></button>
-                        <button onClick={()=> deleteProduct(product.id)}>Supprimer ce produit</button>
+                        <button className="btn-update"><NavLink to={`/getAllAvis/${product.id}`}>Avis de {product.name}</NavLink></button>
+                        <button className="btn-update"><NavLink to={`/updateProduct/${product.id}`}>Modifier les infos</NavLink></button>
+                        <button className="btn-update"><NavLink to={`/updatePicture/${product.pictures_id}`}>Modifier l'image</NavLink></button>
+                        <button className="btn-delete" onClick={()=> deleteProduct(product.id)}>Supprimer</button>
                     </div>
             
                 </div>

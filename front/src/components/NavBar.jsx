@@ -6,7 +6,15 @@ import { BASE_URL } from "../tools/constante.js"
 
 const NavBar = (props) => {
     const [state, dispatch] = useContext(StoreContext)
-    const [showMenu, setShowMenu] = useState(false)
+    const [showLinks, setShowLinks] = useState(false)
+    
+    const handleShowLinks = () => {
+        setShowLinks(!showLinks)
+    }
+    
+    const handleClickLink = () => {
+        setShowLinks(false)
+    }
 
     useEffect(() => {
     if(!axios.defaults.headers.common['Authorization']){
@@ -20,57 +28,63 @@ const NavBar = (props) => {
 
     return(
         <Fragment>
-        <nav className="navbar">
-        
-        <div className="nav_icon">
-            <NavLink to="/"><img src={`${BASE_URL}/image/logo.png`} alt="logo"/></NavLink>
-        </div>
-            {/* NAVBAR ADMIN */}
-            {state.user.role_id === 1 && (
-            <ul className="navbar__links">
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/addProduct"> Ajouter un produit</NavLink>
-                </li>
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/getAllProduct">Afficher tous les produits</NavLink>
-                </li>  
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/getAllUsers">Afficher les utilisateurs</NavLink>
-                </li>
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/getAllContactMessage">Demandes de contact</NavLink>
-                </li>
-            </ul>
-                )}
+            <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`} >
             
-            {/* NAVBAR ALL USERS*/}
-            <ul className="navbar__links"> 
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/">Nos Mensuels</NavLink>
-                </li>
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/register">S'inscrire</NavLink>
-                </li>
-            
-                 <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/getProfil">Mon Profil</NavLink>
-                </li>
-                <li className="navbar__item">
-                    <NavLink className="navbar__link" to="/contactUs">Nous contacter</NavLink>
-                </li>
-            </ul>
-            <button className="navbar__burger">
-                <span className="burger-nav"></span>
-            </button>
-            <div>
-                <NavLink to="/getProfil"><img src={`${BASE_URL}/image/lapin.png`} width="110px" height="80px" alt="lapin pour profil"/></NavLink>
-                <NavLink to="/cart"><img src={`${BASE_URL}/image/cart.png`} width="60px" height="60px" alt="img add to cart"/></NavLink>
-                {state.isLogged === false && (
-                <button><NavLink to="/login">S'identifier</NavLink></button>)}
-                {state.isLogged === true && (
-                <button><NavLink to="/logout">Se Déconnecter</NavLink></button>)}
+            <div className="navbar__logo">
+                <NavLink to="/"><img className="img-logo" src={`${BASE_URL}/image/pressemia.png`} alt="logo"/></NavLink>
             </div>
-        </nav>
+            <ul className="navbar__links">
+                {/*<NavLink className="navbar__link" to="/" onClick={handleClickLink}><img src={`${BASE_URL}/image/logo.svg`} alt="logo"/></NavLink>*/}
+                
+                {/* NAVBAR ADMIN */}
+                {state.user.role_id === 1 && (
+                <Fragment>
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink}>Mes Produits</NavLink>
+                    </li>  
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink}>Mes Utilisateurs</NavLink>
+                    </li>
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink}>Ma Messagerie</NavLink>
+                    </li>
+                </Fragment>
+                    )}
+                
+                {/* NAVBAR ALL USERS*/}
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/" onClick={handleClickLink}>Nos Mensuels</NavLink>
+                    </li>
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/register" onClick={handleClickLink}>S'inscrire</NavLink>
+                    </li>
+                    {state.user.isLogged && (
+                     <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/getProfil" onClick={handleClickLink}>Mon Profil</NavLink>
+                    </li>
+                    )}
+                    {state.user.isLogged === false && (
+                        <li className="navbar__item">
+                            <NavLink className="navbar__link" to="/login" onClick={handleClickLink}>Se Connecter</NavLink>
+                        </li>
+                    )}
+                    <li className="navbar__item">
+                        <NavLink className="navbar__link" to="/contactUs" onClick={handleClickLink}>Nous contacter</NavLink>
+                    </li>
+                </ul>
+                <button className="navbar__burger" onClick={handleShowLinks}>
+                    <span className="burger-bar"></span>
+                </button>
+                <div className="navbar__icons">
+                    <NavLink to="/getProfil"><img className="nav_img_profil" src={`${BASE_URL}/image/girafe.png`} alt="chat pour profil"/></NavLink>
+                    {state.user.isLogged && (
+                        <NavLink to="/cart"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
+                    )}
+                    {state.user.isLogged === false && (
+                        <NavLink to="/login"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
+                    )}
+                </div>
+            </nav>
         </Fragment>
         )
 }
