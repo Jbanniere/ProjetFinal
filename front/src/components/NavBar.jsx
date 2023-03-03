@@ -55,18 +55,20 @@ const NavBar = (props) => {
                     <li className="navbar__item">
                         <NavLink className="navbar__link" to="/" onClick={handleClickLink}>Nos Mensuels</NavLink>
                     </li>
-                    <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/register" onClick={handleClickLink}>S'inscrire</NavLink>
-                    </li>
                     {state.user.isLogged && (
                      <li className="navbar__item">
                         <NavLink className="navbar__link" to="/getProfil" onClick={handleClickLink}>Mon Profil</NavLink>
                     </li>
                     )}
                     {state.user.isLogged === false && (
+                    <Fragment>
+                        <li className="navbar__item">
+                            <NavLink className="navbar__link" to="/register" onClick={handleClickLink}>S'inscrire</NavLink>
+                        </li>
                         <li className="navbar__item">
                             <NavLink className="navbar__link" to="/login" onClick={handleClickLink}>Se Connecter</NavLink>
                         </li>
+                    </Fragment>
                     )}
                     <li className="navbar__item">
                         <NavLink className="navbar__link" to="/contactUs" onClick={handleClickLink}>Nous contacter</NavLink>

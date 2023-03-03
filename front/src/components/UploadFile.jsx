@@ -12,7 +12,6 @@ const UploadFile = () => {
         const dataFile = new FormData();
         const files = {...e.target.avatar.files};
         
-        console.log(files)
         
         // ajouter d'autre input au formulaire
         dataFile.append('username', username)
@@ -22,7 +21,6 @@ const UploadFile = () => {
         
         axios.post(`${BASE_URL}/uploadFile`, dataFile)
         .then((res)=> {
-            console.log(res)
             res.data.response && console.log('succesfully upload');
         })
         .catch((err) => {

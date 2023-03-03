@@ -1,13 +1,16 @@
 import { BASE_URL } from '../tools/constante.js'
 import { Fragment, useState, useContext, useEffect} from "react"
+import { StoreContext } from "../tools/context.js"
 import axios from "axios"
-import {StoreContext} from "../tools/context.js"
 
 const Cart = () => {
     const [state, dispatch] = useContext(StoreContext)
+    const [qte, setQte] = useState(0)
     const user_id = state.user.id
-    
-    console.log(state)
+    const [isValidated, setIsValidated] = useState(false)
+    const [abonnement, setAbonnement] = useState({
+        user_id: user_id,
+    })
     
     // Je récupère tous les produits que je stocke dans le reducer
     useEffect(()=>{
@@ -22,56 +25,81 @@ const Cart = () => {
         }
     },[])
     
+    const editCartData = (data) => {
+        const forCart = []
+        data.forEach(e => {
+            const id = e.product_id
+            delete e.product_id
+            e.id = id
+            forCart.push(e)
+        })
+        return forCart
+    }
+    
     
     // Je récupère toutes les infos des produits en BDD (tables pictures, products) qui sont dans le cart du user pour les mettre dans le reducer
     useEffect(() => {
-        if(!state.cart.length){
+        if(state.cart.length === 0){
         axios.post(`${BASE_URL}/getPictByProductInCartByUserId`,{user_id})
             .then(res => {
-                console.log(res)
-                dispatch({type:"INIT_CART",payload:res.data.result.result})
+                dispatch({
+                    type:"INIT_CART",
+                    payload:editCartData(res.data.result.result)
+                    
                 })
+            })
             .catch(err => console.log(err))
         }
     }, [user_id])
     
     
     // Pour supprimer un produit dans la table cart
-    const handleDelete = (id, productId) => {
-        console.log({id,productId})
-        
-        axios.post(`${BASE_URL}/deleteCartProduct`, {id})
+    const handleDelete = (product_id) => {
+        axios.post(`${BASE_URL}/deleteCartProduct`, {product_id})
         .then(() => {
             let result = state.cart.filter((e) => {
-                console.log({e, productId})
-                return e.product_id !== productId
+                return e.product_id !== product_id
             })
-            console.log(result)
             dispatch ({
                 type : "REMOVE_ITEM_FROM_CART",
                 payload : result
             })
         })
+        .catch(err => console.log(err))
     }
+    
+    // Pour valider l'abonnement et envoyer les infos en BDD
+    const handleSubmit = () => {
+        axios.post(`${BASE_URL}/addAbonnement`, {
+            user_id: user_id,
+        })
+        .then(res => {
+           setIsValidated(true)
+           dispatch({type:"INIT_CART", payload:[]})
+           console.log(res)
+       })
+       .catch(err => console.log(err))
+    }
+   
+    
+    console.log(state)
     
     return(
         <Fragment>
         <h1>Mon Panier</h1>
+        {state.cart.length === 0 && <p>Votre panier est vide</p>}
         {state.cart.length > 0 && state.cart.map((cart,i) => {
-        console.log("ici")
             return(
-            <div key={i}>
-                <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />
-                <p>{cart.name} : {cart.description}</p>
-                <p>Quantité : {cart.quantity}</p>
-                <p>{cart.price}€ / Mois</p>
-                <button onClick={() => handleDelete(cart.id, cart.product_id)}>Supprimer</button>
-                <p>Sous Total = {Number(cart.quantity)*Number(cart.price)}€ / Mois</p>
-            </div>
+                <div className="profil" key={i}>
+                    <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />
+                    <p>{cart.name} : {cart.description}</p>
+                    <p>{cart.price}€ / Mois</p>
+                    <button className="btn-delete" onClick={() => handleDelete(cart.id)}>Supprimer du panier</button>
+                </div>
             )
         })}
-        <div>TOTAL =</div>
-            <button>Valider mon panier</button>  
+         <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>
+                {isValidated && <p>Merci pour votre commande ! </p>}
         </Fragment>
     )  
 }

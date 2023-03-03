@@ -63,9 +63,9 @@ class Cart {
     
 ////////////////////////////////////// UPDATE ////////////////////////////////////////////////
 
-    async updateCart({quantity, id}){
-        const sql = "UPDATE cart SET quantity = ? WHERE id = ?"
-        const paramsSql = [quantity, id]
+    async updateCart({quantity, product_id, user_id}){
+        const sql = "UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?"
+        const paramsSql = [quantity, user_id, product_id,]
         
         try{
             const result = await this.asyncQuery(sql,paramsSql)
@@ -78,10 +78,21 @@ class Cart {
 
 /////////////////////////////////// DELETE /////////////////////////////////////
 
-    async deleteCartProduct({id}){
-        const sql = "DELETE FROM cart WHERE id = ?"
+    async deleteCartProduct({product_id}){
+        const sql = "DELETE FROM cart WHERE product_id = ?"
         try{
-            const result = await this.asyncQuery(sql,[id])
+            const result = await this.asyncQuery(sql,[product_id])
+            return {result}
+        } catch(err){
+            console.log(err)
+            return err
+        }
+    }
+    
+    async clearCartProduct({user_id}){
+        const sql = "DELETE FROM cart WHERE user_id = ?"
+        try{
+            const result = await this.asyncQuery(sql,[user_id])
             return {result}
         } catch(err){
             console.log(err)

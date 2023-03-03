@@ -13,7 +13,6 @@ Modal.setAppElement('#root');
 
 const Profil = () => {
     const [state, dispatch] = useContext(StoreContext)
-    console.log(state.user)
 
     return(
         <Fragment>

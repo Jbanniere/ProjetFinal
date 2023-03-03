@@ -17,6 +17,7 @@ const AllProduct = () => {
     const deleteProduct = (id) => {
         axios.post(`${BASE_URL}/deleteProduct`, {id})
         .then(res => setAllProduct(allProduct.filter((e)=> e.id !== id)))
+        .catch(err => console.log(err))
     }
 
     return(

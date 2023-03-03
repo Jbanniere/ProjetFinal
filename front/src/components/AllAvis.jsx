@@ -14,7 +14,6 @@ const AllAvis = () => {
             .catch(err => console.log(err))
     },[product_id])
     
-    console.log(allAvis)
 
     
     return(

@@ -28,10 +28,10 @@ const ProfilAvis = () => {
         <Fragment>
             {state.user.role_id === 2 && (
             <div>    
+            <h2>Mes Avis</h2>
                 {userAvis.map((avis,i) => {
                     return(
                     <div key={i}>
-                    <h2>Mes Avis</h2>
                         <div className="profil">
                             <h3>Nom du magazine : {avis.name}</h3>
                             <p>Ma note : {avis.note}/5</p>

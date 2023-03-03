@@ -33,7 +33,6 @@ const ProductDetails = () => {
     const listeNotes = note.map(item => item.note)
     // je fais la moyenne des notes, et je fixe le nombre de chiffres après la virgule à 1
     const moyenneNote = moyenne(listeNotes).toFixed(1)
-    console.log(listeNotes)
     return(
         <Fragment>
             <img width= "50%" src={`${BASE_URL}/image/baby_book.jpg`} alt="bébé avec un livre" />

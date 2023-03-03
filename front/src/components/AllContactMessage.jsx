@@ -30,6 +30,7 @@ const AllContactMessage = () => {
     const deleteContact = (id) => {
         axios.post(`${BASE_URL}/deleteContactMessage`)
         .then(res => setAllContact(allContact.filter((e)=> e.id !== id)))
+        .catch(err => console.log(err))
     }
     
     // Modifier l'état de la demande : traité/non traité

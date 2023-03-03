@@ -17,7 +17,6 @@ const ContactUs = () => {
         message:''
     })
     
-    console.log(newContact)
     
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -43,9 +42,9 @@ const ContactUs = () => {
             message:newContact.message
         })
         .then(res => {
-            console.log(res)
             setIsValidated(true)
         })
+        .catch(err => console.log(err))
     }
     
     return(

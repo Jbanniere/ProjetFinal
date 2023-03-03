@@ -106,8 +106,13 @@ a:visited {
 }
 
 img {
-  width: 100%;
+  width: 25%;
 }
+
+/************************************************************************************************ 
+************************************** MAIN **********************************************
+*************************************************************************************************/
+
 
 /****************************** NAVBAR *********************************/
 .navbar {
@@ -267,13 +272,13 @@ img {
   height: 20px;
   border: none;
   margin: 0.5rem;
+  padding:0;
   border-radius: 50%;
   background: #A7D5FF;
   color: black;
   cursor: pointer;
+  font-weight:bold
 }
-
-
 
 
 /****************************** MESSAGERIE ADMIN *********************************/
@@ -315,8 +320,7 @@ img {
 button {
   background-color:white;
   padding:.2rem;
-  margin-top:.5rem;
-  margin-left:.5rem;
+  margin:.5rem;
   font-family: 'italiana', sans-serif;
   font-size:15px;
   border:1px solid grey;

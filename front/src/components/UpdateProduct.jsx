@@ -23,7 +23,6 @@ const UpdateProduct = () => {
         e.preventDefault()
         axios.post(`${BASE_URL}/updateProduct`,{...updateProduct})
             .then(res => {
-                console.log(res)
                 setIsValidated(true)
             })
             .catch(err => console.log(err))

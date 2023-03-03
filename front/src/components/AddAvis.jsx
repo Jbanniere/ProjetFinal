@@ -1,8 +1,8 @@
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState, useContext, useEffect} from "react"
-import {StoreContext} from "../tools/context.js"
-import {useParams} from "react-router-dom"
+import { BASE_URL } from '../tools/constante.js'
+import { useState, useContext, useEffect } from "react"
+import { StoreContext } from "../tools/context.js"
+import { useParams } from "react-router-dom"
 import { checkIsEmpty } from "../tools/checkInputEmpty.js"
 
 const AddAvis = () => {
@@ -17,13 +17,11 @@ const AddAvis = () => {
         note:0
     })
     
-   console.log(newAvis)
     
     const handleChange = (e) => {
         const {name, value} = e.target
         setNewAvis({...newAvis,[name]:value})
     }
-    console.log(errors)
     
      const submit = (e) => {
         e.preventDefault()
@@ -44,11 +42,10 @@ const AddAvis = () => {
        .then(res => {
            setIsValidated(true)
            console.log(res)
-           
        })
+       .catch(err => console.log(err))
        
     }
-    console.log(newAvis)
     
     return(
         <div>

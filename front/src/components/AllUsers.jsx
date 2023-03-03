@@ -17,12 +17,11 @@ const AllUsers = () => {
             .catch(err => console.log(err))
     },[])
     
-    console.log(allUsers)
     
     const deleteUser = (id) => {
         axios.post(`${BASE_URL}/deleteUser`, {id})
         .then(res => setAllUsers(allUsers.filter((e)=> e.id !== id)))
-
+        .catch(err => console.log(err))
     }
 
     return(

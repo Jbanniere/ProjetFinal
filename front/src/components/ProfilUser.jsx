@@ -26,7 +26,6 @@ const ProfilUser = () => {
             .catch(err => console.log(err))
             
     }, [id]) 
-    console.log(userProfil)
 
 // Pour supprimer un user
     const deleteUser = (id) => {

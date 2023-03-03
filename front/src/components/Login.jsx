@@ -37,6 +37,7 @@ const Login = () => {
                 alert("Email ou mot de passe invalide")
             }
         })
+        .catch(err => console.log(err))
     }
 
     return(

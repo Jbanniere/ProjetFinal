@@ -10,8 +10,6 @@ const AddProduct = () => {
         price:0,
     })
     
-    console.log(product)
-    
     const handleChange = (e) => {
         const {name, value} = e.target
         setProduct({...product,[name]:value})
@@ -22,7 +20,6 @@ const AddProduct = () => {
         const dataFile = new FormData()
         const files = {...e.target.picture.files}
         
-        console.log(files)
     
     // ajout d'autres inputs au formulaire
     dataFile.append('name', product.name)

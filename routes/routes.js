@@ -32,6 +32,7 @@ import getCartByUserIdController from "../controller/getCartByUserId.js"
 import getPictByProductInCartByUserIdController from "../controller/getPictByProductInCartByUserId.js"
 import deleteCartProductController from "../controller/deleteCartProduct.js"
 import updateCartController from "../controller/updateCart.js"
+import addAbonnementController from "../controller/addAbonnement.js"
 
 
 const router = express.Router()
@@ -46,6 +47,7 @@ const routesGET = [
     {route:"/getAllContactMessage", controller: getAllContactMessageController}
     
 ]
+
 const routesPOST = [
     
     {route:"/login", controller: logInController},
@@ -70,7 +72,8 @@ const routesPOST = [
     {route:"/getCartByUserId", controller: getCartByUserIdController},
     {route:"/getPictByProductInCartByUserId", controller: getPictByProductInCartByUserIdController},
     {route:"/deleteCartProduct", controller: deleteCartProductController},
-    {route:"/updateCart", controller: updateCartController}
+    {route:"/updateCart", controller: updateCartController},
+    {route:"/addAbonnement", controller: addAbonnementController}
     
 ]
 

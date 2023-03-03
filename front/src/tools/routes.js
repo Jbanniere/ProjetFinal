@@ -17,6 +17,7 @@ import Home from "../components/Home.jsx"
 import Error404 from '../components/Error404.jsx'
 import MentionsLegales from '../components/MentionsLegales.jsx'
 import Cart from '../components/Cart.jsx'
+import OrderSuccess from "../components/OrderSuccess.jsx"
 
 const routes = [
     {path:"/getAllProduct", component:<AllProduct />, auth:"admin"},
@@ -37,6 +38,7 @@ const routes = [
     {path:"/productDetails/:id", component:<ProductDetails />},
     {path:"/mentionsLegales", component:<MentionsLegales />},
     {path:"/cart", component:<Cart />},
+    {path:"/orderSuccess", component:<OrderSuccess />},
     {path:"/*", component:<Error404 />}
     
 ]

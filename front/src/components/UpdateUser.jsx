@@ -12,7 +12,6 @@ const UpdateUser = () => {
     const navigate = useNavigate()
     const [isValidated, setIsValidated] = useState(false)
 
-console.log({id,user:state.user.id})
     
     // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
         useEffect(()=> {
@@ -36,7 +35,6 @@ console.log({id,user:state.user.id})
     // Pour valider la modification du user
     const submit = (e) =>{
         e.preventDefault()
-        console.log(updateUser)
         axios.post(`${BASE_URL}/updateUser`,{...updateUser})
             .then(res => { 
                 setIsValidated(true)

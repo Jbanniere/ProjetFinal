@@ -1,15 +1,16 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment, useState, useContext } from "react"
+import { Fragment, useState, useContext, useEffect } from "react"
 import {StoreContext} from "../tools/context.js"
 import axios from "axios"
 import { Navigate } from "react-router-dom"
 
 const Abonnements = ({product, id}) => {
     const [state, dispatch] = useContext(StoreContext)
-    // const [qte, setQte] = useState({seul:0,pack:0})
-    const [qte, setQte] = useState(0)
+    const [qte, setQte] = useState(1)
     const [isValidated, setIsValidated] = useState(false)
     const [isRedirected, setIsRedirected] = useState(false)
+    const [updateCart, setUpdateCart] = useState(null)
+    const user_id = state.user.id
     
         const updateStateCart = (cart) => {
             dispatch({
@@ -18,6 +19,13 @@ const Abonnements = ({product, id}) => {
             })
         }
         
+      /* useEffect(() => {
+        axios.post(`${BASE_URL}/getPictByProductInCartByUserId`,{user_id})
+            .then(res => console.log(res.data.result.result))
+            .catch(err => console.log(err))
+        }, [user_id])*/
+
+
         const addToCart = (item) => {
             if(state.user.isLogged) {
                 // On crée d'une copie du state cart
@@ -30,8 +38,14 @@ const Abonnements = ({product, id}) => {
                 // Sinon on rajoute le produit au panier 
                 } else {
                     item.quantity = qte
-                    cart.push(item);
-                    // ajouter le produit en BDD
+                    cart.push(item)
+                    axios.post(`${BASE_URL}/addToCart`,{
+                        user_id:state.user.id,
+                        product_id:id,
+                        quantity:qte
+                    })
+                    .then(() => setIsValidated(true))
+                    .catch(e => console.log(e))
                     updateStateCart(cart)
                 }
             } else {
@@ -39,22 +53,31 @@ const Abonnements = ({product, id}) => {
                 setIsRedirected(true)
             }
         }
-        // Fonction qui servent pour le addToCart
+        
+        // Fonctions qui servent pour le addToCart
         // on regarde si le produit est deja dans le panier
         const itemIsInCart = (id) => {
-            return state.cart.find(item => item.id === id);
+            return state.cart.find(item => item.id == id);
         }
         
         const addQuantity = (item_id) => {
             // on creer une copie du state cart
+            let totalQte = 0
             const cart = [...state.cart]
             // on regarde si le produit est deja dans le panier
             cart.map((item,i) => {
                 if (item.id === item_id) {
+                    totalQte = item.quantity += qte
                     return item.quantity += qte
                 }
             })
-            // mettre a jour la qte en BDD
+            axios.post(`${BASE_URL}/updateCart`,{
+                user_id:state.user.id,
+                product_id:item_id, 
+                quantity:totalQte
+            })
+            .then(res => console.log(res))
+            .catch(e => console.log(e))
             updateStateCart(cart)
         }
     
@@ -65,7 +88,7 @@ const Abonnements = ({product, id}) => {
             <table>
                 <thead>
                     <tr>
-                        <th>Mensuel seul</th>
+                        <th>Abonnement Mensuel</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -89,10 +112,23 @@ const Abonnements = ({product, id}) => {
                     <tr>
                         <td>
                             <p>5,95€ / Mois</p>
-                            <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
-                            <strong id="quantite" >{qte}</strong>
-                            <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
-                            <button onClick={() => addToCart(product)}>Ajouter au panier</button>
+                            {state.products.filter(e => e.id == id).map((cart,i) => {
+                                return(
+                                <div key={i}>
+                                    {!itemIsInCart(cart.id) && (
+                                        <Fragment>
+                                            <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
+                                            <strong id="quantite" >{qte}</strong>
+                                            <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
+                                            <button className= "btn-valid" onClick={() => addToCart(product)}>Ajouter au panier</button>
+                                        </Fragment>
+                                    )}
+                                    {itemIsInCart(cart.id) &&(
+                                        <p>Ce produit est déjà présent dans votre panier</p>
+                                    )}
+                                </div>
+                                )
+                            })}
                         </td>
                      </tr>
                 </tbody>

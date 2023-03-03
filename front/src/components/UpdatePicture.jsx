@@ -8,18 +8,15 @@ const UpdatePicture = () => {
     const [isValidated, setIsValidated] = useState(false)
     const {product_id} = useParams()
     
-    console.log(product_id)
     
      useEffect(() => {
         axios.post(`${BASE_URL}/getPicturesById`,{id:product_id})
             .then(res => {
-                console.log(res)
                 setUpdatePicture(res.data.result.result[0])
             })
             .catch(err => console.log(err))
     }, [product_id])
     
-    console.log(updatePicture)
     
     
     const submit = (e) =>{
@@ -34,7 +31,6 @@ const UpdatePicture = () => {
         
         axios.post(`${BASE_URL}/updatePicture`, dataFile)
             .then((res)=> {
-                console.log(res)
                 res.data.response && console.log('succesfully upload')
                 setIsValidated(true)
             })

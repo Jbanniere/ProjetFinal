@@ -29,6 +29,7 @@ const ProfilCart = () => {
     const deleteCart = (id) => {
          axios.post(`${BASE_URL}/deleteCartProduct`,{id})
          .then(res => setUserCart(userCart.filter((e)=> e.id !== id)))
+         .catch(err => console.log(err))
     }
     
     return(
