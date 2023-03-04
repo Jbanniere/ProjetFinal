@@ -21,17 +21,34 @@ class Abonnement {
             console.log(err)
         }
         
-        
-        
         const sql2 = 'INSERT INTO abonnement (user_id, product_id) VALUES ?'
-      
-        
         
         
         try {
             const result = await this.asyncQuery(sql2, [paramsSql])
             return {result}
         } catch (err) {
+            console.log(err)
+            return err
+        }
+    }
+    
+////////////////////////////////////// READ ////////////////////////////////////////////////
+
+    // Sélectionner un abonnement en fonction du user_id
+    async getAbonnementByUserId ({user_id}) {
+        const sql = `
+        SELECT abonnement.*, products.name, products.price, pictures.url
+        FROM abonnement
+        JOIN products
+        ON abonnement.product_id = products.id
+        JOIN pictures
+        ON pictures.product_id = products.id
+        WHERE user_id = ?`
+        try{
+            const result = await this.asyncQuery(sql,[user_id])
+            return {result}
+        } catch(err){
             console.log(err)
             return err
         }

@@ -1,7 +1,10 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment, useState, useContext, useEffect} from "react"
+import { Fragment, useState, useContext, useEffect } from "react"
 import { StoreContext } from "../tools/context.js"
 import axios from "axios"
+import OrderSuccess from './OrderSuccess.jsx'
+import { Navigate } from "react-router-dom"
+
 
 const Cart = () => {
     const [state, dispatch] = useContext(StoreContext)
@@ -68,22 +71,23 @@ const Cart = () => {
         .catch(err => console.log(err))
     }
     
-    // Pour valider l'abonnement et envoyer les infos en BDD
+    // Pour valider l'abonnement et envoyer les infos en BDD et vider le reducer
     const handleSubmit = () => {
         axios.post(`${BASE_URL}/addAbonnement`, {
             user_id: user_id,
         })
         .then(res => {
            setIsValidated(true)
-           dispatch({type:"INIT_CART", payload:[]})
-           console.log(res)
+           console.log(isValidated)
+           dispatch({
+               type:"INIT_CART",
+               payload:[]
+               
+           })
        })
        .catch(err => console.log(err))
     }
    
-    
-    console.log(state)
-    
     return(
         <Fragment>
         <h1>Mon Panier</h1>
@@ -98,64 +102,10 @@ const Cart = () => {
                 </div>
             )
         })}
-         <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>
-                {isValidated && <p>Merci pour votre commande ! </p>}
+        <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>
+        {isValidated && <Navigate to="/orderSuccess" />}
         </Fragment>
     )  
 }
 
 export default Cart
-
-/*<table>
-                <thead>
-                    <tr>
-                        <th colSpan= "6">Mon Panier</th>
-                    </tr>
-                    <tr>
-                        <th>Product Id</th>
-                        <th>Aperçu</th>
-                        <th>Nom du produit</th>
-                        <th>Quantité</th>
-                        <th>Prix</th>
-                        <th>Total</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {state.cart.map((item,i) => {
-                    return(
-                    <tr key={i}>
-                        <td>{item.product}</td>
-                        <td>Image</td>
-                        <td>{item.name}</td>
-                        <td>{item.quantite}</td>
-                        <td>{item.prix}</td>
-                        <td>Sous Total</td>
-                        <td>
-                            <FontAwesomeIcon icon={faTrash} color={ 'red' } onClick={() => handleRemoveItem(item.product)}/>
-                        </td>
-                    </tr>
-                    )
-                })}
-                
-                {pictures.map((cart,i) => {
-                    return(
-                    <tr key={i}>
-                        <td>{cart.product_id}</td>
-                        <td><img src={`${BASE_URL}/img/${cart.url}`} width = "25%" alt={cart.caption} /></td>
-                        <td>{cart.name}</td>
-                        <td>{cart.quantity}</td>
-                        <td>{cart.price}</td>
-                        <td>Sous Total</td>
-                        <td>
-                            <FontAwesomeIcon icon={faTrash} color={ 'red' } onClick={() => handleSubmit(cart.id)}/>
-                        </td>
-                    </tr>
-                    )
-                })}
-                    <tr>
-                        <td colSpan="4">Total</td>
-                        <td>Sous-Total</td>
-                    </tr>
-                </tbody>
-            </table>*/

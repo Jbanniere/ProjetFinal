@@ -65,36 +65,36 @@ const ContactUs = () => {
             <form onSubmit={submit}>
                 <fieldset>
                 <legend>Mes coordonnées</legend>
-                    <div>
+                    <div className="fields">
                         <label>Nom: </label>
-                        <input type='text' placeholder='Nom' name='nom' onChange={handleChange} value={newContact.nom} />
+                        <input className="input-size" type='text' placeholder='Nom' name='nom' onChange={handleChange} value={newContact.nom} />
                         {errors.nom && <p>{errors.nom}</p>}
                     </div>
-                    <div>
+                    <div className="fields">
                         <label>Prénom: </label>
-                        <input type='text' placeholder='Prénom' name='prenom' onChange={handleChange} value={newContact.prenom}/>
+                        <input className="input-size" type='text' placeholder='Prénom' name='prenom' onChange={handleChange} value={newContact.prenom}/>
                         {errors.prenom && <p>{errors.prenom}</p>}
                     </div>
-                    <div>
+                    <div className="fields">
                         <label>Email: </label>
-                        <input type='email' placeholder='Email' name='email' onChange={handleChange} value={newContact.email} />
+                        <input className="input-size" type='email' placeholder='Email' name='email' onChange={handleChange} value={newContact.email} />
                         {errors.email && <p>{errors.email}</p>}
                     </div>
                 </fieldset>
             
                 <fieldset>
                 <legend>Ma Demande</legend>
-                 <div>
+                 <div className="fields">
                         <label>Objet de ma demande: </label>
-                        <input type='text' placeholder='Objet' name='objet' onChange={handleChange} value={newContact.objet} />
+                        <input className="input-size" type='text' placeholder='Objet' name='objet' onChange={handleChange} value={newContact.objet} />
                         {errors.objet && <p>{errors.objet}</p>}
                     </div>
-                    <div>
+                    <div className="fields">
                         <label>Message: </label>
                         <textarea placeholder='Message' name='message' onChange={handleChange} value={newContact.message} />
                         {errors.message && <p>{errors.message}</p>}
                     </div>
-                    <div>
+                    <div className="fields">
                         <input type='submit' value = 'Envoyer votre demande' />
                     </div>
                 </fieldset>

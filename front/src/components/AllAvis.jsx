@@ -1,7 +1,9 @@
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useParams} from "react-router-dom"
+import { BASE_URL } from '../tools/constante.js'
+import { useParams } from "react-router-dom"
+import { formatDate } from "../tools/date.js"
+
 
 
 const AllAvis = () => {
@@ -23,7 +25,7 @@ const AllAvis = () => {
                 return(
                 <div key={i}>
                     <h3>L'avis de {avis.prenom}</h3>
-                    <p>{avis.note}/5 : {avis.content}</p>
+                    <p>{avis.note}/5 : {avis.content} - {formatDate(avis.date)}</p>
                 </div>
                 )
             })}

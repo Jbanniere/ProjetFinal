@@ -33,6 +33,8 @@ import getPictByProductInCartByUserIdController from "../controller/getPictByPro
 import deleteCartProductController from "../controller/deleteCartProduct.js"
 import updateCartController from "../controller/updateCart.js"
 import addAbonnementController from "../controller/addAbonnement.js"
+import getAbonnementByUserIdController from "../controller/getAbonnementByUserId.js"
+import deleteAbonnementController from "../controller/deleteAbonnement.js"
 
 
 const router = express.Router()
@@ -73,7 +75,9 @@ const routesPOST = [
     {route:"/getPictByProductInCartByUserId", controller: getPictByProductInCartByUserIdController},
     {route:"/deleteCartProduct", controller: deleteCartProductController},
     {route:"/updateCart", controller: updateCartController},
-    {route:"/addAbonnement", controller: addAbonnementController}
+    {route:"/addAbonnement", controller: addAbonnementController},
+    {route:"/getAbonnementByUserId", controller: getAbonnementByUserIdController},
+    {route:"/deleteAbonnement", controller: deleteAbonnementController}
     
 ]
 

@@ -24,7 +24,7 @@ const routes = [
     {path:"/addProduct", component:<AddProduct />, auth:"admin"},
     {path:"/updateProduct/:id", component:<UpdateProduct />, auth:"admin"},
     {path:"/getAllUsers", component:<AllUsers />, auth:"admin"},
-    {path:"/updateUser/:id", component:<UpdateUser />, auth:"user"},
+    {path:"/updateUser/:id", component:<UpdateUser />},
     {path:"/updatePicture/:product_id", component:<UpdatePicture />, auth:"admin"},
     {path:"/getAllContactMessage", component:<AllContactMessage />, auth:"admin"},
     {path:"/", component:<Home />},

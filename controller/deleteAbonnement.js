@@ -3,9 +3,10 @@ import Abonnement from '../model/Abonnement.js'
 
 export default async (req,res) => {
     const {id} = req.body
+    console.log(req.body)
     const myBDD = new BDD()
     const abo = await new Abonnement(myBDD)
-    const result = await abo.addAbonnement({id})
+    const result = await abo.deleteAbonnement({id})
     if(!result){
             return res.status(500).json({error:`Merci de remplir tous les champs`})
     }

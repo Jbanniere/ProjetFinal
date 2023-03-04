@@ -1,8 +1,8 @@
-import {useEffect, useState, Fragment} from "react"
+import { useEffect, useState, Fragment } from "react"
 import axios from "axios"
 import {BASE_URL} from '../tools/constante.js'
-import {useParams, NavLink} from "react-router-dom"
-import {moyenne} from '../tools/moyenne.js'
+import { useParams, NavLink } from "react-router-dom"
+import { moyenne } from '../tools/moyenne.js'
 import AvisPro from "./AvisPro.jsx"
 import Abonnements from "./Abonnements.jsx"
 

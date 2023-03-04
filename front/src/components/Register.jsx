@@ -80,27 +80,27 @@ const Register = () => {
                     <legend>Mes Coordonnées</legend>
                         <div className="fields">
                             <label>Nom : </label>
-                            <input className="input-register" type='text' placeholder='Votre Nom' name='nom' onChange={handleChange} value={userData.nom} />
+                            <input className="input-size" type='text' placeholder='Votre Nom' name='nom' onChange={handleChange} value={userData.nom} />
                             {errors.nom && <p>{errors.nom}</p>}
                         </div>
                         <div className="fields">
                             <label>Prénom :</label>
-                            <input className="input-register" type='text' placeholder='Votre Prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
+                            <input className="input-size" type='text' placeholder='Votre Prénom' name='prenom' onChange={handleChange} value={userData.prenom} />
                             {errors.prenom && <p>{errors.prenom}</p>}
                         </div>
                         <div className="fields">
                             <label>N° et Rue : </label>
-                            <input className="input-register" type='text' placeholder='Adresse : N° et rue' name='street' onChange={handleChange} value={userData.street} />
+                            <input className="input-size" type='text' placeholder='Adresse : N° et rue' name='street' onChange={handleChange} value={userData.street} />
                             {errors.street && <p>{errors.street}</p>}
                         </div>
                         <div className="fields">
                             <label>Code Postal :</label>
-                            <input className="input-register" type='number' placeholder='Adresse : Code Postal' name='zip' onChange={handleChange} value={userData.zip} />
+                            <input className="input-size" type='number' placeholder='Adresse : Code Postal' name='zip' onChange={handleChange} value={userData.zip} />
                             {errors.zip && <p>{errors.zip}</p>}
                         </div>
                         <div className="fields">
                             <label>Ville :</label>
-                            <input className="input-register" type='text' placeholder='Adresse : Ville' name='city' onChange={handleChange} value={userData.city} />
+                            <input className="input-size" type='text' placeholder='Adresse : Ville' name='city' onChange={handleChange} value={userData.city} />
                             {errors.city && <p>{errors.city}</p>}
                         </div>
                 </fieldset>
@@ -108,12 +108,12 @@ const Register = () => {
                     <legend>Mes Identifiants</legend>
                         <div className="fields">
                             <label> Email :</label>
-                            <input className="input-register" type='text' placeholder='Votre Email' name='email' onChange={handleChange} value={userData.email} />
+                            <input className="input-size" type='text' placeholder='Votre Email' name='email' onChange={handleChange} value={userData.email} />
                             {errors.email && <p>{errors.email}</p>}
                         </div>
                         <div className="fields">
                             <label>Mot de passe :</label>
-                            <input className="input-register" type='password' placeholder='Mot de passe : Plus de 8 caractères' name='password' onChange={handleChange} value={userData.password} />
+                            <input className="input-size" type='password' placeholder='Mot de passe : Plus de 8 caractères' name='password' onChange={handleChange} value={userData.password} />
                             {errors.password && <p>{errors.password}</p>}
                         </div>
                     </fieldset>

@@ -133,7 +133,7 @@ const Abonnements = ({product, id}) => {
                      </tr>
                 </tbody>
             </table>
-            {isValidated && <p>Votre produit a bien été ajouté au panier</p>}
+            {isValidated && <Navigate to="/cart" />}
             {isRedirected && <Navigate to="/login" />}
            
         </Fragment>
