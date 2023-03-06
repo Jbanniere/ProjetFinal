@@ -1,8 +1,6 @@
-import {useEffect, useState, useContext, Fragment} from "react"
-import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {NavLink} from "react-router-dom"
-import {StoreContext} from "../tools/context.js"
+import { Fragment } from "react"
+import { BASE_URL } from '../tools/constante.js'
+import { NavLink } from "react-router-dom"
 
 const PanelAdmin = () => {
     return(
@@ -15,17 +13,17 @@ const PanelAdmin = () => {
                 </div>
                 <div>
                     <h3>Mes Données</h3>
-                        <ul className="menu__paneladmin">
-                            <li>
-                                <NavLink to="/getAllProduct">Gestion de mes produits & avis utilisateurs</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/getAllUsers">Gestion de mes utilisateurs</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/getAllContactMessage">Ma Messagerie</NavLink>
-                            </li>
-                        </ul>
+                        <div className="menu__gestion flex">
+                            <div className="menu-gestion">
+                                <NavLink to="/getAllProduct">Gestion de mes Produits</NavLink>
+                            </div>
+                            <div className="menu-gestion">
+                                <NavLink to="/getAllUsers">Gestion de mes Utilisateurs</NavLink>
+                            </div>
+                            <div className="menu-gestion">
+                                <NavLink to="/getAllContactMessage">Demandes de Contact</NavLink>
+                            </div>
+                        </div>
                 </div>
             </div>
         </Fragment>

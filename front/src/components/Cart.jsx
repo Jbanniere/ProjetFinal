@@ -2,18 +2,15 @@ import { BASE_URL } from '../tools/constante.js'
 import { Fragment, useState, useContext, useEffect } from "react"
 import { StoreContext } from "../tools/context.js"
 import axios from "axios"
-import OrderSuccess from './OrderSuccess.jsx'
 import { Navigate } from "react-router-dom"
 
 
 const Cart = () => {
     const [state, dispatch] = useContext(StoreContext)
-    const [qte, setQte] = useState(0)
+//    const [qte, setQte] = useState(0)
     const user_id = state.user.id
     const [isValidated, setIsValidated] = useState(false)
-    const [abonnement, setAbonnement] = useState({
-        user_id: user_id,
-    })
+//    const [abonnement, setAbonnement] = useState({ user_id: user_id })
     
     // Je récupère tous les produits que je stocke dans le reducer
     useEffect(()=>{
@@ -78,7 +75,6 @@ const Cart = () => {
         })
         .then(res => {
            setIsValidated(true)
-           console.log(isValidated)
            dispatch({
                type:"INIT_CART",
                payload:[]
@@ -94,15 +90,18 @@ const Cart = () => {
         {state.cart.length === 0 && <p>Votre panier est vide</p>}
         {state.cart.length > 0 && state.cart.map((cart,i) => {
             return(
+            <Fragment>
                 <div className="profil" key={i}>
                     <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />
                     <p>{cart.name} : {cart.description}</p>
                     <p>{cart.price}€ / Mois</p>
                     <button className="btn-delete" onClick={() => handleDelete(cart.id)}>Supprimer du panier</button>
                 </div>
+                <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>
+            </Fragment>
             )
+            
         })}
-        <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>
         {isValidated && <Navigate to="/orderSuccess" />}
         </Fragment>
     )  

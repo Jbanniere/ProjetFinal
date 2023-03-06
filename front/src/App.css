@@ -58,9 +58,14 @@
   outline:none;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin:0;
   font-family: 'Baskerville', sans-serif;
+  font-size:1.4rem;
 }
 
 footer {
@@ -75,7 +80,8 @@ table, tr, td {
 h1 {
   font-family: 'Kiddosy Free', sans-serif;
   color:#62ad76;
-  margin: 1rem 0.5rem;
+  margin: 2rem 0.5rem;
+  font-size: 3.5rem;
   
 }
 
@@ -84,11 +90,13 @@ h2 {
   color: #AADCB8;
   text-decoration:underline;
   margin: 1rem 0.5rem;
+  font-size:2.5rem;
 }
 
 h3 {
   font-family: 'TwiggyPop', sans-serif;
   margin-bottom:.5rem;
+  font-size:1.5rem;
 }
 
 ul{
@@ -106,12 +114,22 @@ a:visited {
 }
 
 img {
-  width: 25%;
+  width: 100%;
 }
 
 .underline {
   text-decoration:underline;
 }
+
+.flex {
+  display:flex;
+}
+
+.container {
+  max-width:47rem;
+  margin:auto;
+}
+
 
 /************************************************************************************************ 
 ************************************** MAIN **********************************************
@@ -150,8 +168,8 @@ img {
 
 .navbar__logo {
   position:relative;
-  left:3rem;
-  top:-.7rem;
+  left:4rem;
+  top:-1.2rem;
   width:50%;
 }
 
@@ -172,6 +190,12 @@ img {
   display:flex;
   padding-bottom:1rem;
   width:50%;
+  justify-content:center;
+}
+
+.icons-navbar-flex {
+  display:flex;
+  justify-content:center;
 }
 
 
@@ -232,8 +256,8 @@ img {
   .burger-bar::before,
   .burger-bar::after{
     display:block;
-    width:30px;
-    height:3px;
+    width:3rem;
+    height:.3rem;
     position:relative;
     border-radius:3px;
     background:black;
@@ -271,6 +295,11 @@ img {
 }
 /******************************* CARD PRODUCTS ************************************/
 
+.card-product {
+  padding:5rem 0;
+}
+
+
 .btn-product-qte {
   width: 20px;
   height: 20px;
@@ -284,16 +313,6 @@ img {
   font-weight:bold
 }
 
-
-/****************************** MESSAGERIE ADMIN *********************************/
-
-.etat-0 {
-  background-color:#f27171;
-}
-
-.etat-1 {
-  background-color:#80ad82;
-}
 
 
 /******************************** PROFIL USER ************************************/
@@ -324,11 +343,12 @@ img {
 button {
   background-color:white;
   padding:.2rem;
-  margin:.5rem;
+  margin:.4rem;
   font-family: 'italiana', sans-serif;
-  font-size:15px;
+  font-size:1.3rem;
   border:1px solid grey;
   padding:5px;
+  cursor:pointer;
 
 }
 
@@ -337,9 +357,55 @@ button {
 }
 
 
+/*********************************** PROFIL ADMIN ************************************/
+
+.menu__gestion {
+  justify-content:space-around;
+}
+
+.menu-gestion {
+  width:30%;
+  margin-bottom:1rem;
+  text-align:center;
+  background-color:#dddddd;
+  padding:.5rem;
+  font-family: 'TwiggyPop', sans-serif;
+  vertical-align: baseline;
+  font-size:1.5rem;
+}
+
+/******************************** MESSAGERIE ADMIN ************************************/
+
+.etat-0 {
+  background-color:#f27171;
+}
+
+.etat-1 {
+  background-color:#80ad82;
+}
+
+.full-table {
+  display:none;
+}
+
+@media screen and (min-width:780px) {
+  
+  .full-table {
+    display:block;
+  }
+  
+  .mobile-table {
+    display:none;
+  }
+}
+
+
+
 /******************************** TABLES ************************************/
+
 table {
   margin:1rem;
+  border-collapse:collapse;
 }
 
 td {
@@ -357,7 +423,7 @@ td {
 }
 
 
-/******************************** REGISTER ************************************/
+/******************************** FORM ************************************/
 
 form {
   margin:1rem;
@@ -374,7 +440,7 @@ fieldset {
 legend {
     padding:0 1em;
     font-family: 'TwiggyPop', sans-serif;
-    font-size:1.5rem;
+    font-size:2rem;
     margin-bottom:1rem;
     color:#a7d5ff;
     text-shadow: 1px 1px 1px black;
@@ -391,4 +457,18 @@ label {
   border-radius:10px;
   border: 1px solid grey;
   text-align:center;
+}
+
+textarea {
+    width:75%;
+    height:8em;
+    margin:.5rem;
+    border-radius:10px;
+    border: 1px solid grey;
+    text-align:center;
+}
+
+.btn-input {
+  display:flex;
+  justify-content:center
 }

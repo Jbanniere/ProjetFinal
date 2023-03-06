@@ -23,7 +23,7 @@ const AllProduct = () => {
     return(
         <div>
             <h1>Mes produits</h1>
-            <button className="btn-add-product"><NavLink to="/addProduct"> Ajouter un nouveau produit</NavLink></button>
+            <button className="btn-valid"><NavLink to="/addProduct"> Ajouter un nouveau produit</NavLink></button>
             {allProduct.map((product,i) => {
                 return(
                 <div className="profil" key={i}>

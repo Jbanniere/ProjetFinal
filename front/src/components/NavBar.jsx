@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import axios from 'axios'
 import { useContext, useEffect, Fragment, useState } from "react"
-import {StoreContext} from "../tools/context.js"
+import { StoreContext } from "../tools/context.js"
 import { BASE_URL } from "../tools/constante.js"
 
 const NavBar = (props) => {
@@ -78,12 +78,12 @@ const NavBar = (props) => {
                     <span className="burger-bar"></span>
                 </button>
                 <div className="navbar__icons">
-                    <NavLink to="/getProfil"><img className="nav_img_profil" src={`${BASE_URL}/image/girafe.png`} alt="chat pour profil"/></NavLink>
+                    <NavLink className="icons-navbar-flex" to="/getProfil"><img className="nav_img_profil" src={`${BASE_URL}/image/girafe.png`} alt="girafe pour profil"/></NavLink>
                     {state.user.isLogged && (
-                        <NavLink to="/cart"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
+                        <NavLink className="icons-navbar-flex" to="/cart"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
                     )}
                     {state.user.isLogged === false && (
-                        <NavLink to="/login"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
+                        <NavLink className="icons-navbar-flex" to="/login"><img className="nav_img_cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
                     )}
                 </div>
             </nav>

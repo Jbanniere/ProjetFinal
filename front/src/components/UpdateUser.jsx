@@ -1,8 +1,8 @@
-import {useState, useEffect, useContext} from "react"
-import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect, useContext } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
-import {StoreContext} from "../tools/context.js"
+import { BASE_URL } from "../tools/constante.js"
+import { StoreContext } from "../tools/context.js"
 
 
 const UpdateUser = () => {
@@ -15,11 +15,11 @@ const UpdateUser = () => {
     
     // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
         useEffect(()=> {
-            if(id != state.user.id) return navigate("/");
+            if(!state.user.isAdmin || state.user.id != state.user.id) return navigate("/");
         },[])
         
         useEffect(() => {
-            if(id == state.user.id){
+            if(state.user.isAdmin || id == state.user.id){
                 axios.post(`${BASE_URL}/getUserById`,{id})
                     .then(res => setUpdateUser(res.data.result.result[0]))
                     .catch(err => console.log(err))
@@ -38,7 +38,6 @@ const UpdateUser = () => {
         axios.post(`${BASE_URL}/updateUser`,{...updateUser})
             .then(res => { 
                 setIsValidated(true)
-                console.log(res)
             })
             .catch(err => console.log(err))
     }
@@ -47,22 +46,34 @@ const UpdateUser = () => {
         <div>
         
         {updateUser && (
-           <form>
-           <fieldset>
-                <label>Nom : </label>
-                <input type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
-                <label>Prénom : </label>
-                <input type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
-                <label>Numéro et Rue : </label>
-                <input type='text' placeholder='street' name='street' onChange={handleChange} value={updateUser.street} />
-                <label>Code Postal : </label>
-                <input type='number' placeholder='zip' name='zip' onChange={handleChange} value={updateUser.zip} />
-                <label>Ville : </label>
-                <input type='text' placeholder='city' name='city' onChange={handleChange} value={updateUser.city} />
-                <label>Email : </label>
-                <input type='text' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
-                <button onClick={submit}>Modifier les infos</button>
-            </fieldset>
+           <form type="submit">
+                <div className="fields">
+                    <label>Nom : </label>
+                    <input className="input-size" type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
+                </div>
+                <div className="fields">
+                    <label>Prénom : </label>
+                    <input className="input-size" type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
+                </div>
+                <div className="fields">
+                    <label>Numéro et Rue : </label>
+                    <input className="input-size" type='text' placeholder='street' name='street' onChange={handleChange} value={updateUser.street} />
+                </div>
+                <div className="fields">
+                    <label>Code Postal : </label>
+                    <input className="input-size" type='number' placeholder='zip' name='zip' onChange={handleChange} value={updateUser.zip} />
+                </div>
+                <div className="fields">
+                    <label>Ville : </label>
+                    <input className="input-size" type='text' placeholder='city' name='city' onChange={handleChange} value={updateUser.city} />
+                </div>
+                <div className="fields">
+                    <label>Email : </label>
+                    <input className="input-size" type='email' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
+                </div>
+                <div className="btn-input">
+                    <button onClick={submit}>Modifier les infos</button>
+                </div>
         </form>   
             )}
             

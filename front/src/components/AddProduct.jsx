@@ -1,6 +1,6 @@
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
-import {useState, Fragment} from "react"
+import { BASE_URL } from '../tools/constante.js'
+import { useState, Fragment } from "react"
 
 const AddProduct = () => {
     const [isValidated, setIsValidated] = useState(false)
@@ -31,7 +31,7 @@ const AddProduct = () => {
     
     axios.post(`${BASE_URL}/addProduct`, dataFile)
         .then((res)=> {
-            console.log(res)
+            e.preventDefault()
             res.data.response && console.log('succesfully upload')
             setIsValidated(true)
         })
@@ -42,31 +42,37 @@ const AddProduct = () => {
     
     return(
         <Fragment>
-        <form onSubmit={submitData} encType="multipart/form-data">
-            <div>
-                <label>Nom du produit :</label>
-                <input type='text' placeholder='name' name='name' onChange={handleChange} value={product.name} />
-            </div>
-            <div>
-                <label>Description/résumé :</label>
-                <textarea placeholder='description' name='description' onChange={handleChange} value={product.description} />
-            </div>
-            <div>
-                <label>Prix de l'abonnement mensuel seul :</label>
-                <input type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={product.price} />
-            </div>
-            
-            <p>Ajouter une image</p>
-            <label name='picture'>
-                <input type='file' name='picture'/>
-            </label>
-            <div>
-                <input type="submit" value="Créer nouveau produit" />
-            </div>
+        <form type="submit">
+            <fieldset>
+                <legend>Ajouter un Produit</legend>
+                    <form onSubmit={submitData} encType="multipart/form-data">
+                        <div className="fields">
+                            <label>Nom du produit:</label>
+                            <input className="input-size" type='text' placeholder='Nom du produit' name='name' onChange={handleChange} value={product.name} />
+                        </div>
+                        <div className="fields">
+                            <label>Description:</label>
+                            <textarea placeholder='description' name='description' onChange={handleChange} value={product.description} />
+                        </div>
+                        <div className="fields">
+                            <label>Prix:</label>
+                            <input className="input-size" type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={product.price} />
+                        </div>
+                        <div className="fields">
+                            <p>Ajouter une image</p>
+                            <label name='picture'>
+                                <input type='file' name='picture'/>
+                            </label>
+                        </div>
+                        <div>
+                            <button className="btn-valid" type="submit">Créer mon produit</button>
+                        </div>
+                    </form>
+                    {isValidated && (
+                                <p>Votre produit a été ajouté avec succès</p>
+                            )} 
+            </fieldset>
         </form>
-        {isValidated && (
-                    <p>Votre produit a été ajouté avec succès</p>
-                )} 
         </Fragment>
     )
 }

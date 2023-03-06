@@ -9,7 +9,7 @@ const Login = () => {
     
     const initialState = {password:'',email:''}
     const [info , setInfo] = useState(initialState)
-    const [state, dispatch] = useContext(StoreContext)
+    const [_, dispatch] = useContext(StoreContext)
     const [login, setLogin] = useState(false)
 
     const handleChange = (e) => {
@@ -33,11 +33,13 @@ const Login = () => {
                 axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.response.token
                 setInfo(initialState)
                 setLogin(true)
-            } else {
-                alert("Email ou mot de passe invalide")
             }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            alert("Email ou mot de passe invalide")
+        })
+        
     }
 
     return(
@@ -45,15 +47,19 @@ const Login = () => {
             <form onSubmit={submit}>
                 <fieldset>
                     <legend>Déjà inscrit ?</legend>
-                    <label> Email : </label>
-                    <input type='text' placeholder='email' name='email' onChange={handleChange} value={info.email} />
-                    <label> Mot de passe : </label>
-                    <input type='password' placeholder='password' name='password' onChange={handleChange} value={info.password} />
-                    <button type='submit'>Se Connecter</button>
+                    <div className="fields">
+                        <label> Email : </label>
+                        <input className="input-size" type='text' placeholder='email' name='email' onChange={handleChange} value={info.email} />
+                    </div>
+                    <div className="fields">
+                        <label> Mot de passe : </label>
+                        <input className="input-size" type='password' placeholder='password' name='password' onChange={handleChange} value={info.password} />
+                    </div>
+                    <button className="btn-valid">Se Connecter</button>
                 </fieldset>
                 <fieldset>
                     <legend>Rejoindre la tribu ?</legend>
-                    <button><NavLink to="/register">Créer un compte</NavLink></button>
+                    <button className="btn-valid"><NavLink to="/register">Créer un compte</NavLink></button>
                 </fieldset>
             </form> 
          { login && <Navigate to="/getProfil" /> }

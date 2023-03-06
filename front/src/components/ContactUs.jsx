@@ -51,7 +51,7 @@ const ContactUs = () => {
         <Fragment>
         <h1>Nous contacter</h1>
             <div>
-                <p><FontAwesomeIcon icon={ faPhone } />02 33 44 55 66 (du lundi au vendredi de 9h à 18h)</p>
+                <p><FontAwesomeIcon icon={ faPhone } /><a href="tel:0233445566">02 33 44 55 66 </a>(du lundi au vendredi de 9h à 18h)</p>
                 <p><FontAwesomeIcon icon={ faEnvelope } />Utiliser le formulaire de contact ci-dessous</p>
                 <div>
                     <FontAwesomeIcon icon={ faLocationDot} />
@@ -94,8 +94,8 @@ const ContactUs = () => {
                         <textarea placeholder='Message' name='message' onChange={handleChange} value={newContact.message} />
                         {errors.message && <p>{errors.message}</p>}
                     </div>
-                    <div className="fields">
-                        <input type='submit' value = 'Envoyer votre demande' />
+                    <div className="btn-input">
+                        <button className="btn-valid btn-contact" onClick={submit}>Envoyer votre demande</button>
                     </div>
                 </fieldset>
             </form>

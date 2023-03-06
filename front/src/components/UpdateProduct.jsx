@@ -1,7 +1,7 @@
-import {useState, useEffect } from "react"
-import {useParams} from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import axios from "axios"
-import {BASE_URL} from "../tools/constante.js"
+import { BASE_URL } from "../tools/constante.js"
 
 const UpdateProduct = () => {
     const [updateProduct, setUpdateProduct] = useState(null)
@@ -30,21 +30,25 @@ const UpdateProduct = () => {
     
    return(
        <div>
+            <h1>Modifier un produit</h1>
        {updateProduct !== null && (
-            <form>
-                <div>
+            <form type="submit">
+                <div className="fields">
                     <label>Titre du mensuel : </label>
-                    <input type='text' placeholder='name' name='name' onChange={handleChange} value={updateProduct.name} />
+                    <input className="input-size" type='text' placeholder='name' name='name' onChange={handleChange} value={updateProduct.name} />
                 </div>
-                <div>
+    
+                <div className="fields">
+                    <label>Prix de l'abonnement: </label>
+                    <input className="input-size" type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={updateProduct.price} />
+                </div>
+                <div className="fields">
                     <label>Description : </label>
                     <textarea placeholder='description' name='description' onChange={handleChange} value={updateProduct.description} />
                 </div>
-                <div>
-                    <label>Prix de l'abonnement mensuel seul : </label>
-                    <input type='number' placeholder='prix du mensuel seul' name='price' onChange={handleChange} value={updateProduct.price} />
+                <div className="btn-input">
+                    <button className="btn-valid" onClick= {submit}>Valider mes modifications</button>
                 </div>
-                <button onClick= {submit}>Valider mes modifications</button>
             </form>
             )}
         {isValidated && (

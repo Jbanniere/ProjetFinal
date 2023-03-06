@@ -28,7 +28,10 @@ const ProfilCart = () => {
     // Pour supprimer un abonnement dans le cart
     const handleDelete = (id) => {
          axios.post(`${BASE_URL}/deleteAbonnement`,{id})
-         .then(res => setAbonnement(abonnement.filter((e)=> e.id !== id)))
+         .then(res => {
+             setAbonnement(abonnement.filter((e)=> e.id !== id))
+             closeModal(true)
+         })
          .catch(err => console.log(err))
     }
     

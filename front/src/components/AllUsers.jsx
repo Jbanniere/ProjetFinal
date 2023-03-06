@@ -9,7 +9,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 
 const AllUsers = () => {
-    const [allUsers, setAllUsers] = useState([])
+    const [ allUsers, setAllUsers ] = useState([])
     
     useEffect(() => {
         axios.get(`${BASE_URL}/getAllUsers`)
@@ -37,8 +37,8 @@ const AllUsers = () => {
                         <th>CP</th>
                         <th>Ville</th>
                         <th>Email</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>

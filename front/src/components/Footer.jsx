@@ -9,8 +9,10 @@ const Footer = () => {
             <footer>
                 <div>
                     <p>Suivez-nous sur : 
-                        <FontAwesomeIcon icon={faFacebook} /><FontAwesomeIcon icon={faTwitterSquare} />
-                        <FontAwesomeIcon icon={faInstagram} /><FontAwesomeIcon icon={faYoutube} />
+                        <NavLink to="/"><FontAwesomeIcon icon={faFacebook} /></NavLink>
+                        <NavLink to="/"><FontAwesomeIcon icon={faTwitterSquare} /></NavLink>
+                        <NavLink to="/"><FontAwesomeIcon icon={faInstagram} /></NavLink>
+                        <NavLink to="/"><FontAwesomeIcon icon={faYoutube} /></NavLink>
                     </p>
                 </div>
                 <div>
@@ -20,8 +22,6 @@ const Footer = () => {
                         <li><NavLink to="/register">S'inscrire</NavLink></li>
                         <li><NavLink to="/getProfil">Mon Profil</NavLink></li>
                         <li><NavLink to="/mentionsLegales">Mentions Légales</NavLink></li>
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/">Home</NavLink></li>
                     </ul>
                 </div>
             </footer>
