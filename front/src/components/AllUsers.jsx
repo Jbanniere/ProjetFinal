@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 
-
 const AllUsers = () => {
     const [ allUsers, setAllUsers ] = useState([])
     
@@ -27,7 +26,9 @@ const AllUsers = () => {
     return(
         <Fragment>
         <h1>Mes Utilisateurs</h1>
-           <table>
+        
+        {/*Tableau version Desktop*/}
+           <table className="full-table">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -51,6 +52,38 @@ const AllUsers = () => {
                             <td>{user.street}</td>
                             <td>{user.zip}</td>
                             <td>{user.city}</td>
+                            <td>{user.email}</td>
+                            <td><button className="btn-array"><NavLink to={`/updateUser/${user.id}`}><FontAwesomeIcon icon={faPen} /></NavLink></button></td>
+                            <td><button className="btn-array fatrash" onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrash}/></button></td>
+                        </tr>
+                        )
+                    })}
+                 </tbody>
+            </table>
+            
+            {/*Tableau version Mobile*/}
+            <table className="mobile-table">
+                <thead>
+                    <tr>
+                        <th>Infos</th>
+                        <th>Adresse</th>
+                        <th>Email</th>
+                        <th>Modifier</th>
+                        <th>Supp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {allUsers.map((user,i) => {
+                        return(
+                        <tr key={i}>
+                            <td>
+                                <p>id: {user.id}</p>
+                                <p>{user.nom} {user.prenom}</p>
+                            </td>
+                            <td>
+                                <p>{user.street}</p>
+                                <p>{user.zip} {user.city}</p>
+                            </td>
                             <td>{user.email}</td>
                             <td><button className="btn-array"><NavLink to={`/updateUser/${user.id}`}><FontAwesomeIcon icon={faPen} /></NavLink></button></td>
                             <td><button className="btn-array fatrash" onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrash}/></button></td>

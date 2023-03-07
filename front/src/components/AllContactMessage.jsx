@@ -1,6 +1,6 @@
 import { useEffect, useState, Fragment } from "react"
 import axios from "axios"
-import {BASE_URL} from '../tools/constante.js'
+import { BASE_URL } from '../tools/constante.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { formatDate } from "../tools/date.js"

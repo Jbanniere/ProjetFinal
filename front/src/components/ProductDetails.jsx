@@ -35,17 +35,21 @@ const ProductDetails = () => {
     const moyenneNote = moyenne(listeNotes).toFixed(1)
     return(
         <Fragment>
-            <img width= "50%" src={`${BASE_URL}/image/baby_book.jpg`} alt="bébé avec un livre" />
+            <img className="child-img" src={`${BASE_URL}/image/baby_book.jpg`} alt="bébé avec un livre" />
             {productDetails.map((details,i) => {
                 return(
                 <div key={i}>
                     <h2>{details.description}</h2>
-                    <img width= "5%" src={`${BASE_URL}/image/bee.png`} alt="abeille qui vole" />
+                    <img src={`${BASE_URL}/image/bee.png`} alt="abeille qui vole" />
                     <img src={`${BASE_URL}/img/${details.url}`} alt={details.caption} />
-                    <div>
-                        <img width= "3%" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <p><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
-                        <button><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
+                    <div className="avis-flex">
+                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                        <p className="strong-font"><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
+                        <button className="btn-valid"><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
                     </div>
                 </div>
                 )

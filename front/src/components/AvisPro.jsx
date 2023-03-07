@@ -4,10 +4,10 @@ import { Fragment } from "react"
 const AvisPro = () => {
     return(
         <Fragment>
-            <img width= "50%" src={`${BASE_URL}/image/mother.jpg`} alt="maman qui lit avec bébé" />
+            <img className="child-img" width= "50%" src={`${BASE_URL}/image/mother.jpg`} alt="maman qui lit avec bébé" />
             
             <h2>L'avis du Pro</h2>
-            <img src={`${BASE_URL}/image/docteur.png`} alt="médecin" />
+            <img className="pro-img" src={`${BASE_URL}/image/docteur.jpg`} alt="médecin" />
             <p>
             "Ce magazine pour les tout petits est un véritable atout pour leur développement 
             et leur éveil. Les histoires amusantes et les images adaptées à leur 

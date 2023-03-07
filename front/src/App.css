@@ -3,6 +3,9 @@
 @import url('https://fonts.cdnfonts.com/css/kiddosy-free');
 @import url('https://fonts.cdnfonts.com/css/twiggypop');
 @import url('https://fonts.cdnfonts.com/css/baskerville');
+@import url('https://fonts.cdnfonts.com/css/londrina-shadow');
+
+
 
 
 
@@ -72,11 +75,6 @@ footer {
   background-color : #AADCB8;
 }
 
-table, tr, td {
-  text-align:center;
-  border:1px solid black;
-}
-
 h1 {
   font-family: 'Kiddosy Free', sans-serif;
   color:#62ad76;
@@ -114,7 +112,7 @@ a:visited {
 }
 
 img {
-  width: 100%;
+    width: 100%;
 }
 
 .underline {
@@ -142,7 +140,6 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding:1rem;
   width:100%;
   background-color: #A7D5FF ;
   color: black;
@@ -168,29 +165,31 @@ img {
 
 .navbar__logo {
   position:relative;
-  left:4rem;
-  top:-1.2rem;
+  left:5rem;
   width:50%;
 }
 
 .img-logo {
-  width:50%;
+  width:40%;
 }
 
-.nav_img_cart {
+.nav-img-cart {
   padding:.1rem;
-  width:40%;
+  width:60%;
 }
 
-.nav_img_profil {
-  width:40%;
+a.icons-navbar-flex {
+  width:30%;
+}
+
+.nav-img-profil {
+  width:50%;
 }
 
 .navbar__icons{
   display:flex;
-  padding-bottom:1rem;
+  justify-content:flex-end;
   width:50%;
-  justify-content:center;
 }
 
 .icons-navbar-flex {
@@ -213,6 +212,7 @@ img {
     background-color:#f7c1b2;
     visibility:hidden;
     transition: all .8s ease-out;
+    z-index:10;
   }
   
   .navbar__link {
@@ -246,6 +246,7 @@ img {
     position:absolute;
     top:.5rem;
     left:.5rem;
+    z-index:11;
   }
   
   .navbar__burger:hover {
@@ -293,12 +294,87 @@ img {
   }
 
 }
-/******************************* CARD PRODUCTS ************************************/
 
-.card-product {
-  padding:5rem 0;
+/********************************** HOME *****************************************/
+
+.home__presentation {
+  
 }
 
+.home-presentation {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.home-presentation-logo {
+  width:20%;
+  margin:0 1rem 1rem 1rem;
+}
+
+.home-presentation-txt {
+  position:relative;
+  text-align:center;
+  top:-2rem;
+  font-family: 'TwiggyPop', sans-serif;
+  width:65%;
+  margin-left:1rem;
+  margin-top:1rem;
+}
+
+.home-presentation-peach {
+  width:30%;
+  position:absolute;
+  right:1rem;
+  top:10rem;
+}
+
+.home-presentation-ellipse {
+  position:absolute;
+  z-index:-1;
+  top:.5rem;
+  left:0;
+}
+
+.fil-ariane {
+  margin:5rem 0 1rem .5rem;
+}
+
+.child-img {
+  opacity:.6;
+}
+
+/******************************* CARD PRODUCTS ************************************/
+
+.card__product {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top:3rem;
+}
+
+.card-top {
+    display: flex;
+    justify-content: center;
+}
+
+.card-bottom {
+  width: 100%;
+  padding: 40px;
+}
+
+.card-product-img {
+  width:50%;
+  border-radius:10px;
+}
+
+.prix {
+  font-family: 'Londrina Shadow', sans-serif;
+  font-size:4rem;
+  color:#5D4CC8;
+}
 
 .btn-product-qte {
   width: 20px;
@@ -349,7 +425,6 @@ button {
   border:1px solid grey;
   padding:5px;
   cursor:pointer;
-
 }
 
 .btn-delete:hover {
@@ -357,7 +432,7 @@ button {
 }
 
 
-/*********************************** PROFIL ADMIN ************************************/
+/****************************************** PROFIL ADMIN *****************************************/
 
 .menu__gestion {
   justify-content:space-around;
@@ -374,7 +449,7 @@ button {
   font-size:1.5rem;
 }
 
-/******************************** MESSAGERIE ADMIN ************************************/
+/*************************************** MESSAGERIE ADMIN *****************************************/
 
 .etat-0 {
   background-color:#f27171;
@@ -401,11 +476,17 @@ button {
 
 
 
-/******************************** TABLES ************************************/
+/*************************************** TABLEAUX *************************************************/
 
 table {
   margin:1rem;
   border-collapse:collapse;
+}
+
+tr, td, th {
+  text-align:center;
+  border:1px solid black;
+  padding:.5rem;
 }
 
 td {
@@ -423,7 +504,7 @@ td {
 }
 
 
-/******************************** FORM ************************************/
+/*************************************** FORM *****************************************************/
 
 form {
   margin:1rem;
@@ -471,4 +552,36 @@ textarea {
 .btn-input {
   display:flex;
   justify-content:center
+}
+
+
+/*************************************** AVIS *****************************************************/
+
+.avis {
+  margin:1rem;
+}
+
+.avis-flex {
+  display:flex;
+  align-items:center;
+}
+
+.strong-font {
+  color:#636363;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px grey;
+  margin: 0 .5rem;
+}
+
+.img-star {
+  width:3%;
+}
+
+
+/*************************************** PRODUCT DETAILS *****************************************************/
+
+.pro-img {
+  opacity:.6;
+  border-radius:50%;
+  width:60%;
 }

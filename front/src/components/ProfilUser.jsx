@@ -30,6 +30,10 @@ const ProfilUser = () => {
 // Pour supprimer un user
     const deleteUser = (id) => {
         axios.post(`${BASE_URL}/deleteUser`, {id})
+        closeModal(true)
+        dispatch({type: 'LOGOUT'})
+        localStorage.removeItem('jwtToken')
+        delete axios.defaults.headers.common['Authorization']
     }
     
     return(
@@ -56,7 +60,7 @@ const ProfilUser = () => {
                         contentLabel="Confirmation de suppression" // une étiquette pour l'accessibilité
                         >
                             <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-                            <button onClick={()=> deleteUser(profil.id)}>Oui, supprimer mon compte</button>
+                            <button className="btn-delete" onClick={()=> deleteUser(profil.id)}>Oui, supprimer mon compte</button>
                             <button onClick={closeModal}>Annuler</button>
                         </Modal>
                     </div>
