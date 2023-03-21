@@ -35,32 +35,41 @@ const ProductDetails = () => {
     const moyenneNote = moyenne(listeNotes).toFixed(1)
     return(
         <Fragment>
-            <img className="child-img" src={`${BASE_URL}/image/baby_book.jpg`} alt="bébé avec un livre" />
-            {productDetails.map((details,i) => {
-                return(
-                <div key={i}>
-                    <h2>{details.description}</h2>
-                    <img src={`${BASE_URL}/image/bee.png`} alt="abeille qui vole" />
-                    <img src={`${BASE_URL}/img/${details.url}`} alt={details.caption} />
-                    <div className="avis-flex">
-                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
-                        <p className="strong-font"><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
-                        <button className="btn-valid"><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
-                    </div>
+            <div className="product-details">
+                <div className="flex">
+                    <img className="child-img" src={`${BASE_URL}/image/baby_book.png`} alt="bébé avec un livre" />
+                    <img className="child-img desktop" src={`${BASE_URL}/image/baby-read.png`} alt="bébé avec un livre" />
                 </div>
-                )
-            })}
-            <div>
-                <p>Des images éducatives et des activités ludiques pour un éveil sensoriel et intellectuel.</p>
-                <p>Des histoires courtes, des activités ludiques et des images éducatives pour les petits.</p>
-                <p>Notre magazine pour les tout petits : un moment de partage en famille à ne pas manquer.</p>
+                {productDetails.map((details,i) => {
+                    return(
+                    <div key={i}>
+                        <div className="product__title flex">
+                            <h2 className="product-title">{details.description}</h2>
+                            <img className="bee-img" src={`${BASE_URL}/image/bee.png`} alt="abeille qui vole" />
+                        </div>
+                        <div className="flex justify-center">
+                            <img className="product-details-cover" src={`${BASE_URL}/img/${details.url}`} alt={details.caption} />
+                        </div>
+                        <div className="flex align-center justify-center">
+                            <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                            <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                            <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                            <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                            <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
+                            <p className="strong-font"><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
+                            <button className="btn-valid"><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
+                        </div>
+                    </div>
+                    )
+                })}
+                <div className="txt__accroche flex align-center direction-column">
+                    <p className= "txt-accroche">Des images éducatives et des activités ludiques pour un éveil sensoriel et intellectuel.</p>
+                    <p className= "txt-accroche">Des histoires courtes, des activités ludiques et des images éducatives pour les petits.</p>
+                    <p className= "txt-accroche">Notre magazine pour les tout petits : un moment de partage en famille à ne pas manquer.</p>
+                </div>
+                <AvisPro />
+                <Abonnements id={id} product={productDetails[0]} />
             </div>
-            <AvisPro />
-            <Abonnements id={id} product={productDetails[0]} />
         </Fragment>
         )
 }

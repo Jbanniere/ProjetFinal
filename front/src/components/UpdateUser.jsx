@@ -15,9 +15,10 @@ const UpdateUser = () => {
     
     // Vérifie que c'est le bon user qui veut update le profil, sinon on redirige
         useEffect(()=> {
-            if(!state.user.isAdmin || state.user.id != state.user.id) return navigate("/");
+            if(!state.user.isAdmin && state.user.id != id) return navigate("/");
         },[])
-        
+       
+       
         useEffect(() => {
             if(state.user.isAdmin || id == state.user.id){
                 axios.post(`${BASE_URL}/getUserById`,{id})

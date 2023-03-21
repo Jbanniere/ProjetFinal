@@ -45,7 +45,9 @@ const AllContactMessage = () => {
     return(
         <Fragment>
             <h1>Mes Messages</h1>
-            <table className="full-table">
+            
+            {/*Tableau version Desktop*/}
+            <table className="admin-msg desktop">
                 <thead>
                      <tr>
                         <th colSpan="8">Mes Demandes de contact</th>
@@ -86,7 +88,9 @@ const AllContactMessage = () => {
                    })} 
                    </tbody>
             </table>
-            <table className="mobile-table">
+            
+            {/*Tableau version Mobile*/}
+            <table className="mobile">
                 <thead>
                      <tr>
                         <th colSpan="8">Mes Demandes de contact</th>

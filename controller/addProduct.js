@@ -5,7 +5,7 @@ import {asyncQuery} from "../config/database.js"
 export default async (req, res) => {
     console.log("uploadFiles.js")
     const {files, name, description, price_solo, price_hs} = req.body
-    
+    console.log(req.body)
     const myBDD = new BDD()
     const product = await new Products(myBDD)
     const data = await product.addProduct({name, description, price_solo, price_hs})

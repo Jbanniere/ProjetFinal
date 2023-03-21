@@ -15,7 +15,7 @@ const Profil = () => {
 
     return(
         <Fragment>
-        <div className="container">
+        <div className="container ">
             <ProfilUser />
             {state.user.isAdmin === false && (
             <Fragment>
@@ -28,8 +28,10 @@ const Profil = () => {
             )}
             {state.user.isLogged === false && (
                 <div>
-                    <p>Oups ! Page réservée aux membres</p>
-                    <p>Se connecter ou s'inscrire : </p>
+                    <div className="error-txt">
+                        <p><span className="strong-font">Oups !</span> Page réservée aux membres</p>
+                        <p>Pour vous connecter ou vous inscrire : </p>
+                    </div>
                     <Login />
                 </div>
                 )}

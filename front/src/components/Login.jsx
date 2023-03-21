@@ -58,7 +58,7 @@ const Login = () => {
                     <button className="btn-valid">Se Connecter</button>
                 </fieldset>
                 <fieldset>
-                    <legend>Rejoindre la tribu ?</legend>
+                    <legend>Rejoignez-nous ! </legend>
                     <button className="btn-valid"><NavLink to="/register">Créer un compte</NavLink></button>
                 </fieldset>
             </form> 

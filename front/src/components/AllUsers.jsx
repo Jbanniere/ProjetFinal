@@ -28,7 +28,7 @@ const AllUsers = () => {
         <h1>Mes Utilisateurs</h1>
         
         {/*Tableau version Desktop*/}
-           <table className="full-table">
+           <table className="desktop">
                 <thead>
                     <tr>
                         <th>id</th>
@@ -62,7 +62,7 @@ const AllUsers = () => {
             </table>
             
             {/*Tableau version Mobile*/}
-            <table className="mobile-table">
+            <table className="mobile">
                 <thead>
                     <tr>
                         <th>Infos</th>

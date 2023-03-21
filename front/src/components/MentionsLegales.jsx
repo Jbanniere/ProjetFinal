@@ -1,7 +1,7 @@
 const MentionsLegales = () => {
     return(
-        <div>
-            <h1>MENTIONS LÉGALES</h1>
+        <div className="mentions-legales">
+            <h1>MENTIONS LEGALES</h1>
             <p>
                 Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, 
                 il est précisé aux utilisateurs du site PresseMia l'identité des différents intervenants dans le cadre de sa réalisation 

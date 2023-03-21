@@ -13,7 +13,10 @@ const Logout = () => {
     },[])
     
     return(
-        <div>Vous avez bien été déconnecté, à bientôt</div> 
+        <div className="error-txt">
+            <p>Vous avez bien été déconnecté,</p>
+            <p>A bientôt ! </p>
+        </div> 
     )   
 }
 

@@ -40,19 +40,19 @@ const NavBar = (props) => {
                 {state.user.role_id === 1 && (
                 <Fragment>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink}>Mes Produits</NavLink>
+                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink}>Produits</NavLink>
                     </li>  
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink}>Mes Utilisateurs</NavLink>
+                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink}>Utilisateurs</NavLink>
                     </li>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink}>Ma Messagerie</NavLink>
+                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink}>Messagerie</NavLink>
                     </li>
                 </Fragment>
                     )}
                 
                 {/* NAVBAR ALL USERS*/}
-                    <li className="navbar__item">
+                    <li className="navbar__item navbar-admin">
                         <NavLink className="navbar__link" to="/" onClick={handleClickLink}>Nos Mensuels</NavLink>
                     </li>
                     {state.user.isLogged && (
@@ -78,12 +78,12 @@ const NavBar = (props) => {
                     <span className="burger-bar"></span>
                 </button>
                 <div className="navbar__icons">
-                    <NavLink className="icons-navbar-flex" to="/getProfil"><img className="nav-img-profil" src={`${BASE_URL}/image/girafe.png`} alt="girafe pour profil"/></NavLink>
+                    <NavLink className="navbar-icons" to="/getProfil"><img className="nav-img-profil" src={`${BASE_URL}/image/girafe.png`} alt="girafe pour profil"/></NavLink>
                     {state.user.isLogged && (
-                        <NavLink className="icons-navbar-flex" to="/cart"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
+                        <NavLink className="navbar-icons" to="/cart"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
                     )}
                     {state.user.isLogged === false && (
-                        <NavLink className="icons-navbar-flex" to="/login"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
+                        <NavLink className="navbar-icons" to="/login"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
                     )}
                 </div>
             </nav>

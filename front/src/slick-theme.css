@@ -66,12 +66,13 @@
 .slick-prev:before,
 .slick-next:before
 {
-/*    font-family: 'slick';
-*/    font-size: 20px;
+   font-family: 'slick';
+   font-size: 3rem;
     line-height: 1;
 
     opacity: .75;
-    color: grey;
+    color: black;
+    font-weight: bold;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -179,7 +180,7 @@
 .slick-dots li button:before
 {
     font-family: 'slick';
-    font-size: 1rem;
+    font-size: 4rem;
     line-height: 2rem;
 
     position: absolute;

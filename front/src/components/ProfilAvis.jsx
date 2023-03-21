@@ -31,23 +31,24 @@ const ProfilAvis = () => {
     return(
         <Fragment>
             {state.user.role_id === 2 && (
-            <div>    
+            <Fragment>
             <h2>Mes Avis</h2>
+            <div className="profil__avis flex">
                 {userAvis.map((avis,i) => {
                     return(
                     <div key={i}>
-                        <div className="profil">
                             <h3>Nom du magazine : {avis.name}</h3>
                             <p>Ma note : {avis.note}/5</p>
                             <p>Mon message : {avis.content}</p>
-                        </div>
                         <button className="btn-delete" onClick={()=> deleteAvis(avis.id)}>Supprimer cet avis</button>
-                        {isValidated && <p>Votre avis a bien été supprimé</p>}
                     </div>
                     )
                 })}
-            </div>
+                </div>
+                {isValidated && <p>Votre avis a bien été supprimé</p>}
+            </Fragment>
             )}
+            <hr />
         </Fragment>
         )
 }

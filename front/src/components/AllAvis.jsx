@@ -32,14 +32,15 @@ const AllAvis = () => {
 
     
     return(
-        <div>
+        <div className="all-avis">
             <h2>Ce que les abonnés en pensent</h2>
             <p className="strong-font"><img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" /> {moyenneNote} / 5</p>
             {allAvis.map((avis,i) => {
                 return(
                 <div className="avis" key={i}>
                     <h3>L'avis de {avis.prenom}</h3>
-                    <p>{avis.note}/5 : {avis.content} - {formatDate(avis.date)}</p>
+                    <p>{avis.note}/5 : {avis.content}</p>
+                    <p>{formatDate(avis.date)}</p>
                 </div>
                 )
             })}

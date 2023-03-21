@@ -42,10 +42,9 @@ const AddProduct = () => {
     
     return(
         <Fragment>
-        <form type="submit">
+        <form onSubmit={submitData} encType="multipart/form-data">
             <fieldset>
                 <legend>Ajouter un Produit</legend>
-                    <form onSubmit={submitData} encType="multipart/form-data">
                         <div className="fields">
                             <label>Nom du produit:</label>
                             <input className="input-size" type='text' placeholder='Nom du produit' name='name' onChange={handleChange} value={product.name} />
@@ -67,10 +66,9 @@ const AddProduct = () => {
                         <div>
                             <button className="btn-valid" type="submit">Créer mon produit</button>
                         </div>
-                    </form>
                     {isValidated && (
                                 <p>Votre produit a été ajouté avec succès</p>
-                            )} 
+                    )} 
             </fieldset>
         </form>
         </Fragment>

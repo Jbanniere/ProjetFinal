@@ -69,6 +69,7 @@ body {
   margin:0;
   font-family: 'Baskerville', sans-serif;
   font-size:1.4rem;
+  background-color:#fcfbf4;
 }
 
 footer {
@@ -78,7 +79,7 @@ footer {
 h1 {
   font-family: 'Kiddosy Free', sans-serif;
   color:#62ad76;
-  margin: 2rem 0.5rem;
+  padding: 2rem 0.5rem;
   font-size: 3.5rem;
   
 }
@@ -87,13 +88,19 @@ h2 {
   font-family: 'TwiggyPop', sans-serif;
   color: #AADCB8;
   text-decoration:underline;
-  margin: 1rem 0.5rem;
+  padding: 1rem 0.5rem;
   font-size:2.5rem;
+  text-align:center;
+}
+
+.h2-perso {
+  color:#6873f2;
+  margin: 1rem 0 2rem 0;
 }
 
 h3 {
   font-family: 'TwiggyPop', sans-serif;
-  margin-bottom:.5rem;
+  margin:2rem 0 1rem 1rem;
   font-size:1.5rem;
 }
 
@@ -119,15 +126,40 @@ img {
   text-decoration:underline;
 }
 
-.flex {
-  display:flex;
-}
-
 .container {
-  max-width:47rem;
   margin:auto;
 }
 
+/****************************** FLEX *********************************/
+
+.flex{
+  display: flex;
+}
+
+.justify-center {
+  justify-content:center;
+}
+
+.align-center {
+  align-items:center;
+}
+
+.direction-column {
+  flex-direction:column
+}
+
+/****************************** BUTTON *********************************/
+
+button {
+  background-color:white;
+  margin:.4rem;
+  font-family: 'italiana', sans-serif;
+  font-size:1.3rem;
+  border:1px solid grey;
+  padding:5px;
+  cursor:pointer;
+  border-radius: 0 10px;
+}
 
 /************************************************************************************************ 
 ************************************** MAIN **********************************************
@@ -141,6 +173,7 @@ img {
   align-items: center;
   justify-content: space-between;
   width:100%;
+  padding:1rem 0;
   background-color: #A7D5FF ;
   color: black;
   font-family: 'TwiggyPop', sans-serif;
@@ -166,7 +199,7 @@ img {
 .navbar__logo {
   position:relative;
   left:5rem;
-  width:50%;
+  width:35%;
 }
 
 .img-logo {
@@ -178,7 +211,7 @@ img {
   width:60%;
 }
 
-a.icons-navbar-flex {
+a.icons-navbar {
   width:30%;
 }
 
@@ -189,16 +222,56 @@ a.icons-navbar-flex {
 .navbar__icons{
   display:flex;
   justify-content:flex-end;
-  width:50%;
+  width:25%;
 }
 
-.icons-navbar-flex {
+.navbar-icons {
   display:flex;
   justify-content:center;
 }
 
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
 
-@media screen and (max-width:780px) {
+@media screen and (min-width: 768px) {
+  .navbar-icons {
+    width:25%;
+  }
+  
+  .navbar__logo {
+    width:35%;
+  }
+  
+}
+
+
+@media screen and (min-width: 960px) {
+  .navbar-icons {
+    width:40%;
+  }
+  
+  .navbar {
+    font-size:2rem;
+    flex-wrap:nowrap;
+  }
+  
+  .navbar-admin {
+    margin-left:3rem;
+  }
+  
+  .navbar__links {
+    flex-wrap:wrap;
+    width:100%;
+  }
+  
+  .navbar__link {
+    margin-left:1rem;
+  }
+}
+
+
+
+@media screen and (max-width:768px) {
   .navbar__links {
     flex-direction: column;
     justify-content: center;
@@ -298,7 +371,8 @@ a.icons-navbar-flex {
 /********************************** HOME *****************************************/
 
 .home__presentation {
-  
+  margin-bottom:3rem;
+  padding-bottom:5rem;
 }
 
 .home-presentation {
@@ -313,20 +387,23 @@ a.icons-navbar-flex {
 }
 
 .home-presentation-txt {
-  position:relative;
+  flex-direction:column;
+  width:80%;
+  margin-left:5rem;
+}
+
+
+.presentation-txt {
   text-align:center;
-  top:-2rem;
   font-family: 'TwiggyPop', sans-serif;
-  width:65%;
-  margin-left:1rem;
-  margin-top:1rem;
+  width: 74%
 }
 
 .home-presentation-peach {
   width:30%;
   position:absolute;
   right:1rem;
-  top:10rem;
+  top:9rem;
 }
 
 .home-presentation-ellipse {
@@ -340,8 +417,103 @@ a.icons-navbar-flex {
   margin:5rem 0 1rem .5rem;
 }
 
-.child-img {
+.child-img,
+.dog-img {
   opacity:.6;
+}
+
+.txt-services {
+  font-family: 'TwiggyPop', sans-serif;
+  background-color: #e8e8f9;
+  border-radius:20px 0;
+  padding:2rem 4rem;
+  margin: 2rem 0 4rem 0;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.txt-services ul {
+  list-style-type: circle;
+  line-height:2;
+}
+
+.home-txt-bottom {
+  justify-content:center;
+  margin:4rem 0 6rem 0;
+}
+
+.desktop-home {
+  display:none;
+}
+
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+
+@media screen and (min-width: 768px) {
+  
+  .home-presentation-peach {
+    top:11rem;
+    width:20%;
+  }
+  
+  .home-presentation-ellipse {
+    top:-5rem;
+  }
+  
+  .home-presentation {
+    margin-top:2rem;
+  }
+  
+  .home-presentation-txt {
+    margin-left:7rem;
+    width:100%;
+  }
+  
+}
+
+
+@media screen and (min-width: 960px) {
+  
+  .home-presentation-peach {
+    width:15%;
+    right:5rem;
+  }
+  
+  .home-presentation-ellipse {
+    top:-20rem;
+  }
+  
+  .home-presentation {
+    width:60%;
+  }
+  
+  .home-presentation-txt {
+    width:70%;
+  }
+  
+  .home__presentation {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:6rem;
+  }
+  
+  .child-img {
+    width:50%;
+    margin:auto;
+  }
+  
+  .desktop-home {
+   display:block;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+   .home-presentation-ellipse {
+     top:-25rem;
+  }
+
 }
 
 /******************************* CARD PRODUCTS ************************************/
@@ -389,12 +561,26 @@ a.icons-navbar-flex {
   font-weight:bold
 }
 
+.readmore {
+  font-size: 16px;
+  transition: transform 0.3s ease-in-out;
+  padding: 1rem 2rem;
+}
+
+.readmore:hover {
+  transform: scale(1.3);
+}
+
 
 
 /******************************** PROFIL USER ************************************/
 
-.profil {
-  margin: 1rem 0.5rem 0.5rem;
+/************** PROFIL INFOS *********/
+
+.profil-infos {
+  margin-bottom:3rem;
+  text-align:center;
+  line-height:1.6;
 }
 
 .btn-logout {
@@ -416,26 +602,65 @@ a.icons-navbar-flex {
   padding-top:.5rem;
 }
 
-button {
-  background-color:white;
-  padding:.2rem;
-  margin:.4rem;
-  font-family: 'italiana', sans-serif;
-  font-size:1.3rem;
-  border:1px solid grey;
-  padding:5px;
-  cursor:pointer;
-}
-
 .btn-delete:hover {
   background:#f27171;
 }
 
+hr {
+  width:50%;
+  margin:auto;
+  border: .5px solid #A7D5FF;
+}
+
+/************** PROFIL AVIS ***********/
+
+.profil__avis {
+  justify-content:space-around;
+  margin:1rem 0 3rem 1rem;
+}
+
+
+
+/************** PROFIL ABONNEMENT ***********/
+
+.profil-abo {
+  flex-direction: column;
+  align-items:center;
+  width:80%;
+  margin:auto;
+  text-align:center;
+}
+
+.profil-abo span {
+  font-family: 'Londrina Shadow', sans-serif;
+  font-size:2rem;
+  line-height:1.5;
+}
+
+.cart-img {
+  width:60%;
+  border-radius:10px;
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width: 1024px) {
+   .cart-img {
+     width:30%;
+   }
+}
+
+
 
 /****************************************** PROFIL ADMIN *****************************************/
-
+.tableau_de_bord {
+  text-align:center;
+  margin-bottom:6rem;
+}
 .menu__gestion {
   justify-content:space-around;
+  padding-bottom:5rem;
 }
 
 .menu-gestion {
@@ -449,6 +674,19 @@ button {
   font-size:1.5rem;
 }
 
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width: 1024px) {
+   .stats-img {
+     width:50%;
+    }
+    
+    .menu__gestion {
+      margin-top:2rem;
+    }
+}
+
 /*************************************** MESSAGERIE ADMIN *****************************************/
 
 .etat-0 {
@@ -459,19 +697,72 @@ button {
   background-color:#80ad82;
 }
 
-.full-table {
+.desktop {
   display:none;
 }
 
-@media screen and (min-width:780px) {
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width:768px) {
   
-  .full-table {
+  .desktop {
     display:block;
   }
   
-  .mobile-table {
+  .mobile {
     display:none;
   }
+}
+  
+  @media screen and (min-width: 1024px) {
+    .admin-msg {
+      margin: 0 0 10rem 4rem;
+    }
+}
+
+/*************************************** ALL PRODUCTS ADMIN *************************************************/
+
+.all-products-admin {
+  margin-bottom:6rem;
+}
+
+.all-products-infos {
+  line-height:1.5;
+}
+
+.all-product-btn {
+  display:flex;
+  flex-direction:column;
+  margin-left:2rem;
+}
+
+.all-product-img {
+  width:70%;
+  border-radius:10px;
+  margin:2rem;
+}
+
+.h2-perso-2 {
+  text-align:left;
+  margin-top:2rem
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+
+@media screen and (min-width: 768px) {
+  
+ 
+}
+
+@media screen and (min-width: 1024px) {
+  
+  .all-product-img {
+    width:30%;
+  }
+ 
 }
 
 
@@ -479,7 +770,8 @@ button {
 /*************************************** TABLEAUX *************************************************/
 
 table {
-  margin:1rem;
+  margin:auto;
+  margin-bottom:7rem;
   border-collapse:collapse;
 }
 
@@ -507,15 +799,20 @@ td {
 /*************************************** FORM *****************************************************/
 
 form {
-  margin:1rem;
+  margin:1rem 1rem 6rem 1rem;
+  width:95%;
 }
 
 .fields {
   display:flex;
+  padding:.5rem;
 }
 
 fieldset {
-  margin-top:1rem;
+  margin:2rem 0;
+  border-width:1px;
+  padding-bottom:2rem;
+  padding-right:1rem;
 }
 
 legend {
@@ -554,17 +851,42 @@ textarea {
   justify-content:center
 }
 
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
 
-/*************************************** AVIS *****************************************************/
+
+@media screen and (min-width: 1024px) {
+  
+  .all-product-img {
+    width:30%;
+  }
+  
+  textarea {
+    width:50%;
+  }
+  
+  .input-size {
+    width:40%;
+  }
+  
+  fieldset {
+    width:70%;
+    margin:auto;
+  }
+ 
+}
+
+
+/*************************************** ALL AVIS *****************************************************/
+
+.all-avis .avis:last-child {
+  margin-bottom:6rem;
+}
 
 .avis {
-  margin:1rem;
+  margin:.5rem;
 }
 
-.avis-flex {
-  display:flex;
-  align-items:center;
-}
 
 .strong-font {
   color:#636363;
@@ -580,8 +902,374 @@ textarea {
 
 /*************************************** PRODUCT DETAILS *****************************************************/
 
+
+.bee-img {
+  position:absolute;
+  width:30%;
+  right:-1rem;
+  top:34rem;
+  opacity:.8;
+}
+
+.cover-img {
+  border-radius:10px;
+  width:70%;
+  margin:2rem 0 1rem 0;
+}
+
+.product__title {
+  width: 100%;
+  background-color: #FEEB84;
+  margin-top:2rem;
+
+}
+
+.product-title {
+  width:70%;
+  color: #515151;
+  text-decoration: none;
+  font-family: 'Italiana', serif;
+  text-align:center;
+  font-size:2.6rem;
+  margin: 1rem 0 1rem 2rem;
+}
+
+.product-details {
+  background-color: #DBEEFF;
+}
+
+.txt__accroche {
+  margin:2rem 0;
+}
+
+.txt-accroche {
+  width:80%;
+  text-align: center;
+  margin: 1rem 0;
+  font-size:1.7rem;
+  font-family: 'TwiggyPop', sans-serif;
+}
+
+.product-details-cover {
+  width:70%;
+  margin:2rem;
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width:768px) {
+  
+  .bee-img {
+    top:45rem;
+    width:25%;
+  }
+  
+}
+  
+@media screen and (min-width: 1024px) {
+  .bee-img {
+    top:35rem;
+    right:5rem;
+    width:18%;
+  }
+  
+  .product-title {
+    width:100%;
+    font-size:3rem;
+  }
+  
+  .product-details-cover {
+    width:40%;
+    margin:4rem;
+  }
+  
+  .img-star {
+    width:2%;
+  }
+  
+  .child-img {
+    width:50%;
+  }
+}
+
+/************ AVIS PRO ************/
+
 .pro-img {
   opacity:.6;
   border-radius:50%;
   width:60%;
+}
+
+.ellipse-pro {
+  position:absolute;
+  width:90%;
+}
+
+.txt-avis-pro {
+  position:relative;
+  z-index:2;
+  top:0;
+  text-align:center;
+  line-height:2.7;
+  width:88%;
+}
+
+.pro-name{
+  margin:2rem 0;
+  font-size: 1.7rem;
+  text-decoration: underline;
+}
+
+.pro-name span {
+  font-family: 'Kiddosy Free', sans-serif;
+}
+
+.avis-pro {
+  margin-bottom:8rem;
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width:768px) {
+  
+  .pro-img {
+    width: 40%;
+  }
+  
+  .ellipse-pro {
+    width:60%;
+  }
+  
+  .txt-avis-pro {
+    top:3rem;
+    width:80%;
+  }
+  
+}
+  
+@media screen and (min-width: 1024px) {
+  
+  .ellipse-pro {
+    width:40%;
+  }
+  
+  .txt-avis-pro {
+    top:3rem;
+    width:50%;
+    top:2rem;
+    margin-bottom:2rem;
+    font-size:1.6rem;
+  }
+  
+  .pro-name {
+    font-size:2.5rem;
+  }
+  
+}
+
+/************* ABONNEMENTS ***********/
+
+.abonnement {
+  padding-bottom:3rem;
+}
+
+.table-abonnement {
+  border:0px;
+  margin:auto;
+  background-color: #FFFBFB;
+}
+
+.table-abonnement thead {
+  background-color:#F05A5A;
+  color:#ffffff;
+  font-size:1.7rem
+}
+
+.abo-img {
+  width:50%;
+  margin:1rem 0;
+}
+
+
+/*************************************** CONTACT US *****************************************************/
+
+.contact-address {
+  display:flex;
+  flex-direction:column;
+  margin:auto;
+  border: 1px solid rgba(37,33,33,.125);
+  width:70%;
+  padding:2rem;
+  line-height:1.8;
+}
+
+.contact-address-items svg {
+  margin-left:1rem;
+  margin-right:1rem;
+  color:#e56e8a;
+  font-size:1.7;
+}
+
+.contact-title {
+  width:100%;
+  background-color:#e56e8a;
+  color: white;
+  text-decoration: none;
+  font-family: 'Italiana', serif;
+  text-align:center;
+  font-size:2.6rem;
+  margin-bottom:2rem;
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width: 1024px) {
+  
+  .contact-address {
+    width:30%;
+  }
+ 
+}
+
+
+/*************************************** LOGOUT *****************************************************/
+
+.error-txt {
+  border: 1px solid rgba(37,33,33,.125);
+  margin:auto;
+  margin-top:2rem;
+  margin-bottom:6rem;
+  text-align:center;
+  width:60%;
+  padding:4rem;
+  line-height:1.5;
+}
+
+
+/*************************************** MENTIONS LEGALES *****************************************************/
+
+.mentions-legales {
+  margin-bottom: 6rem;
+  margin-left:1rem;
+}
+
+
+/************************************************************************************************ 
+************************************** FOOTER **********************************************
+*************************************************************************************************/
+footer {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  padding-left:1rem;
+}
+
+.footer > hr {
+  border: 0.5px solid #7197E0;
+}
+
+.footer-apple {
+  position: relative;
+}
+
+.apple-footer {
+  width:25%;
+  position:absolute;
+  right:1rem;
+  top:-4rem;
+  opacity:.8;
+}
+
+.footer__icons {
+  width:67%;
+}
+
+.footer__icons,
+.footer__nav {
+  margin:2rem;
+}
+
+.footer-icons {
+  display:flex;
+  justify-content:center;
+}
+
+.footer-icons svg {
+  font-size:2.5rem;
+  margin:1rem;
+}
+
+.facebook-svg {
+  color:#395498;
+}
+
+.twitter-svg {
+  color: #1C96E9;
+}
+
+.insta-svg {
+  color: #CF3180;
+}
+
+.youtube-svg {
+ color: #F70100; 
+}
+
+.footer-nav {
+  display:flex;
+  flex-direction:column;
+  margin-left:12rem;
+  font-family: 'TwiggyPop', sans-serif;
+  font-size:1.6rem;
+}
+
+a {
+  color:black;
+}
+
+/****************************************************************************
+******************************** MEDIA QUERIES ****************************/
+
+@media screen and (min-width: 768px) {
+  
+  .apple-footer {
+    width:20%;
+  }
+  
+  .footer-nav {
+    margin-left:18rem;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  
+  .apple-footer {
+    top:-8rem;
+    width:15%;
+    right:5rem;
+  }
+  
+  .footer {
+    flex-direction: row;
+  }
+  
+  .footer > hr {
+    display:none;
+  }
+  
+  .footer__icons {
+    width:30%;
+  }
+  
+  .footer-icons {
+    justify-content:flex-start;
+  }
+  
+  .footer-nav {
+    margin-left:10rem;
+  }
+
 }

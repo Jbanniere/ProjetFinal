@@ -46,12 +46,11 @@ const ProfilUser = () => {
                         <h1>Hello {profil.prenom} !</h1>
                         <button className="btn-logout"><NavLink to="/logout">Me Déconnecter</NavLink></button>
                         <h2>Mes Infos</h2>
-                        <div className= "profil">
+                        <div className= "profil-infos">
                             <p>Nom : {profil.nom}</p>
                             <p>Prénom : {profil.prenom}</p>
                             <p>Adresse : {profil.street} {profil.zip} {profil.city}</p>
                             <p>Email : {profil.email}</p>
-                        </div>
                         <button className="btn-update"><NavLink to={`/updateUser/${profil.id}`}>Modifier mon profil</NavLink></button>
                         <button className="btn-delete" onClick={openModal}>Supprimer mon compte</button>    
                         <Modal
@@ -63,11 +62,13 @@ const ProfilUser = () => {
                             <button className="btn-delete" onClick={()=> deleteUser(profil.id)}>Oui, supprimer mon compte</button>
                             <button onClick={closeModal}>Annuler</button>
                         </Modal>
+                        </div>
                     </div>
                     )   
                 })}
             </div>
         )}
+        <hr />
         </Fragment>
     )
 }

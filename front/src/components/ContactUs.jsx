@@ -1,5 +1,5 @@
-import {useState, Fragment} from "react"
-import {BASE_URL} from "../tools/constante.js"
+import { useState } from "react"
+import { BASE_URL } from "../tools/constante.js"
 import axios from "axios"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons"
@@ -48,17 +48,28 @@ const ContactUs = () => {
     }
     
     return(
-        <Fragment>
-        <h1>Nous contacter</h1>
-            <div>
-                <p><FontAwesomeIcon icon={ faPhone } /><a href="tel:0233445566">02 33 44 55 66 </a>(du lundi au vendredi de 9h à 18h)</p>
-                <p><FontAwesomeIcon icon={ faEnvelope } />Utiliser le formulaire de contact ci-dessous</p>
-                <div>
+        <div className="container">
+        <h1 className="contact-title">Nous contacter</h1>
+            <div className="contact-address">
+                <div className="contact-address-items flex">
+                    <FontAwesomeIcon icon={ faPhone } />
+                    <div>
+                        <a href="tel:0233445566">02 33 44 55 66 </a>(du lundi au vendredi de 9h à 18h)
+                    </div>
+                </div>
+                <div className="contact-address-items flex">
+                    <FontAwesomeIcon icon={ faEnvelope } />
+                    <p>Utiliser le formulaire de contact ci-dessous</p>
+                </div>
+                    
+                <div className="contact-address-items flex">
                     <FontAwesomeIcon icon={ faLocationDot} />
-                    <p>Presse Mia</p>
-                    <p>60 Rue du Général Raoul</p>
-                    <p>CS 010203</p>
-                    <p>44401 Rezé Cedex</p>
+                    <div>
+                        <p>Presse Mia</p>
+                        <p>60 Rue du Général Raoul</p>
+                        <p>CS 010203</p>
+                        <p>44401 Rezé Cedex</p>
+                    </div>
                 </div>
             </div>
             <h2>Formulaire de contact</h2>
@@ -103,7 +114,7 @@ const ContactUs = () => {
             {isValidated && (
             <p>Votre demande a bien été envoyé, nous mettons tout en oeuvre pour votre répondre rapidement. A bientôt !</p>
             )}
-        </Fragment>
+        </div>
          )
 }
 

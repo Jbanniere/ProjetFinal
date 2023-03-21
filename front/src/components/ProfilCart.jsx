@@ -38,18 +38,16 @@ const ProfilCart = () => {
     return(
         <Fragment>
         {state.user.role_id === 2 && (
-            <div>    
+            <Fragment>    
                 <h2>Mon Abonnement</h2>
                 {abonnement.map((order,i) => {
                     return(
-                    <div key={i}>
-                        <div className="profil">
-                            <h3>Nom du Magazine : {order.name}</h3>
-                            <img className = "cart-img" src={`${BASE_URL}/img/${order.url}`} alt={order.caption} />
-                            <div>
-                                <p>Prix : {order.price}€ / Mois (sans engagement)</p>
-                                <p>Commande du {formatDate(order.date)}</p>
-                            </div>
+                    <div  className= "profil-abo flex" key={i}>
+                        <h3>Nom du Magazine : {order.name}</h3>
+                        <img className = "cart-img" src={`${BASE_URL}/img/${order.url}`} alt={order.caption} />
+                        <div>
+                            <p><span>{order.price}€ / Mois</span> (sans engagement)</p>
+                            <p>Commande du {formatDate(order.date)}</p>
                         </div>
                         <button className="btn-delete" onClick={openModal}>Supprimer cet abonnement</button>
                         <Modal
@@ -64,7 +62,7 @@ const ProfilCart = () => {
                     </div>
                     )
                 })}
-            </div>
+            </Fragment>
         )}
         </Fragment>
     )

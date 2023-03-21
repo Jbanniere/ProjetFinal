@@ -87,7 +87,7 @@ const Cart = () => {
     return(
         <Fragment>
         <h1>Mon Panier</h1>
-        {state.cart.length === 0 && <p>Votre panier est vide</p>}
+        {state.cart.length === 0 && <p className="error-txt">Votre panier est vide</p>}
         {state.cart.length > 0 && state.cart.map((cart,i) => {
             return(
             <Fragment>

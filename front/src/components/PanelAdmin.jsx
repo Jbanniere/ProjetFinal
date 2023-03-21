@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom"
 
 const PanelAdmin = () => {
     return(
-        <Fragment>
+        <div className="container">
             <h2>Tableau de Bord</h2>
             <div className="tableau_de_bord">
                 <div>
                     <h3>Mes Statistiques</h3>
-                        <img src={`${BASE_URL}/image/stats.png`} width="30%" alt="graphiques"/>
+                        <img className="stats-img" src={`${BASE_URL}/image/stats.png`} width="30%" alt="graphiques"/>
                 </div>
                 <div>
                     <h3>Mes Données</h3>
@@ -26,7 +26,7 @@ const PanelAdmin = () => {
                         </div>
                 </div>
             </div>
-        </Fragment>
+        </div>
         )
 }
 

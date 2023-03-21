@@ -84,58 +84,59 @@ const Abonnements = ({product, id}) => {
     
     return(
         <Fragment>
-            <h2>Rejoignez la tribu !</h2>
-            <table>
+        <div className="abonnement">
+            <h2 className="h2-perso">Rejoignez-nous !</h2>
+            <table className="table-abonnement">
                 <thead>
                     <tr>
                         <th>Abonnement Mensuel</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                    {state.products.map((product,i)=>{
-                        if(product.id == id) {
-                            return(
-                            <td key={i}>
-                                <img width="60%" src={`${BASE_URL}/img/${product.url}`} alt="couverture magazine" />
+                {state.products.map((product,i)=>{
+                    if(product.id == id) {
+                        return(
+                         <tbody key={i}>
+                            <tr>
+                                <td>
+                                    <img className="abo-img cover-img" width="60%" src={`${BASE_URL}/img/${product.url}`} alt="couverture magazine" />
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>1 mensuel / mois</td>
+                        </tr>
+                        <tr>
+                            <td>Sans engagement de durée</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p className="prix">{product.price}€ / Mois</p>
+                                {state.products.filter(e => e.id == id).map((cart,i) => {
+                                    return(
+                                    <div key={i}>
+                                        {!itemIsInCart(cart.id) && (
+                                            <Fragment>
+                                                <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
+                                                <strong id="quantite" >1</strong>
+                                                <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
+                                                <button className= "btn-valid" onClick={() => addToCart(product)}>Ajouter au panier</button>
+                                            </Fragment>
+                                        )}
+                                        {itemIsInCart(cart.id) &&(
+                                            <p>Ce produit est déjà présent dans votre panier</p>
+                                        )}
+                                    </div>
+                                    )
+                                })}
                             </td>
-                            )
-                        }
-                    })}
-                    </tr>
-                    <tr>
-                        <td>1 mensuel / mois</td>
-                    </tr>
-                    <tr>
-                        <td>Sans engagement de durée</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>5,95€ / Mois</p>
-                            {state.products.filter(e => e.id == id).map((cart,i) => {
-                                return(
-                                <div key={i}>
-                                    {!itemIsInCart(cart.id) && (
-                                        <Fragment>
-                                            <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
-                                            <strong id="quantite" >{qte}</strong>
-                                            <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
-                                            <button className= "btn-valid" onClick={() => addToCart(product)}>Ajouter au panier</button>
-                                        </Fragment>
-                                    )}
-                                    {itemIsInCart(cart.id) &&(
-                                        <p>Ce produit est déjà présent dans votre panier</p>
-                                    )}
-                                </div>
-                                )
-                            })}
-                        </td>
-                     </tr>
-                </tbody>
-            </table>
+                         </tr>
+                    </tbody>
+                    )
+                }
+                })}
+                </table>
             {isValidated && <Navigate to="/cart" />}
             {isRedirected && <Navigate to="/login" />}
-           
+           </div>
         </Fragment>
         )
 }

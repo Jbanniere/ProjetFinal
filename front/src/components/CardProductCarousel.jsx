@@ -52,7 +52,7 @@ const CardProductCarousel = ({products}) => {
           <div className="card-bottom">
             <p>Abonnement mensuel : </p>
             <p className="prix">{product.price}€ / mois</p>
-            <button className="btn-valid"><NavLink to={`/productDetails/${product.id}`}>+ infos</NavLink></button>
+            <button className="btn-valid readmore"><NavLink to={`/productDetails/${product.id}`}>+ infos</NavLink></button>
           </div>
         </div>
       ))}
