@@ -67,7 +67,7 @@
 .slick-next:before
 {
    font-family: 'slick';
-   font-size: 3rem;
+   font-size: 5rem;
     line-height: 1;
 
     opacity: .75;
@@ -80,7 +80,7 @@
 
 .slick-prev
 {
-    left: 1rem;
+    left: 3rem;
     z-index:1;
 }
 [dir='rtl'] .slick-prev
@@ -99,7 +99,7 @@
 
 .slick-next
 {
-    right: 1rem;
+    right: 4rem;
 }
 [dir='rtl'] .slick-next
 {

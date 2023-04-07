@@ -20,26 +20,30 @@ const OrderSuccess = () => {
     
 
     return(
-        <Fragment>
+        <div className="order-success">
           
             <h1>Merci pour votre confiance {state.user.prenom}!</h1>
                 
-            <h2>Récapitulatif de votre commande</h2>
+            
+            <div className="error-txt">
+                <p >Vous pouvez <span className="underline">gérer votre abonnement</span> à tout moment dans l'onglet <NavLink to="/getProfil" title="Accéder à mon profil"><span className="underline">"Mon Profil"</span></NavLink></p>
+                <button><NavLink to="/home" title="Accéder à la page d'accueil">Retour à la page d'Accueil</NavLink></button>
+            </div>
+        </div>)
+}
+
+export default OrderSuccess
+
+/* 
+<h2>Récapitulatif de votre commande</h2>
             {abonnement.map((order,i) => {
                 return(
                 <div className="profil" key={i}>
-                    <img src={`${BASE_URL}/img/${order.url}`} width = "20%" alt={"couverture mensuel"} />
+                    <img src={`${BASE_URL}/img/${order.url}`} alt={"couverture mensuel"} />
                     <p>Commande du {formatDate(order.date)}</p>
                     <p>Nom du Mensuel : {order.name}</p>
                     <p>Prix : {order.price} € / Mois (sans engagement)</p>
                 </div>
                 )
             })}
-            <div className="profil">
-                <p >Vous pouvez <span className="underline">gérer votre abonnement</span> à tout moment dans l'onglet <NavLink to="/getProfil"><span className="underline">"Mon Profil"</span></NavLink></p>
-                <NavLink to="/home">Retour à la page d'Accueil</NavLink>
-            </div>
-        </Fragment>)
-}
-
-export default OrderSuccess
+*/

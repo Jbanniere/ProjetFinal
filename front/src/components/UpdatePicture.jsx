@@ -46,9 +46,9 @@ const UpdatePicture = () => {
                 <label name='picture'>
                     <input type='file' name='picture'/>
                 </label>
-                <input type="submit" value="Modifier" />
+                <button className="btn-valid" type="submit">Valider</button>
                 {isValidated && (
-                    <p>Votre modification a été prise en compte</p>
+                    <p className="error-txt">Votre modification a été prise en compte</p>
                 )} 
             </form>
             { updatePicture && <img src={`${BASE_URL}/img/${updatePicture.url}`} alt={updatePicture.caption} />}

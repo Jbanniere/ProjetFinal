@@ -43,7 +43,7 @@ const ProfilUser = () => {
                 {userProfil.map((profil,i) => {
                     return(
                     <div key={i}>
-                        <h1>Hello {profil.prenom} !</h1>
+                        <h1 className="contact-title">Hello {profil.prenom} !</h1>
                         <button className="btn-logout"><NavLink to="/logout">Me Déconnecter</NavLink></button>
                         <h2>Mes Infos</h2>
                         <div className= "profil-infos">

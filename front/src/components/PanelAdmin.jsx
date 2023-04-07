@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 const PanelAdmin = () => {
     return(
         <div className="container">
-            <h2>Tableau de Bord</h2>
+            <h1 className="contact-title">Tableau de Bord</h1>
             <div className="tableau_de_bord">
                 <div>
                     <h3>Mes Statistiques</h3>

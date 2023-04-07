@@ -1,5 +1,5 @@
 import { BASE_URL } from '../tools/constante.js'
-import { Fragment, useState, useContext, useEffect } from "react"
+import { Fragment, useState, useContext } from "react"
 import {StoreContext} from "../tools/context.js"
 import axios from "axios"
 import { Navigate } from "react-router-dom"
@@ -57,7 +57,7 @@ const Abonnements = ({product, id}) => {
         // Fonctions qui servent pour le addToCart
         // on regarde si le produit est deja dans le panier
         const itemIsInCart = (id) => {
-            return state.cart.find(item => item.id == id);
+            return state.cart.find(item => item.id === id);
         }
         
         const addQuantity = (item_id) => {
@@ -66,7 +66,7 @@ const Abonnements = ({product, id}) => {
             const cart = [...state.cart]
             // on regarde si le produit est deja dans le panier
             cart.map((item,i) => {
-                if (item.id === item_id) {
+                if (item.id == item_id) {
                     totalQte = item.quantity += qte
                     return item.quantity += qte
                 }
@@ -115,9 +115,9 @@ const Abonnements = ({product, id}) => {
                                     <div key={i}>
                                         {!itemIsInCart(cart.id) && (
                                             <Fragment>
-                                                <button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
+                                                {/*<button className="btn-product-qte" onClick={() => setQte(qte => qte-1)}>-</button>
                                                 <strong id="quantite" >1</strong>
-                                                <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>
+                                                <button className="btn-product-qte" onClick={() => setQte(value => value+1)}>+</button>*/}
                                                 <button className= "btn-valid" onClick={() => addToCart(product)}>Ajouter au panier</button>
                                             </Fragment>
                                         )}

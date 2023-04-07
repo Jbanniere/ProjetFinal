@@ -31,7 +31,7 @@ const NavBar = (props) => {
             <nav className={`navbar ${showLinks ? "show-nav" : "hide-nav"}`} >
             
             <div className="navbar__logo">
-                <NavLink to="/"><img className="img-logo" src={`${BASE_URL}/image/pressemia.png`} alt="logo"/></NavLink>
+                <NavLink to="/" title="Accéder à la page d'Accueil"><img className="img-logo" src={`${BASE_URL}/image/pressemia.png`} alt="logo"/></NavLink>
             </div>
             <ul className="navbar__links">
                 {/*<NavLink className="navbar__link" to="/" onClick={handleClickLink}><img src={`${BASE_URL}/image/logo.svg`} alt="logo"/></NavLink>*/}
@@ -40,50 +40,50 @@ const NavBar = (props) => {
                 {state.user.role_id === 1 && (
                 <Fragment>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink}>Produits</NavLink>
+                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink} title="Accéder aux produits">Produits</NavLink>
                     </li>  
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink}>Utilisateurs</NavLink>
+                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink} title="Accéder aux utilisateurs">Utilisateurs</NavLink>
                     </li>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink}>Messagerie</NavLink>
+                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink} title="Accéder à ma messagerie">Messagerie</NavLink>
                     </li>
                 </Fragment>
                     )}
                 
                 {/* NAVBAR ALL USERS*/}
                     <li className="navbar__item navbar-admin">
-                        <NavLink className="navbar__link" to="/" onClick={handleClickLink}>Nos Mensuels</NavLink>
+                        <NavLink className="navbar__link" to="/" onClick={handleClickLink} title="Accéder à la page d'Accueil">Nos Mensuels</NavLink>
                     </li>
                     {state.user.isLogged && (
                      <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getProfil" onClick={handleClickLink}>Mon Profil</NavLink>
+                        <NavLink className="navbar__link" to="/getProfil" onClick={handleClickLink} title="Accéder à mon profil">Mon Profil</NavLink>
                     </li>
                     )}
                     {state.user.isLogged === false && (
                     <Fragment>
                         <li className="navbar__item">
-                            <NavLink className="navbar__link" to="/register" onClick={handleClickLink}>S'inscrire</NavLink>
+                            <NavLink className="navbar__link" to="/register" onClick={handleClickLink} title="S'inscrire">S'inscrire</NavLink>
                         </li>
                         <li className="navbar__item">
-                            <NavLink className="navbar__link" to="/login" onClick={handleClickLink}>Se Connecter</NavLink>
+                            <NavLink className="navbar__link" to="/login" onClick={handleClickLink} title="Se connecter">Se Connecter</NavLink>
                         </li>
                     </Fragment>
                     )}
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/contactUs" onClick={handleClickLink}>Nous contacter</NavLink>
+                        <NavLink className="navbar__link" to="/contactUs" onClick={handleClickLink} title="Accéder à la page de contact">Nous contacter</NavLink>
                     </li>
                 </ul>
                 <button className="navbar__burger" onClick={handleShowLinks}>
                     <span className="burger-bar"></span>
                 </button>
                 <div className="navbar__icons">
-                    <NavLink className="navbar-icons" to="/getProfil"><img className="nav-img-profil" src={`${BASE_URL}/image/girafe.png`} alt="girafe pour profil"/></NavLink>
+                    <NavLink className="navbar-icons" to="/getProfil" title="Accéder au profil"><img className="nav-img-profil" src={`${BASE_URL}/image/girafe.png`} alt="girafe pour profil"/></NavLink>
                     {state.user.isLogged && (
-                        <NavLink className="navbar-icons" to="/cart"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
+                        <NavLink className="navbar-icons" to="/cart" title="Accéder au panier"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`} alt="img add to cart"/></NavLink>
                     )}
                     {state.user.isLogged === false && (
-                        <NavLink className="navbar-icons" to="/login"><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
+                        <NavLink className="navbar-icons" to="/login" title="Se connecter" ><img className="nav-img-cart" src={`${BASE_URL}/image/cart.png`}alt="img add to cart"/></NavLink>
                     )}
                 </div>
             </nav>

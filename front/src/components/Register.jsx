@@ -116,8 +116,11 @@ const Register = () => {
                             <input className="input-size" type='password' placeholder='Mot de passe : Plus de 8 caractères' name='password' onChange={handleChange} value={userData.password} />
                             {errors.password && <p>{errors.password}</p>}
                         </div>
+                        <div className="center">
+                            <button className="btn-valid" onClick={submit}>Valider mon inscription</button>
+                        </div>
                     </fieldset>
-                    <button className="btn-valid" onClick={submit}>Valider mon inscription</button>
+                    
                 
             </form>
             { register && <Navigate to="/login" replace={true} /> }

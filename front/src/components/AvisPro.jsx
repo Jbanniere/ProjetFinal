@@ -4,9 +4,9 @@ import { Fragment } from "react"
 const AvisPro = () => {
     return(
         <Fragment>
-            <div className="flex">
+            <div className="avis__pro">
                 <img className="child-img" src={`${BASE_URL}/image/mother.jpg`} alt="maman qui lit avec bébé" />
-                <img className="child-img" src={`${BASE_URL}/image/father-read.png`} alt="papa qui lit avec bébé" />
+                <img className="child-img desktop" src={`${BASE_URL}/image/father-read.png`} alt="papa qui lit avec bébé" />
             </div>
             <h2 className="h2-perso">L'avis du Pro</h2>
             <div className="avis-pro flex align-center direction-column">

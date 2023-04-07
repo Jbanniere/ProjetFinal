@@ -42,7 +42,7 @@ const AddAvis = () => {
         {state.products.map((product,i) => {
             if(product.id == product_id) {
             return(
-                <h2 key={i}>Ce que j'ai pensé de {product.name}</h2>
+                <h1 className="contact-title" key={i}>Ce que j'ai pensé de {product.name}</h1>
                 )
             }
         })}
@@ -67,7 +67,7 @@ const AddAvis = () => {
 		        </div>
             </form>
             {isValidated && (
-                    <p>Merci pour votre avis !</p>
+                    <p className="error-txt">Merci pour votre avis !</p>
                 )} 
         </div>)
 }

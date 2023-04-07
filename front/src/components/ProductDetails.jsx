@@ -57,7 +57,7 @@ const ProductDetails = () => {
                             <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
                             <img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" />
                             <p className="strong-font"><NavLink to={`/getAllAvis/${details.id}`}>{moyenneNote}/5</NavLink></p>
-                            <button className="btn-valid"><NavLink to={`/addAvis/${details.id}`}>Donner mon avis</NavLink></button>
+                            <button className="btn-valid"><NavLink to={`/addAvis/${details.id}`} title="Donner mon avis">Donner mon avis</NavLink></button>
                         </div>
                     </div>
                     )

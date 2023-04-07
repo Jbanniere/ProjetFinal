@@ -31,20 +31,19 @@ const Home = () => {
     return(
         <Fragment>
             <div className="home__presentation">
-                <div className="home-presentation">
-                    <img className="home-presentation-logo" src={`${BASE_URL}/image/pioupiou.png`} alt="nom du magazine piou piou"/>
+                <div className="home-presentation" title="PiouPiou & Pomme" aria-label="PiouPiou & Pomme">
+                    <img className="home-presentation-logo" src={`${BASE_URL}/image/pioupiou.png`} alt=""/>
                     <span> & </span>
-                    <img className="home-presentation-logo" src={`${BASE_URL}/image/pomme.png`} alt="nom du magazine pomme"/>
+                    <img className="home-presentation-logo" src={`${BASE_URL}/image/pomme.png`} alt=""/>
                 </div>
-                <div className="home-presentation-txt ">
+                <div className="home-presentation-txt">
                    <p className="presentation-txt"><strong>Nos magazines mensuels pour vos TOUT PETITS</strong></p>
                    <p className="presentation-txt">Chaque mois votre enfant va découvrir un monde rempli de couleurs, de formes et de personnages amusants,
-                    conçus pour stimuler son imagination et sa curiosité. Alors préparez-vous à vivre de nouvelles aventures en 
-                    famille ! </p>
+                    conçus pour stimuler son imagination et sa curiosité. Préparez-vous à vivre de nouvelles aventures en 
+                    famille! </p>
                 </div>
                 
                 <img className="home-presentation-peach" src={`${BASE_URL}/image/peach.png`} alt="peach"/>
-                <img className="home-presentation-ellipse" src={`${BASE_URL}/image/ellipse2.png`} alt="ellipse"/>
             </div>
             
         <CardProductCarousel products={allProduct} />

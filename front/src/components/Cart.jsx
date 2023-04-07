@@ -86,15 +86,15 @@ const Cart = () => {
    
     return(
         <Fragment>
-        <h1>Mon Panier</h1>
+        <h1 className="contact-title">Mon Panier</h1>
         {state.cart.length === 0 && <p className="error-txt">Votre panier est vide</p>}
         {state.cart.length > 0 && state.cart.map((cart,i) => {
             return(
             <Fragment>
-                <div className="profil" key={i}>
-                    <img src={`${BASE_URL}/img/${cart.url}`} width = "20%" alt={cart.caption} />
+                <div className="cart" key={i}>
+                    <img className= "cart-cover" src={`${BASE_URL}/img/${cart.url}`} alt={cart.caption} />
                     <p>{cart.name} : {cart.description}</p>
-                    <p>{cart.price}€ / Mois</p>
+                    <p className="cart-prix prix">{cart.price}€ / Mois</p>
                     <button className="btn-delete" onClick={() => handleDelete(cart.id)}>Supprimer du panier</button>
                 </div>
                 <button className="btn-valid" onClick={handleSubmit}>Valider mon panier</button>

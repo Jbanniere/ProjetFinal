@@ -1,6 +1,7 @@
 import axios from "axios"
 import { BASE_URL } from '../tools/constante.js'
 import { useState, Fragment } from "react"
+import { useNavigate } from "react-router-dom"
 
 const AddProduct = () => {
     const [isValidated, setIsValidated] = useState(false)
@@ -9,6 +10,7 @@ const AddProduct = () => {
         description:'',
         price:0,
     })
+    const navigate = useNavigate()
     
     const handleChange = (e) => {
         const {name, value} = e.target
@@ -34,6 +36,8 @@ const AddProduct = () => {
             e.preventDefault()
             res.data.response && console.log('succesfully upload')
             setIsValidated(true)
+            alert("Votre produit a bien été ajouté")
+            navigate("/getAllProduct")
         })
         .catch((err) => {
             console.log(err)
@@ -42,9 +46,10 @@ const AddProduct = () => {
     
     return(
         <Fragment>
+        <h1 className="contact-title">Ajouter un produit</h1>
         <form onSubmit={submitData} encType="multipart/form-data">
             <fieldset>
-                <legend>Ajouter un Produit</legend>
+                <legend>Mon Produit</legend>
                         <div className="fields">
                             <label>Nom du produit:</label>
                             <input className="input-size" type='text' placeholder='Nom du produit' name='name' onChange={handleChange} value={product.name} />
@@ -67,7 +72,9 @@ const AddProduct = () => {
                             <button className="btn-valid" type="submit">Créer mon produit</button>
                         </div>
                     {isValidated && (
-                                <p>Votre produit a été ajouté avec succès</p>
+                    
+                        <p className="error-txt">Votre produit a été ajouté avec succès</p>
+                       
                     )} 
             </fieldset>
         </form>

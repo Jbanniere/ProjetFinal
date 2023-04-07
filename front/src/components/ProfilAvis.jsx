@@ -23,7 +23,7 @@ const ProfilAvis = () => {
     const deleteAvis = (idAvis) => {
         axios.post(`${BASE_URL}/deleteAvis`, {id:idAvis})
         .then(res => {
-            setUserAvis(userAvis.filter((e)=> e.id !== id))
+            setUserAvis(userAvis.filter((e)=> e.idAvis !== idAvis))
             setIsValidated(true)
             })
     }
@@ -36,7 +36,7 @@ const ProfilAvis = () => {
             <div className="profil__avis flex">
                 {userAvis.map((avis,i) => {
                     return(
-                    <div key={i}>
+                    <div className="profil-avis" key={i}>
                             <h3>Nom du magazine : {avis.name}</h3>
                             <p>Ma note : {avis.note}/5</p>
                             <p>Mon message : {avis.content}</p>

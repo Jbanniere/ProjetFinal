@@ -52,7 +52,7 @@ const UpdateProduct = () => {
             </form>
             )}
         {isValidated && (
-            <p>Votre modification a été prise en compte</p>
+            <p className="error-txt">Votre modification a été prise en compte</p>
         )}
         </div>
        )

@@ -10,7 +10,7 @@ class Products {
         if(!name || !name || !description || !price){
             return null
         }
-        const sql = 'INSERT INTO products (name, description, price) VALUES (?,?,?,?)'
+        const sql = 'INSERT INTO products (name, description, price) VALUES (?,?,?)'
         const paramsSql = [name, description, price]
         
         try {

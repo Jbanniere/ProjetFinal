@@ -44,6 +44,7 @@ const Login = () => {
 
     return(
         <Fragment>
+        <h1>Se Connecter / S'inscrire</h1>
             <form onSubmit={submit}>
                 <fieldset>
                     <legend>Déjà inscrit ?</legend>
@@ -55,11 +56,15 @@ const Login = () => {
                         <label> Mot de passe : </label>
                         <input className="input-size" type='password' placeholder='password' name='password' onChange={handleChange} value={info.password} />
                     </div>
-                    <button className="btn-valid">Se Connecter</button>
+                    <div className="center">
+                        <button className="btn-valid">Se Connecter</button>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Rejoignez-nous ! </legend>
-                    <button className="btn-valid"><NavLink to="/register">Créer un compte</NavLink></button>
+                    <div className="center">
+                        <button className="btn-valid"><NavLink to="/register">Créer un compte</NavLink></button>
+                    </div>
                 </fieldset>
             </form> 
          { login && <Navigate to="/getProfil" /> }

@@ -25,10 +25,10 @@ const AllUsers = () => {
 
     return(
         <Fragment>
-        <h1>Mes Utilisateurs</h1>
+        <h1 className="contact-title">Mes Utilisateurs</h1>
         
         {/*Tableau version Desktop*/}
-           <table className="desktop">
+           <table className="admin-users desktop">
                 <thead>
                     <tr>
                         <th>id</th>

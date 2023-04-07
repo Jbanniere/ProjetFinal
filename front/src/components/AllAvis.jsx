@@ -33,7 +33,7 @@ const AllAvis = () => {
     
     return(
         <div className="all-avis">
-            <h2>Ce que les abonnés en pensent</h2>
+            <h1 className="contact-title">Ce que les abonnés en pensent</h1>
             <p className="strong-font"><img className="img-star" src={`${BASE_URL}/image/star.png`} alt="star" /> {moyenneNote} / 5</p>
             {allAvis.map((avis,i) => {
                 return(

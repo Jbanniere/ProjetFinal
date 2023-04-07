@@ -46,7 +46,7 @@ const ProfilCart = () => {
                         <h3>Nom du Magazine : {order.name}</h3>
                         <img className = "cart-img" src={`${BASE_URL}/img/${order.url}`} alt={order.caption} />
                         <div>
-                            <p><span>{order.price}€ / Mois</span> (sans engagement)</p>
+                            <p><span className="prix">{order.price}€ / Mois</span> (sans engagement)</p>
                             <p>Commande du {formatDate(order.date)}</p>
                         </div>
                         <button className="btn-delete" onClick={openModal}>Supprimer cet abonnement</button>
