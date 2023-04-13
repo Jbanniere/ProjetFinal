@@ -1,11 +1,10 @@
-import { Fragment } from "react"
 import { BASE_URL } from '../tools/constante.js'
 import { NavLink } from "react-router-dom"
 
 const PanelAdmin = () => {
     return(
         <div className="container">
-            <h1 className="contact-title">Tableau de Bord</h1>
+            <h1>Tableau de Bord</h1>
             <div className="tableau_de_bord">
                 <div>
                     <h3>Mes Statistiques</h3>

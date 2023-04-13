@@ -45,41 +45,45 @@ const UpdateUser = () => {
 
    return(
         <div>
-        
-        {updateUser && (
-           <form type="submit">
-                <div className="fields">
-                    <label>Nom : </label>
-                    <input className="input-size" type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
-                </div>
-                <div className="fields">
-                    <label>Prénom : </label>
-                    <input className="input-size" type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
-                </div>
-                <div className="fields">
-                    <label>Numéro et Rue : </label>
-                    <input className="input-size" type='text' placeholder='street' name='street' onChange={handleChange} value={updateUser.street} />
-                </div>
-                <div className="fields">
-                    <label>Code Postal : </label>
-                    <input className="input-size" type='number' placeholder='zip' name='zip' onChange={handleChange} value={updateUser.zip} />
-                </div>
-                <div className="fields">
-                    <label>Ville : </label>
-                    <input className="input-size" type='text' placeholder='city' name='city' onChange={handleChange} value={updateUser.city} />
-                </div>
-                <div className="fields">
-                    <label>Email : </label>
-                    <input className="input-size" type='email' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
-                </div>
-                <div className="btn-input">
-                    <button onClick={submit}>Modifier les infos</button>
-                </div>
-        </form>   
+            <h1>Modifier les Infos</h1>
+            
+            {updateUser && (
+            <form type="submit">
+                <fieldset>
+                <legend>Infos à modifier</legend>
+                    <div className="fields">
+                        <label>Nom : </label>
+                        <input className="input-size" type='text' placeholder='nom' name='nom' onChange={handleChange} value={updateUser.nom} />
+                    </div>
+                    <div className="fields">
+                        <label>Prénom : </label>
+                        <input className="input-size" type='text' placeholder='prénom' name='prenom' onChange={handleChange} value={updateUser.prenom} />
+                    </div>
+                    <div className="fields">
+                        <label>Numéro et Rue : </label>
+                        <input className="input-size" type='text' placeholder='street' name='street' onChange={handleChange} value={updateUser.street} />
+                    </div>
+                    <div className="fields">
+                        <label>Code Postal : </label>
+                        <input className="input-size" type='number' placeholder='zip' name='zip' onChange={handleChange} value={updateUser.zip} />
+                    </div>
+                    <div className="fields">
+                        <label>Ville : </label>
+                        <input className="input-size" type='text' placeholder='city' name='city' onChange={handleChange} value={updateUser.city} />
+                    </div>
+                    <div className="fields">
+                        <label>Email : </label>
+                        <input className="input-size" type='email' placeholder='email' name='email' onChange={handleChange} value={updateUser.email} />
+                    </div>
+                    <div className="btn-input">
+                        <button onClick={submit}>Modifier les infos</button>
+                    </div>
+                </fieldset>
+            </form>   
             )}
             
         {isValidated && (
-            <p>Votre modification a bien été prise en compte</p>
+            <p className="error-txt">Votre modification a bien été prise en compte</p>
         )}
         </div>
        )

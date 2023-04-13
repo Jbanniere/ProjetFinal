@@ -6,9 +6,6 @@
 @import url('https://fonts.cdnfonts.com/css/londrina-shadow');
 
 
-
-
-
 .App {
   text-align: center;
 }
@@ -81,7 +78,7 @@ footer {
 
 h1 {
   width:100%;
-  background-color:#e56e8a;
+  background-color:#74af9b;
   color: white;
   text-decoration: none;
   font-family: 'Italiana', serif;
@@ -93,10 +90,10 @@ h1 {
 
 h2 {
   font-family: 'TwiggyPop', sans-serif;
-  color: #AADCB8;
+  color: #74af9b;
   text-decoration:underline;
   padding: 1rem 0.5rem;
-  font-size:2.5rem;
+  font-size:2.8rem;
   text-align:center;
 }
 
@@ -138,6 +135,7 @@ img {
 }
 
 
+
 /********************   DISPLAY FLEX   *********************
 ***********************************************************/
 
@@ -158,6 +156,7 @@ img {
 }
 
 
+
 /*********************    BUTTON   *************************
 ***********************************************************/
 
@@ -165,7 +164,7 @@ button {
   background-color:white;
   margin:.4rem;
   font-family: 'italiana', sans-serif;
-  font-size:1.3rem;
+  font-size:1.5rem;
   border:1px solid grey;
   padding:5px;
   cursor:pointer;
@@ -176,6 +175,31 @@ button {
 .center {
   text-align:center;
 }
+
+
+
+/****************    FENETRE MODALE   **********************
+***********************************************************/
+
+.ReactModal__Content{
+  width:50%;
+  height:30%;
+  text-align:center;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.ReactModal__Content button {
+  padding:1rem;
+}
+
+.ReactModal__Content p {
+  margin:2rem;
+}
+
 
 
 
@@ -271,9 +295,7 @@ a.icons-navbar {
   .navbar__logo {
     width:35%;
   }
-  
 }
-
 
 @media screen and (min-width: 960px) {
   .navbar-icons {
@@ -281,7 +303,6 @@ a.icons-navbar {
   }
   
   .navbar {
-    font-size:2rem;
     flex-wrap:nowrap;
   }
   
@@ -295,22 +316,23 @@ a.icons-navbar {
   }
   
   .navbar__link {
-    margin-left:1rem;
     font-size:2.2rem;
   }
   
-  
   .navbar__link:hover {
-    background-color:#1691fc;
+    background-color:#588ebc;
     color:white;
     border-radius:0 10px;
+  }
+  
+  .navbar__admin:hover {
+    background-color:#E56E8A;
   }
 
   .navbar__link {
     transition: transform 0.3s ease-in-out;
   }
 }
-
 
 
 @media screen and (max-width:768px) {
@@ -330,7 +352,6 @@ a.icons-navbar {
     z-index:10;
   }
   
-  
   .navbar__link {
     display:block;
     padding:1rem;
@@ -340,7 +361,8 @@ a.icons-navbar {
   
   .show-nav .navbar__links {
     right:0;
-    width:100vw;
+    width:100%;
+    height:100%;
     visibility:visible;
   }
   
@@ -743,20 +765,20 @@ hr {
   padding:.5rem;
   font-family: 'TwiggyPop', sans-serif;
   vertical-align: baseline;
-  font-size:1.5rem;
+  font-size:2rem;
 }
 
 /********************** MEDIA QUERIES ************************/
 
 
 @media screen and (min-width: 1024px) {
-   .stats-img {
-     width:50%;
-    }
-    
-    .menu__gestion {
-      margin-top:2rem;
-    }
+  .stats-img {
+    width:50%;
+  }
+  
+  .menu__gestion {
+    margin-top:2rem;
+  }
 }
 
 
@@ -766,11 +788,33 @@ hr {
 ***********************************    ALL USERS ADMIN    ************************************
 **********************************************************************************************/
 
-.admin-users {
-  margin:4rem;
+.users tbody tr:hover td,
+.users tbody tr:hover th,
+.users tbody tr:hover svg {
+  background:#588ebc;
+  color:#FFFFFF;
+}
+
+.users thead {
+  background-color: black;
+  color:white;
+  font-size:2rem;
+}
+
+.users svg {
+  font-size:1.8rem;
 }
 
 
+@media screen and (min-width: 1024px) {
+  .admin-users {
+    margin:4rem 4rem 6rem 4rem;
+  }
+  
+  .admin-users tr td {
+    padding:1rem 2.5rem;
+  }
+}
 
 
 /*********************************************************************************************
@@ -790,19 +834,19 @@ hr {
   display:none;
 }
 
+.messagerie thead {
+  font-size:2rem;
+}
+
 
 /************************ MEDIA QUERIES ************************/
 
-@media screen and (min-width:768px) {
   
-
-}
+@media screen and (min-width: 1024px) {
+  .admin-msg {
+      margin: 4rem 2rem 10rem 1rem;
+  }
   
-  @media screen and (min-width: 1024px) {
-    .admin-msg {
-        margin: 4rem 2rem 10rem 1rem;
-    }
-    
   .desktop {
     display:block;
   }
@@ -844,7 +888,7 @@ hr {
 
 .table-all-product tr:hover td,
 .table-all-product tr:hover th {
-  background:#9195ba;
+  background:#588ebc;
   color:#FFFFFF;
 }
 
@@ -934,24 +978,24 @@ form {
 }
 
 fieldset {
-  margin:2rem 0;
-  border-width:1px;
+  margin:5rem 0;
+  border: 0.5px solid #c9c9c9;
   padding-bottom:2rem;
   padding-right:1rem;
 }
 
 legend {
-    padding:0 1em;
-    font-family: 'TwiggyPop', sans-serif;
-    font-size:2.4rem;
-    margin-bottom:1rem;
-    color:#a7d5ff;
-    text-shadow: 1px 1px 1px black;
+  padding:0 1em;
+  font-family: 'Londrina Shadow', cursive;
+  font-size:2.8rem;
+  margin-bottom:1rem;
+  color:#577793;
+  font-weight:bold;
 }
 
 label {
-    Padding: 1rem;
-    width:30%;
+  Padding: 1rem;
+  width:30%;
 }
 
 .input-size{
@@ -980,7 +1024,6 @@ textarea {
 
 
 @media screen and (min-width: 1024px) {
-  
   .all-product-img {
     width:30%;
   }
@@ -1088,12 +1131,10 @@ textarea {
 /********************* MEDIA QUERIES **********************/
 
 @media screen and (min-width:768px) {
-  
   .bee-img {
     top:45rem;
     width:25%;
   }
-  
 }
   
 @media screen and (min-width: 1024px) {
@@ -1169,7 +1210,6 @@ textarea {
 /**************** MEDIA QUERIES *********************/
 
 @media screen and (min-width:768px) {
-  
   .pro-img {
     width: 40%;
   }
@@ -1187,7 +1227,6 @@ textarea {
 }
   
 @media screen and (min-width: 1024px) {
-  
   .ellipse-pro {
     width:40%;
   }
@@ -1267,7 +1306,6 @@ textarea {
 /******************* MEDIA QUERIES ******************/
 
 @media screen and (min-width: 1024px) {
-  
   .contact-address {
     width:30%;
   }
@@ -1308,7 +1346,6 @@ textarea {
 /****************** MEDIA QUERIES *******************/
 
 @media screen and (min-width: 768px) {
-  
   .cart-cover {
     width:30%;
   }
@@ -1316,7 +1353,6 @@ textarea {
 }
 
 @media screen and (min-width: 1024px) {
-  
   .cart {
     width:50%;
   }
@@ -1348,6 +1384,12 @@ textarea {
 .mentions-legales {
   margin-bottom: 6rem;
   margin-left:1rem;
+  text-align:left;
+  line-height:1.5;
+}
+
+.mentions-legales h2 {
+  text-align:left;
 }
 
 
@@ -1399,6 +1441,14 @@ footer {
 
 .facebook-svg {
   color:#395498;
+}
+
+.facebook-svg:hover,
+.twitter-svg:hover,
+.insta-svg:hover,
+.youtube-svg:hover,
+.footer-nav li:hover {
+  opacity:.5;
 }
 
 .twitter-svg {

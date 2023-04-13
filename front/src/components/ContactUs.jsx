@@ -33,6 +33,7 @@ const ContactUs = () => {
          //Je vérifie si le mail est au bon format
         if (!/\S+@\S+\.\S+/.test(newContact.email)) {
             setErrors ({email : "Veuillez entrer une adresse email valide."})
+            return
         }
         axios.post(`${BASE_URL}/contactUs`, {
             nom:newContact.nom,
@@ -112,7 +113,7 @@ const ContactUs = () => {
             </form>
             
             {isValidated && (
-            <p>Votre demande a bien été envoyé, nous mettons tout en oeuvre pour votre répondre rapidement. A bientôt !</p>
+            <p className="error-txt">Votre demande a bien été envoyé, nous mettons tout en oeuvre pour votre répondre rapidement. A bientôt !</p>
             )}
         </div>
          )

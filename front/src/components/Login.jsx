@@ -3,6 +3,8 @@ import {StoreContext} from "../tools/context.js"
 import axios from "axios"
 import {BASE_URL} from "../tools/constante.js"
 import { NavLink, Navigate } from "react-router-dom"
+import Modal from 'react-modal'
+
 
 
 const Login = () => {
@@ -37,10 +39,15 @@ const Login = () => {
         })
         .catch(err => {
             console.log(err)
-            alert("Email ou mot de passe invalide")
+            setIsModalOpen(true)
         })
         
     }
+    
+    // FENETRE MODALE POUR ERREUR IDENTIFIANTS
+    const [isModalOpen, setIsModalOpen] = useState(false) // Pour suivre si la fenêtre modale doit être affichée ou non
+    const openModal = () => setIsModalOpen(true) // gestionnaires d'événements pour ouvrir et fermer la fenêtre modale
+    const closeModal = () => setIsModalOpen(false)
 
     return(
         <Fragment>
@@ -50,11 +57,11 @@ const Login = () => {
                     <legend>Déjà inscrit ?</legend>
                     <div className="fields">
                         <label> Email : </label>
-                        <input className="input-size" type='text' placeholder='email' name='email' onChange={handleChange} value={info.email} />
+                        <input className="input-size" type='text' placeholder='Mon email' name='email' onChange={handleChange} value={info.email} />
                     </div>
                     <div className="fields">
                         <label> Mot de passe : </label>
-                        <input className="input-size" type='password' placeholder='password' name='password' onChange={handleChange} value={info.password} />
+                        <input className="input-size" type='password' placeholder='Mon mot de passe' name='password' onChange={handleChange} value={info.password} />
                     </div>
                     <div className="center">
                         <button className="btn-valid">Se Connecter</button>
@@ -67,7 +74,12 @@ const Login = () => {
                     </div>
                 </fieldset>
             </form> 
-         { login && <Navigate to="/getProfil" /> }
+            <Modal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Identifiants incorrects">
+                <p>Email ou Mot de passe incorrect</p>
+                <button className="btn-valid" onClick={closeModal}>OK</button>
+            </Modal>
+            
+        { login && <Navigate to="/getProfil" /> }
         </Fragment>
     )
 }

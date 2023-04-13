@@ -40,13 +40,13 @@ const NavBar = (props) => {
                 {state.user.role_id === 1 && (
                 <Fragment>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllProduct" onClick={handleClickLink} title="Accéder aux produits">Produits</NavLink>
+                        <NavLink className="navbar__link navbar__admin" to="/getAllProduct" onClick={handleClickLink} title="Accéder aux produits">Produits</NavLink>
                     </li>  
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllUsers" onClick={handleClickLink} title="Accéder aux utilisateurs">Utilisateurs</NavLink>
+                        <NavLink className="navbar__link navbar__admin" to="/getAllUsers" onClick={handleClickLink} title="Accéder aux utilisateurs">Utilisateurs</NavLink>
                     </li>
                     <li className="navbar__item">
-                        <NavLink className="navbar__link" to="/getAllContactMessage" onClick={handleClickLink} title="Accéder à ma messagerie">Messagerie</NavLink>
+                        <NavLink className="navbar__link navbar__admin" to="/getAllContactMessage" onClick={handleClickLink} title="Accéder à ma messagerie">Messagerie</NavLink>
                     </li>
                 </Fragment>
                     )}

@@ -18,14 +18,14 @@ const AllUsers = () => {
     
     
     const deleteUser = (id) => {
-        axios.post(`${BASE_URL}/deleteUser`, {id})
+        axios.post(`${BASE_URL}/deleteUser`)
         .then(res => setAllUsers(allUsers.filter((e)=> e.id !== id)))
         .catch(err => console.log(err))
     }
 
     return(
-        <Fragment>
-        <h1 className="contact-title">Mes Utilisateurs</h1>
+        <div className="users">
+        <h1>Mes Utilisateurs</h1>
         
         {/*Tableau version Desktop*/}
            <table className="admin-users desktop">
@@ -56,7 +56,7 @@ const AllUsers = () => {
                             <td><button className="btn-array"><NavLink to={`/updateUser/${user.id}`}><FontAwesomeIcon icon={faPen} /></NavLink></button></td>
                             <td><button className="btn-array fatrash" onClick={()=> deleteUser(user.id)}><FontAwesomeIcon icon={faTrash}/></button></td>
                         </tr>
-                        )
+                        ) 
                     })}
                  </tbody>
             </table>
@@ -92,7 +92,7 @@ const AllUsers = () => {
                     })}
                  </tbody>
             </table>
-        </Fragment>
+        </div>
     )
 }
 

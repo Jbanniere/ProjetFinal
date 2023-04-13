@@ -22,7 +22,7 @@ const AllProduct = () => {
 
     return(
         <div className="all-products-admin">
-            <h1 className="contact-title">Mes produits</h1>
+            <h1>Mes produits</h1>
             <button className="btn-valid"><NavLink to="/addProduct"> Ajouter un nouveau produit</NavLink></button>
             {allProduct.map((product,i) => {
                 return(

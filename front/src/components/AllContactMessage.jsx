@@ -27,7 +27,7 @@ const AllContactMessage = () => {
 
     // Supprime un message
     const deleteContact = (id) => {
-        axios.post(`${BASE_URL}/deleteContactMessage`)
+        axios.post(`${BASE_URL}/deleteContactMessage`, {id})
         .then(res => setAllContact(allContact.filter((e)=> e.id !== id)))
         .catch(err => console.log(err))
     }
@@ -43,15 +43,12 @@ const AllContactMessage = () => {
     }
     
     return(
-        <Fragment>
-            <h1 className="contact-title">Mes Messages</h1>
+        <div className="messagerie">
+            <h1>Demandes de contact</h1>
             
             {/*Tableau version Desktop*/}
             <table className="admin-msg desktop">
                 <thead>
-                     <tr>
-                        <th colSpan="8">Demandes de contact</th>
-                    </tr>
                     <tr>
                         <th>Date</th>
                         <th>Objet</th>
@@ -92,9 +89,6 @@ const AllContactMessage = () => {
             {/*Tableau version Mobile*/}
             <table className="mobile">
                 <thead>
-                     <tr>
-                        <th colSpan="8">Demandes de contact</th>
-                    </tr>
                     <tr>
                         <th>Message</th>
                         <th>Contact</th>
@@ -130,7 +124,7 @@ const AllContactMessage = () => {
                    })} 
                    </tbody>
             </table>
-        </Fragment>
+        </div>
         )
 }
 

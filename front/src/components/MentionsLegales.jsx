@@ -1,7 +1,11 @@
+import { Fragment } from "react"
+
+
 const MentionsLegales = () => {
     return(
-        <div className="mentions-legales">
+        <Fragment>
             <h1>MENTIONS LEGALES</h1>
+            <div className="mentions-legales">
             <p>
                 Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance en l'économie numérique, 
                 il est précisé aux utilisateurs du site PresseMia l'identité des différents intervenants dans le cadre de sa réalisation 
@@ -35,6 +39,7 @@ const MentionsLegales = () => {
                 section "Charte de Protection des Données Personnelles", conformément au Règlement Général sur la Protection des Données 2016/679 du 27 avril 2016 («RGPD»).
             </p>
         </div>
+        </Fragment>
         )
 }
 

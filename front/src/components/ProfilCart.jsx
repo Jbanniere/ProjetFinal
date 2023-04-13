@@ -39,7 +39,7 @@ const ProfilCart = () => {
         <Fragment>
         {state.user.role_id === 2 && (
             <Fragment>    
-                <h2>Mon Abonnement</h2>
+                <h1>Mon Abonnement</h1>
                 {abonnement.map((order,i) => {
                     return(
                     <div  className= "profil-abo flex" key={i}>

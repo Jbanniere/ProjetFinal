@@ -48,6 +48,7 @@ const Register = () => {
         //Je vérifie si le mail est au bon format
         if (!/\S+@\S+\.\S+/.test(userData.email)) {
             setErrors ({email : "Veuillez entrer une adresse email valide."})
+            return
         }
         // Si tout est OK je valide l'inscription
         axios.post(`${BASE_URL}/register`,{
