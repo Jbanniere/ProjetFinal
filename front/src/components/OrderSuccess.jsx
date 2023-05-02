@@ -27,7 +27,7 @@ const OrderSuccess = () => {
             
             <div className="error-txt">
                 <p >Vous pouvez <span className="underline">gérer votre abonnement</span> à tout moment dans l'onglet <NavLink to="/getProfil" title="Accéder à mon profil"><span className="underline">"Mon Profil"</span></NavLink></p>
-                <button><NavLink to="/home" title="Accéder à la page d'accueil">Retour à la page d'Accueil</NavLink></button>
+                <button><NavLink to="/" title="Accéder à la page d'accueil">Retour à la page d'Accueil</NavLink></button>
             </div>
         </div>)
 }

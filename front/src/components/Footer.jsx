@@ -24,11 +24,11 @@ const Footer = () => {
                 <div className="footer__nav">
                 <p>Plan du Site :</p>
                     <ul className="footer-nav">
-                        <li><NavLink to="/" title="Accéder à la page d'Accueil">- Home</NavLink></li>
-                        <li><NavLink to="/register" title="Accéder à la page d'inscription">- S'inscrire</NavLink></li>
-                        <li><NavLink to="/getProfil" title="Accéder à mon profil">- Mon Profil</NavLink></li>
-                        <li><a href="tel:0233445566" title="Nous contacter par téléphone">- Service Client : 02 33 44 55 66 </a></li>
-                        <li><NavLink to="/mentionsLegales" title="Accéder aux mentions légales">- Mentions Légales</NavLink></li>
+                        <li><NavLink to="/" title="Accéder à la page d'Accueil">Home</NavLink></li>
+                        <li><NavLink to="/register" title="Accéder à la page d'inscription">S'inscrire</NavLink></li>
+                        <li><NavLink to="/getProfil" title="Accéder à mon profil">Mon Profil</NavLink></li>
+                        <li><a href="tel:0233445566" title="Nous contacter par téléphone">Service Client : 02 33 44 55 66 </a></li>
+                        <li><NavLink to="/mentionsLegales" title="Accéder aux mentions légales">Mentions Légales</NavLink></li>
                     </ul>
                 </div>
             </footer>
